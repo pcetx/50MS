@@ -18,6 +18,5 @@ angular.module('eastreelApp', [
     'ngTouch',
     'firebase',
     'firebase.ref',
-    'firebase.auth',
-    'angular-loading-bar'
+    'firebase.auth'
   ]);

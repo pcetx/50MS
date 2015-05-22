@@ -8548,13 +8548,13 @@ div.row.marketing {
 
 /* line 46, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
-  background: rgba(0, 0, 0, 0.3) !important;
+  background: rgba(250, 250, 250, 0.3) !important;
 }
 
 /* line 50, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
-  background: rgba(0, 0, 0, 0.8) !important;
-  border-color: black !important;
+  background: #c0392b !important;
+  border-color: #c0392b !important;
 }
 
 /* line 55, ../../app/styles/main.scss */

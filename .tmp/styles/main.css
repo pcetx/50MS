@@ -8526,55 +8526,85 @@ button:focus {
 }
 
 /* line 28, ../../app/styles/main.scss */
+.covervid-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 36, ../../app/styles/main.scss */
+covervid {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 41, ../../app/styles/main.scss */
+.circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  font-size: 25px;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  background: #000;
+  margin: auto;
+  margin-top: -50px;
+  z-index: 1000;
+}
+
+/* line 59, ../../app/styles/main.scss */
 .footer {
   padding-top: 20px;
   padding-bottom: 10px;
 }
 
-/* line 33, ../../app/styles/main.scss */
+/* line 64, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 37, ../../app/styles/main.scss */
+/* line 68, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 41, ../../app/styles/main.scss */
+/* line 72, ../../app/styles/main.scss */
 div.row.marketing {
   padding: 30px;
 }
 
-/* line 45, ../../app/styles/main.scss */
+/* line 76, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 50, ../../app/styles/main.scss */
+/* line 81, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 54, ../../app/styles/main.scss */
+/* line 85, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 59, ../../app/styles/main.scss */
+/* line 90, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 63, ../../app/styles/main.scss */
+/* line 94, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 69, ../../app/styles/main.scss */
+/* line 100, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
@@ -8584,18 +8614,24 @@ div.row.marketing {
   border-color: #cfd9db;
 }
 
-/* line 78, ../../app/styles/main.scss */
+/* line 109, ../../app/styles/main.scss */
 .form-control {
   border-radius: 0;
 }
 
-/* line 82, ../../app/styles/main.scss */
+/* line 113, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
-/* line 87, ../../app/styles/main.scss */
+@media (max-width: 768px) {
+  /* line 119, ../../app/styles/main.scss */
+  .center-form {
+    margin-top: 18%;
+  }
+}
+/* line 124, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -8603,14 +8639,14 @@ div.row.marketing {
   background: none;
 }
 
-/* line 94, ../../app/styles/main.scss */
+/* line 131, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 100, ../../app/styles/main.scss */
+/* line 137, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -8618,7 +8654,7 @@ div.row.marketing {
   background-color: #fff;
 }
 
-/* line 107, ../../app/styles/main.scss */
+/* line 144, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -8628,7 +8664,7 @@ div.row.marketing {
   color: #555;
 }
 
-/* line 116, ../../app/styles/main.scss */
+/* line 153, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -8637,7 +8673,7 @@ div.row.marketing {
   padding: 0 15px;
 }
 
-/* line 124, ../../app/styles/main.scss */
+/* line 161, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -8647,12 +8683,12 @@ div.row.marketing {
   border-radius: 5px;
 }
 
-/* line 133, ../../app/styles/main.scss */
+/* line 170, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
 }
 
-/* line 137, ../../app/styles/main.scss */
+/* line 174, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -8661,42 +8697,42 @@ div.row.marketing {
 /*********************
 * Social Buttons
 *********************/
-/* line 146, ../../app/styles/main.scss */
+/* line 183, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 152, ../../app/styles/main.scss */
+/* line 189, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
 }
 
-/* line 158, ../../app/styles/main.scss */
+/* line 195, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 164, ../../app/styles/main.scss */
+/* line 201, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
   background-color: #294786;
 }
 
-/* line 170, ../../app/styles/main.scss */
+/* line 207, ../../app/styles/main.scss */
 .btn-twitter {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #009fdb;
 }
 
-/* line 176, ../../app/styles/main.scss */
+/* line 213, ../../app/styles/main.scss */
 .btn-twitter:hover,
 .btn-twitter:focus {
   color: #fff;
@@ -8706,7 +8742,7 @@ div.row.marketing {
 /*********************
 * Animations
 *********************/
-/* line 186, ../../app/styles/main.scss */
+/* line 223, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -8714,7 +8750,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 197, ../../app/styles/main.scss */
+/* line 234, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -8722,7 +8758,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 208, ../../app/styles/main.scss */
+/* line 245, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;

@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name eastreelApp.controller:LoginCtrl
+ * @name 50movesApp.controller:LoginCtrl
  * @description
  * # LoginCtrl
  * Manages authentication to any active providers.
  */
-angular.module('eastreelApp')
+angular.module('50movesApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
     $scope.oauthLogin = function(provider) {
       $scope.err = null;

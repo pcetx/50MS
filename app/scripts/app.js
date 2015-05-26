@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc overview
- * @name eastreelApp
+ * @name 50movesApp
  * @description
- * # eastreelApp
+ * # 50movesApp
  *
  * Main module of the application.
  */
-angular.module('eastreelApp', [
+angular.module('50movesApp', [
     'ngAnimate',
     'ngCookies',
     'ngMessages',
@@ -18,5 +18,6 @@ angular.module('eastreelApp', [
     'ngTouch',
     'firebase',
     'firebase.ref',
-    'firebase.auth'
+    'firebase.auth',
+    'ngCovervid'
   ]);

@@ -7,7 +7,7 @@
  * A directive that shows elements only when user is logged out. It also waits for Auth
  * to be initialized so there is no initial flashing of incorrect state.
  */
-angular.module('eastreelApp')
+angular.module('50movesApp')
   .directive('ngHideAuth', ['Auth', '$timeout', function (Auth, $timeout) {
     'use strict';
 

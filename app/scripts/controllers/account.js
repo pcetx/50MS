@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name muck2App.controller:AccountCtrl
+ * @name 50movesApp.controller:AccountCtrl
  * @description
  * # AccountCtrl
  * Provides rudimentary account management functions.
  */
-angular.module('eastreelApp')
+angular.module('50movesApp')
   .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout) {
     $scope.user = user;
     $scope.logout = function() { Auth.$unauth(); };

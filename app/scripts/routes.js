@@ -27,7 +27,7 @@
  *   }
  *
  */
-angular.module('eastreelApp')
+angular.module('50movesApp')
 
 /**
  * Adds a special `whenAuthenticated` method onto $routeProvider. This special method,

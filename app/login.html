@@ -23,15 +23,16 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="eastreelApp">
+  <body ng-app="50movesApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
       <div class="container login-container">
-        <div class="row">
+        <div class="row" style="background-image: url(images/color-blur.jpg)">
           <div class="center-form panel">
+            <div class="circle" ng-href="index.html"> </div>
             <div class="panel-body">
               <h2 class="text-center" ng-hide="createMode">Log in</h2>
               <h2 class="text-center" ng-cloak ng-show="createMode">Register</h2>
@@ -87,9 +88,6 @@
                   <button class="btn btn-block btn-google-plus" ng-click="oauthLogin('google')">
                     <i class="fa fa-google"></i> Sign in with Google
                   </button>
-                  <button class="btn btn-block btn-twitter" ng-click="oauthLogin('twitter')">
-                    <i class="fa fa-twitter"></i> Sign in with Twitter
-                  </button>
                 </p>
               </fieldset>
 
@@ -99,9 +97,6 @@
           </div>
         </div>
       </div>
-
-
-       
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -129,6 +124,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/ng-covervid/ngCovervid.js"></script>
+    <script src="bower_components/videogular/videogular.js"></script>
+    <script src="bower_components/videogular-controls/vg-controls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

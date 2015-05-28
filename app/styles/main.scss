@@ -15,7 +15,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 div.motto-text {
-  font-family: "ALBOROTO" !important;
+  
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }
 
 input:focus,
@@ -59,6 +63,8 @@ covervid {
 .footer {
   padding-top: 20px;
   padding-bottom: 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
 }
 
 a {

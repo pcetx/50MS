@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="50movesApp">
+  <body ng-app="50movesApp" ng-controller="LoginCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -34,8 +34,7 @@
           <div class="center-form panel">
             <div class="circle" ng-href="index.html"> </div>
             <div class="panel-body">
-              <h2 class="text-center" ng-hide="createMode">Log in</h2>
-              <h2 class="text-center" ng-cloak ng-show="createMode">Register</h2>
+              <h2 class="text-center">Log in</h2>
 
               <form role="form">
                 <div class="form-group has-feedback">
@@ -46,41 +45,28 @@
                   <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control input-lg" placeholder="Password"/>
                   <span class="fa fa-key form-control-feedback"></span>
                 </div>
-                <div class="form-group has-feedback" ng-cloak ng-show="createMode">
-                  <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control input-lg" placeholder="Confirm Password" />
-                  <span class="fa fa-key form-control-feedback"></span>
-                </div>
 
                 <p>
-                  <button  class="btn btn-primary btn-lg btn-block btn-success" ng-click="passwordLogin(email, pass)" ng-hide="createMode">Log In</button>
-
-                  <p class="text-center text-muted" ng-show="createMode"><small>By clicking on Sign up, you agree to </br><a href="#">Terms & Conditions</a> and <a href="#">Privacy policy</a></small></p>
-
-                  <button  class="btn btn-primary btn-lg btn-block btn-success" ng-cloak ng-show="createMode"
-                          ng-click="createAccount(email, pass, confirm)">Create Account</button>
+                  <button  class="btn btn-primary btn-lg btn-block btn-success" ng-click="passwordLogin(email, pass)">Log In</button>
                 </p>
 
                 <br/>
 
-                <p class="text-center" ng-hide="createMode">
-                  <a href="#">Forgot your password?</a>
+                <p class="text-center">
+                  <a ng-href="forgot.html">Forgot your password?</a>
                 </p>
 
-                <p class="text-center text-muted" ng-hide="createMode">
-                  <small>Don't have an account yet? <a ng-click="createMode = true" ng-hide="createMode">Register</a></small>
+                <p class="text-center text-muted">
+                  <small>Don't have an account yet? <a ng-href="register.html">Register</a></small>
                 </p>
 
-                <p class="text-center text-muted" ng-cloak ng-show="createMode">
-                  <small>Already have an account? <a ng-click="createMode = false">Login</a></small>
-                </p>
-
-                <div class="signup-or-separator" ng-hide="createMode">
+                <div class="signup-or-separator">
                   <h6 class="text-center">or</h6>
                   <hr>
                 </div>
               </form>
 
-              <fieldset ng-cloak ng-hide="createMode">
+              <fieldset ng-cloak>
                 <p>
                   <button class="btn btn-block btn-facebook" ng-click="oauthLogin('facebook')">
                     <i class="fa fa-facebook"></i>  Sign in with Facebook
@@ -124,9 +110,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/ng-covervid/ngCovervid.js"></script>
-    <script src="bower_components/videogular/videogular.js"></script>
-    <script src="bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

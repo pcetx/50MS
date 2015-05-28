@@ -2020,8 +2020,14 @@ fieldset[disabled] .form-control {
 .navbar-ct-orange {
   background-color: rgba(255, 149, 0, 0.98);
 }
+.navbar-ct-yellow {
+  background-color: #f8c600;
+}
 .navbar-ct-red {
   background-color: rgba(255, 76, 64, 0.98);
+}
+.navbar-ct-black {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .navbar-transparent {
   padding-top: 15px;

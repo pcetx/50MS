@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>ThemeKit</title>
+    <!-- Compressed Vendor BUNDLE
+    Includes vendor (3rd party) styling such as the customized Bootstrap and other 3rd party libraries used for the current theme/module -->
+    <link href="css/vendor.min.css" rel="stylesheet">
+    <!-- Compressed Theme BUNDLE
+Note: The bundle includes all the custom styling required for the current theme, however
+it was tweaked for the current theme/module and does NOT include ALL of the standalone modules;
+The bundle was generated using modern frontend development tools that are provided with the package
+To learn more about the development process, please refer to the documentation. -->
+    <!-- <link href="css/theme.bundle.min.css" rel="stylesheet"> -->
+    <!-- Compressed Theme CORE
+This variant is to be used when loading the separate styling modules -->
+    <link href="css/theme-core.min.css" rel="stylesheet">
+    <!-- Standalone Modules
+    As a convenience, we provide the entire UI framework broke down in separate modules
+    Some of the standalone modules may have not been used with the current theme/module
+    but ALL modules are 100% compatible -->
+    <link href="css/module-essentials.min.css" rel="stylesheet" />
+    <link href="css/module-layout.min.css" rel="stylesheet" />
+    <link href="css/module-navbar.min.css" rel="stylesheet" />
+    <!-- <link href="css/module-colors-text.min.css" rel="stylesheet" /> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
+    <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+    <!-- Wrapper required for sidebar transitions -->
+    <div class="st-container">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-main navbar-primary navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-ellipsis-v"></i></a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#sidebar-chat" data-toggle="sidebar-menu" class="toggle pull-right visible-xs"><i class="fa fa-comments"></i></a>
+                    <a class="navbar-brand" href="index.html">Learning</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <ul class="nav navbar-nav">
+                        <li><a href="tutors.html">Tutors</a>
+                        </li>
+                        <li class="active"><a href="library-grid.html">Library</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">UI <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="essential-buttons.html"><i class="fa fa-th"></i> Buttons</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- User -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
+                                <img src="images/people/110/guy-5.jpg" alt="Bill" class="img-circle" width="40" /> Bill <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="user-private-profile.html">Profile</a>
+                                </li>
+                                <li><a href="user-private-messages.html">Messages</a>
+                                </li>
+                                <li><a href="login.html">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </div>
+       
+        <!-- content push wrapper -->
+        <div class="st-pusher" id="content">
+            <!-- sidebar effects INSIDE of st-pusher: -->
+            <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+            <!-- this is the wrapper for the content -->
+            <div class="st-content">
+                <!-- extra div for emulating position:fixed of the menu -->
+                <div class="st-content-inner">
+                    <div class="container-fluid">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="media">
+                                    <span class="pull-right icon-block double media-object bg-lightred"><i class="fa fa-github"></i></span>
+                                    <div class="media-body">
+                                        <h1 class="h3 media-heading">Github Webhooks for Beginners</h1>
+                                        <p class="small text-muted">
+                                            <i class="fa fa-clock-o fa-fw"></i> 4 hrs
+                                            <i class="fa fa-user fa-fw"></i> Adrian Demian
+                                            <i class="fa fa-calendar fa-fw"></i> 21/10/14
+                                        </p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, assumenda blanditiis, corporis, eaque exercitationem harum illo incidunt labore natus odio quas quod tenetur voluptatum. Adipisci amet architecto aut dignissimos facere fugit hic iste iusto, minus molestias nemo obcaecati odit officiis perspiciatis, porro provident quasi ratione reiciendis repudiandae rerum sapiente temporibus ut voluptate. Aperiam atque consequuntur facere in nisi quos rem.</p>
+                                        <span class="label bg-lightred">New</span>
+                                        <span class="label label-default">GitHub</span>
+                                        <span class="label label-default">Beginner</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Curriculum</h5>
+                        <div class="panel panel-default curriculum open">
+                            <div class="panel-heading panel-heading-gray" data-toggle="collapse" data-target="#curriculum-1">
+                                <div class="media">
+                                    <span class="icon-block half pull-left"><i class="fa fa-graduation-cap"></i></span>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Step by Step</h4>
+                                        <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque minima nemo repudiandae rerum! Aspernatur at, autem expedita id illum laudantium molestias officiis quaerat, rem sapiente sint totam velit. Enim.</p>
+                                    </div>
+                                </div>
+                                <span class="collapse-status collapse-open">Open</span>
+                                <span class="collapse-status collapse-close">Close</span>
+                            </div>
+                            <div class="list-group collapse in" id="curriculum-1">
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">1.</td>
+                                                    <td>Installation</td>
+                                                    <td class="text-right">2:03 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item active" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">2.</td>
+                                                    <td>M-V-Huh?</td>
+                                                    <td class="text-right">25:01 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">3.</td>
+                                                    <td>Models</td>
+                                                    <td class="text-right">12:10 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">4.</td>
+                                                    <td>Database Access</td>
+                                                    <td class="text-right">1:25 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">5.</td>
+                                                    <td>Eloquent Basics</td>
+                                                    <td class="text-right">22:30 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default curriculum">
+                            <div class="panel-heading panel-heading-gray" data-toggle="collapse" data-target="#curriculum-2">
+                                <div class="media">
+                                    <span class="icon-block half pull-left"><i class="fa fa-graduation-cap"></i></span>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Another Chapter</h4>
+                                        <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque minima nemo repudiandae rerum! Aspernatur at, autem expedita id illum laudantium molestias officiis quaerat, rem sapiente sint totam velit. Enim.</p>
+                                    </div>
+                                </div>
+                                <span class="collapse-status collapse-open">Open</span>
+                                <span class="collapse-status collapse-close">Close</span>
+                            </div>
+                            <div class="list-group collapse" id="curriculum-2">
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">1.</td>
+                                                    <td>Installation</td>
+                                                    <td class="text-right">2:03 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item active" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">2.</td>
+                                                    <td>M-V-Huh?</td>
+                                                    <td class="text-right">25:01 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">3.</td>
+                                                    <td>Models</td>
+                                                    <td class="text-right">12:10 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">4.</td>
+                                                    <td>Database Access</td>
+                                                    <td class="text-right">1:25 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="list-group-item" data-target="lesson.html">
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-borderless margin-none">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w50">5.</td>
+                                                    <td>Eloquent Basics</td>
+                                                    <td class="text-right">22:30 min</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /st-content-inner -->
+            </div>
+            <!-- /st-content -->
+        </div>
+        <!-- /st-pusher -->
+    </div>
+    
+    <!-- Separate Vendor Script Bundles -->
+    <script src="js/vendor-core.min.js"></script>
+    <script src="js/module-layout.min.js"></script>
+</body>
+</html>

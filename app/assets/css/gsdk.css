@@ -2023,6 +2023,9 @@ fieldset[disabled] .form-control {
 .navbar-ct-red {
   background-color: rgba(255, 76, 64, 0.98);
 }
+.navbar-ct-black {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 .navbar-transparent {
   padding-top: 15px;
   background-color: transparent;

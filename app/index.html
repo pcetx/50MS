@@ -9,7 +9,6 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- Custom Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
-    <link href="assets/fonts/ALBOROTO.otf">
     <!-- endFonts -->
     <!-- External:css -->
     <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
@@ -19,10 +18,9 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
     <link href="styles/pe-icon-7-stroke.css" rel="stylesheet" />
-    <link href="styles/styles.css" rel="stylesheet" />
-    <link href="styles/pe-icon-7-stroke.css" rel="stylesheet" />
     <!-- endExternalCss -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -35,7 +33,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" ng-cloak>
       <nav class="navbar navbar-ct-red navbar-transparent navbar-fixed-top" role="navigation">
         <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,42 +44,18 @@
             <span class="icon-bar bar2"></span>
             <span class="icon-bar bar3"></span>
           </button>
-          <a class="navbar-brand" href="#/">50Moves</a>
+          <a class="navbar-brand" href="#/">Logo</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" data-nav-image='assets/img/blog_1.png'>
           <ul class="nav navbar-nav">
-                <li class="active">
-                    <a ng-href="#/chat">
-                         About
-                    </a>
-                </li>
-                <li class="dropdown">
-                      <a ng-href="#/">
-                         Videos
-                      </a>
-                </li>
-                <li>
-                    <a ng-href="#/chat">
-                         Course
-                    </a>
-                </li>
-                <li>
-                    <a ng-href="#/chat">
-                         Support
-                    </a>
-                </li>
-                <li class="dropdown">
-                      <a ng-href="#/">
-                         Contact
-                      </a>
-                </li>
+            <li><a ng-href="#/dashboard"> Dashboard </a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a ng-hide-auth="" ng-href="login.html" class="btn btn-fill btn-login">Login</a></li>
-                <li><a ng-show-auth="" ng-cloak ng-href="account.html" class="btn btn-fill">Account</a></li>
-                <li><a ng-href="login.html" class="btn btn-square btn-fill btn-register">Register</a></li>
+                <li><a ng-show-auth="" ng-cloak ng-href="#/account" class="btn btn-fill">Account</a></li>
+                <li><a ng-hide-auth="" ng-href="login.html" class="btn btn-square btn-fill btn-register">Register</a></li>
            </ul>
           
         </div><!-- /.navbar-collapse -->
@@ -89,11 +63,11 @@
     </nav>
     </div>
 
-    <div class="main-container">
+    <div class="main-container" ng-cloak>
     <div ng-view=""></div>
     </div>
 
-    <div class="footer">
+    <div class="footer" ng-cloak>
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> Learning Chess is Simple</p>
       </div>
@@ -125,9 +99,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/ng-covervid/ngCovervid.js"></script>
-    <script src="bower_components/videogular/videogular.js"></script>
-    <script src="bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

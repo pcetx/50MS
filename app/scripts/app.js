@@ -17,7 +17,7 @@ angular.module('50movesApp', [
     'ngSanitize',
     'ngTouch',
     'firebase',
+    'ui.router',
     'firebase.ref',
-    'firebase.auth',
-    'ngCovervid'
+    'firebase.auth'
   ]);

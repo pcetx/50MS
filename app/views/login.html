@@ -2,8 +2,7 @@
   <div class="row">
     <div class="center-form panel">
       <div class="panel-body">
-        <h2 class="text-center" ng-hide="createMode">Log in</h2>
-        <h2 class="text-center" ng-cloak ng-show="createMode">Register</h2>
+        <h2 class="text-center" >Log in</h2>
 
         <form role="form">
           <div class="form-group has-feedback">
@@ -14,41 +13,32 @@
             <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control input-lg" placeholder="Password"/>
             <span class="fa fa-key form-control-feedback"></span>
           </div>
-          <div class="form-group has-feedback" ng-cloak ng-show="createMode">
+          <div class="form-group has-feedback" ng-cloak>
             <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control input-lg" placeholder="Confirm Password" />
             <span class="fa fa-key form-control-feedback"></span>
           </div>
 
           <p>
-            <button  class="btn btn-primary btn-lg btn-block btn-success" ng-click="passwordLogin(email, pass)" ng-hide="createMode">Log In</button>
-
-            <p class="text-center text-muted" ng-show="createMode"><small>By clicking on Sign up, you agree to </br><a href="#">Terms & Conditions</a> and <a href="#">Privacy policy</a></small></p>
-
-            <button  class="btn btn-primary btn-lg btn-block btn-success" ng-cloak ng-show="createMode"
-                    ng-click="createAccount(email, pass, confirm)">Create Account</button>
+            <button  class="btn btn-primary btn-lg btn-block btn-success" ng-click="passwordLogin(email, pass)" >Log In</button>
           </p>
 
           <br/>
 
-          <p class="text-center" ng-hide="createMode">
+          <p class="text-center" >
             <a href="#">Forgot your password?</a>
           </p>
 
-          <p class="text-center text-muted" ng-hide="createMode">
-            <small>Don't have an account yet? <a ng-click="createMode = true" ng-hide="createMode">Register</a></small>
+          <p class="text-center text-muted">
+            <small>Don't have an account yet? <a ng-hide="createMode">Register</a></small>
           </p>
 
-          <p class="text-center text-muted" ng-cloak ng-show="createMode">
-            <small>Already have an account? <a ng-click="createMode = false">Login</a></small>
-          </p>
-
-          <div class="signup-or-separator" ng-hide="createMode">
+          <div class="signup-or-separator">
             <h6 class="text-center">or</h6>
             <hr>
           </div>
         </form>
 
-        <fieldset ng-cloak ng-hide="createMode">
+        <fieldset>
           <p>
             <button class="btn btn-block btn-facebook" ng-click="oauthLogin('facebook')">
               <i class="fa fa-facebook"></i>  Sign in with Facebook

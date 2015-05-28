@@ -8501,23 +8501,55 @@ button.close {
 }
 
 /* line 7, ../../app/styles/main.scss */
+html,
 body {
   font-family: 'Open Sans', sans-serif;
   background: #e4e7ec;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
 
-/* line 12, ../../app/styles/main.scss */
+/* line 16, ../../app/styles/main.scss */
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+/* line 20, ../../app/styles/main.scss */
+#header {
+  background: #ededed;
+  padding: 10px;
+}
+
+/* line 24, ../../app/styles/main.scss */
+#content {
+  padding-bottom: 100px;
+  /* Height of the footer element */
+}
+
+/* line 27, ../../app/styles/main.scss */
+#footer {
+  background: #ffab62;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* line 36, ../../app/styles/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
 
-/* line 21, ../../app/styles/main.scss */
+/* line 45, ../../app/styles/main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
-/* line 25, ../../app/styles/main.scss */
+/* line 49, ../../app/styles/main.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -8525,22 +8557,7 @@ button:focus {
   outline: none;
 }
 
-/* line 32, ../../app/styles/main.scss */
-.covervid-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 40, ../../app/styles/main.scss */
-covervid {
-  width: 100%;
-  height: 100%;
-}
-
-/* line 45, ../../app/styles/main.scss */
+/* line 56, ../../app/styles/main.scss */
 .circle {
   width: 140px;
   height: 140px;
@@ -8555,7 +8572,7 @@ covervid {
   z-index: 1000;
 }
 
-/* line 63, ../../app/styles/main.scss */
+/* line 74, ../../app/styles/main.scss */
 .footer {
   padding-top: 20px;
   padding-bottom: 10px;
@@ -8563,50 +8580,50 @@ covervid {
   color: white;
 }
 
-/* line 70, ../../app/styles/main.scss */
+/* line 81, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 74, ../../app/styles/main.scss */
+/* line 85, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 78, ../../app/styles/main.scss */
+/* line 89, ../../app/styles/main.scss */
 div.row.marketing {
   padding: 30px;
 }
 
-/* line 82, ../../app/styles/main.scss */
+/* line 93, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 87, ../../app/styles/main.scss */
+/* line 98, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 91, ../../app/styles/main.scss */
+/* line 102, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 96, ../../app/styles/main.scss */
+/* line 107, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 100, ../../app/styles/main.scss */
+/* line 111, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 106, ../../app/styles/main.scss */
+/* line 117, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
@@ -8616,24 +8633,24 @@ div.row.marketing {
   border-color: #cfd9db;
 }
 
-/* line 115, ../../app/styles/main.scss */
+/* line 126, ../../app/styles/main.scss */
 .form-control {
   border-radius: 0;
 }
 
-/* line 119, ../../app/styles/main.scss */
+/* line 130, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
 @media (max-width: 768px) {
-  /* line 125, ../../app/styles/main.scss */
+  /* line 136, ../../app/styles/main.scss */
   .center-form {
     margin-top: 18%;
   }
 }
-/* line 130, ../../app/styles/main.scss */
+/* line 141, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -8641,14 +8658,14 @@ div.row.marketing {
   background: none;
 }
 
-/* line 137, ../../app/styles/main.scss */
+/* line 148, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 143, ../../app/styles/main.scss */
+/* line 154, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -8656,7 +8673,7 @@ div.row.marketing {
   background-color: #fff;
 }
 
-/* line 150, ../../app/styles/main.scss */
+/* line 161, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -8666,7 +8683,7 @@ div.row.marketing {
   color: #555;
 }
 
-/* line 159, ../../app/styles/main.scss */
+/* line 170, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -8675,7 +8692,7 @@ div.row.marketing {
   padding: 0 15px;
 }
 
-/* line 167, ../../app/styles/main.scss */
+/* line 178, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -8685,12 +8702,12 @@ div.row.marketing {
   border-radius: 5px;
 }
 
-/* line 176, ../../app/styles/main.scss */
+/* line 187, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
 }
 
-/* line 180, ../../app/styles/main.scss */
+/* line 191, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -8699,42 +8716,42 @@ div.row.marketing {
 /*********************
 * Social Buttons
 *********************/
-/* line 189, ../../app/styles/main.scss */
+/* line 200, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 195, ../../app/styles/main.scss */
+/* line 206, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
 }
 
-/* line 201, ../../app/styles/main.scss */
+/* line 212, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 207, ../../app/styles/main.scss */
+/* line 218, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
   background-color: #294786;
 }
 
-/* line 213, ../../app/styles/main.scss */
+/* line 224, ../../app/styles/main.scss */
 .btn-twitter {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #009fdb;
 }
 
-/* line 219, ../../app/styles/main.scss */
+/* line 230, ../../app/styles/main.scss */
 .btn-twitter:hover,
 .btn-twitter:focus {
   color: #fff;
@@ -8744,7 +8761,7 @@ div.row.marketing {
 /*********************
 * Animations
 *********************/
-/* line 229, ../../app/styles/main.scss */
+/* line 240, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -8752,7 +8769,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 240, ../../app/styles/main.scss */
+/* line 251, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -8760,7 +8777,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 251, ../../app/styles/main.scss */
+/* line 262, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;
@@ -8786,5 +8803,3 @@ div.row.marketing {
     opacity: 1;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

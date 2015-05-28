@@ -13,13 +13,14 @@
     <!-- External:css -->
     <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
     <link href="styles/gsdk.css" rel="stylesheet"/>
-    <link href="styles/demo.css" rel="stylesheet"/>
+    <link href="styles/styles.css" rel="stylesheet"/>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
     <link href="styles/pe-icon-7-stroke.css" rel="stylesheet" />
     <!-- endExternalCss -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -27,45 +28,52 @@
     <!-- endbuild -->
   </head>
   <body ng-app="50movesApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <header class="primary-nav">
+      <nav>
+        <ul>
+          <li class="logo">
+             <a href="/" class="back">Logo</a>
+          </li>
+          <li class="item">
+             <a href="/" class="menu-item">My Account</a>
+               
+          </li>
+          <li class="item" id="active">
+             <a href="" class="menu-item">Courses</a>
+          </li>
+          <li class="item">
+             <a href="" class="menu-item">Singles</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-    <!-- Add your site or application content here -->
-    <div class="header" ng-cloak>
-      <nav class="navbar navbar-ct-red navbar-transparent navbar-fixed-top" role="navigation">
+      <nav class="secondary-nav">
+        <ul>
+          <li class="current first">          
+            <a href="/my" target="_top">Timeline</a>
+          </li>
+          <li>          
+            <a href="/my/progress" target="_top">Progress</a>
+          </li>
+          <li class="last">         
+            <a href="/my/buddies" target="_top">Invites</a>
+          </li>
+        </ul>
+      </nav>
+
+    <div class="main-container dashboard" ng-cloak>
         <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button id="menu-toggle" type="button" class="navbar-toggle">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar bar1"></span>
-            <span class="icon-bar bar2"></span>
-            <span class="icon-bar bar3"></span>
-          </button>
-          <a class="navbar-brand" href="#/">50Moves</a>
+           <h1 class="text-center">Take the next step<small class="subtitle">This is like a small motto before the story.</small></h1>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
+               <!--     end extras -->        
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" data-nav-image='assets/img/blog_1.png'>
-          <ul class="nav navbar-nav">
-          </ul>
-            <ul class="nav navbar-nav navbar-right">
-             
-           </ul>
-          
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    </div>
-
-    <div class="main-container">
-    <div ng-view=""></div>
     </div>
 
     <div class="footer" ng-cloak>
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> Learning Chess is Simple</p>
+        <p><span class="glyphicon glyphicon-heart"></span> The footer</p>
       </div>
     </div>
 
@@ -95,9 +103,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/ng-covervid/ngCovervid.js"></script>
     <script src="bower_components/videogular/videogular.js"></script>
     <script src="bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -132,12 +140,6 @@
 
    <!-- GSDK Pro functions -->
       <script src="assets/js/get-shit-done.js"></script>
-      
-      <script type="text/javascript">
-          $().ready(function(){
-              $(window).on('scroll', gsdk.checkScrollForTransparentNavbar);
-          });       
-      </script>
 
 </body>
 </html>

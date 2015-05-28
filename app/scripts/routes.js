@@ -93,7 +93,6 @@ angular.module('50movesApp')
         controller: 'LoginCtrl'
       })
 */
-
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -109,7 +108,7 @@ angular.module('50movesApp')
 
 /*
   .config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
-     $locationProvider.html5Mode(true);
+     //$locationProvider.html5Mode(true);
    
      $stateProvider.state('landing', {
        url: '/',
@@ -117,9 +116,8 @@ angular.module('50movesApp')
        templateUrl: '/views/main.html'
      });
 
-  }]);
+  }])
 */
-
   /**
    * Apply some route security. Any route's resolve method can reject the promise with
    * "AUTH_REQUIRED" to force a redirect. This method enforces that and also watches

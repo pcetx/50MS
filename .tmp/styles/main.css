@@ -8500,7 +8500,84 @@ button.close {
   padding-top: 7px;
 }
 
-/* line 7, ../../app/styles/main.scss */
+/* line 1, ../../app/styles/library.scss */
+.header {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 998;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* line 12, ../../app/styles/library.scss */
+.primary-menu .container, .sub-nav-wrapper .container {
+  padding: 0px !important;
+}
+
+/* line 16, ../../app/styles/library.scss */
+.primary-menu {
+  background: white;
+  width: 100%;
+}
+
+/* line 21, ../../app/styles/library.scss */
+.sub-nav-wrapper {
+  background: rgba(44, 62, 80, 0.8);
+  color: white;
+}
+
+/* line 26, ../../app/styles/library.scss */
+.sub-nav a {
+  color: white;
+}
+
+/* line 30, ../../app/styles/library.scss */
+.element-invisible {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* line 38, ../../app/styles/library.scss */
+.header .logo {
+  position: fixed;
+  z-index: 99;
+  top: 1.2em;
+  left: 50%;
+  margin-left: -2.1875em;
+  background: #1abc9c;
+}
+
+/* line 48, ../../app/styles/library.scss */
+.logo {
+  width: 6em;
+  height: 6em;
+  display: block;
+  background-repeat: no-repeat;
+  background-color: #00c4cc;
+  transition: all .3s;
+  background-size: contain;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: top .2s ease-out,box-shadow .2s ease-out;
+}
+
+/* line 75, ../../app/styles/library.scss */
+.arrow-up {
+  position: absolute;
+  top: 56px;
+  left: 120px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgba(44, 62, 80, 0.8);
+}
+
+/* line 8, ../../app/styles/main.scss */
 html,
 body {
   font-family: 'Open Sans', sans-serif;
@@ -8510,25 +8587,25 @@ body {
   height: 100%;
 }
 
-/* line 16, ../../app/styles/main.scss */
+/* line 17, ../../app/styles/main.scss */
 #wrapper {
   min-height: 100%;
   position: relative;
 }
 
-/* line 20, ../../app/styles/main.scss */
+/* line 21, ../../app/styles/main.scss */
 #header {
   background: #ededed;
   padding: 10px;
 }
 
-/* line 24, ../../app/styles/main.scss */
+/* line 25, ../../app/styles/main.scss */
 #content {
   padding-bottom: 100px;
   /* Height of the footer element */
 }
 
-/* line 27, ../../app/styles/main.scss */
+/* line 28, ../../app/styles/main.scss */
 #footer {
   background: #ffab62;
   width: 100%;
@@ -8538,18 +8615,18 @@ body {
   left: 0;
 }
 
-/* line 36, ../../app/styles/main.scss */
+/* line 37, ../../app/styles/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
 
-/* line 45, ../../app/styles/main.scss */
+/* line 46, ../../app/styles/main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
-/* line 49, ../../app/styles/main.scss */
+/* line 50, ../../app/styles/main.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -8557,7 +8634,7 @@ button:focus {
   outline: none;
 }
 
-/* line 56, ../../app/styles/main.scss */
+/* line 57, ../../app/styles/main.scss */
 .circle {
   width: 140px;
   height: 140px;
@@ -8572,7 +8649,7 @@ button:focus {
   z-index: 1000;
 }
 
-/* line 74, ../../app/styles/main.scss */
+/* line 75, ../../app/styles/main.scss */
 .footer {
   padding-top: 20px;
   padding-bottom: 10px;
@@ -8580,50 +8657,50 @@ button:focus {
   color: white;
 }
 
-/* line 81, ../../app/styles/main.scss */
+/* line 82, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 85, ../../app/styles/main.scss */
+/* line 86, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 89, ../../app/styles/main.scss */
+/* line 90, ../../app/styles/main.scss */
 div.row.marketing {
   padding: 30px;
 }
 
-/* line 93, ../../app/styles/main.scss */
+/* line 94, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 98, ../../app/styles/main.scss */
+/* line 99, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 102, ../../app/styles/main.scss */
+/* line 103, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 107, ../../app/styles/main.scss */
+/* line 108, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 111, ../../app/styles/main.scss */
+/* line 112, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 117, ../../app/styles/main.scss */
+/* line 118, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
@@ -8633,24 +8710,24 @@ div.row.marketing {
   border-color: #cfd9db;
 }
 
-/* line 126, ../../app/styles/main.scss */
+/* line 127, ../../app/styles/main.scss */
 .form-control {
   border-radius: 0;
 }
 
-/* line 130, ../../app/styles/main.scss */
+/* line 131, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
 @media (max-width: 768px) {
-  /* line 136, ../../app/styles/main.scss */
+  /* line 137, ../../app/styles/main.scss */
   .center-form {
     margin-top: 18%;
   }
 }
-/* line 141, ../../app/styles/main.scss */
+/* line 142, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -8658,14 +8735,14 @@ div.row.marketing {
   background: none;
 }
 
-/* line 148, ../../app/styles/main.scss */
+/* line 149, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 154, ../../app/styles/main.scss */
+/* line 155, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -8673,7 +8750,7 @@ div.row.marketing {
   background-color: #fff;
 }
 
-/* line 161, ../../app/styles/main.scss */
+/* line 162, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -8683,7 +8760,7 @@ div.row.marketing {
   color: #555;
 }
 
-/* line 170, ../../app/styles/main.scss */
+/* line 171, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -8692,7 +8769,7 @@ div.row.marketing {
   padding: 0 15px;
 }
 
-/* line 178, ../../app/styles/main.scss */
+/* line 179, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -8702,12 +8779,12 @@ div.row.marketing {
   border-radius: 5px;
 }
 
-/* line 187, ../../app/styles/main.scss */
+/* line 188, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
 }
 
-/* line 191, ../../app/styles/main.scss */
+/* line 192, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -8716,42 +8793,42 @@ div.row.marketing {
 /*********************
 * Social Buttons
 *********************/
-/* line 200, ../../app/styles/main.scss */
+/* line 201, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 206, ../../app/styles/main.scss */
+/* line 207, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
 }
 
-/* line 212, ../../app/styles/main.scss */
+/* line 213, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 218, ../../app/styles/main.scss */
+/* line 219, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
   background-color: #294786;
 }
 
-/* line 224, ../../app/styles/main.scss */
+/* line 225, ../../app/styles/main.scss */
 .btn-twitter {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #009fdb;
 }
 
-/* line 230, ../../app/styles/main.scss */
+/* line 231, ../../app/styles/main.scss */
 .btn-twitter:hover,
 .btn-twitter:focus {
   color: #fff;
@@ -8761,7 +8838,7 @@ div.row.marketing {
 /*********************
 * Animations
 *********************/
-/* line 240, ../../app/styles/main.scss */
+/* line 241, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -8769,7 +8846,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 251, ../../app/styles/main.scss */
+/* line 252, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -8777,7 +8854,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 262, ../../app/styles/main.scss */
+/* line 263, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;

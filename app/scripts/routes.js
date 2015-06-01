@@ -52,72 +52,23 @@ angular.module('50movesApp')
       return $routeProvider;
     };
   }])
-
+  
   // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
   // before trying to access that route
 
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-
-      .when('/dashboard', {
-        templateUrl: 'views/dashboard.html',
-        controller: 'DashboardCtrl'
-      })
-      
-      .when('/library', {
-        templateUrl: 'views/library.html',
-        controller: 'LibraryCtrl'
-      })
-
-      .when('/course', {
-        templateUrl: 'views/course.html',
-        controller: 'CourseCtrl'
-      })
-/*
-      .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'LoginCtrl'
-      })
-
-      .when('/forgot', {
-        templateUrl: 'views/forgot.html',
-        controller: 'LoginCtrl'
-      })
-
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-*/
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-
-      .whenAuthenticated('/account', {
-        templateUrl: 'views/account.html',
-        controller: 'AccountCtrl'
-      })
-
-      .otherwise({redirectTo: '/'});
-  }])
-
-/*
-  .config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+  .config( function($stateProvider, $locationProvider, $urlRouterProvider) {
      //$locationProvider.html5Mode(true);
+
+     $urlRouterProvider.otherwise('/');
    
      $stateProvider.state('landing', {
        url: '/',
        controller: 'MainCtrl',
-       templateUrl: '/views/main.html'
+       templateUrl: 'views/main.html'
      });
 
-  }])
-*/
+  })
+/*
   /**
    * Apply some route security. Any route's resolve method can reject the promise with
    * "AUTH_REQUIRED" to force a redirect. This method enforces that and also watches

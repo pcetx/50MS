@@ -1,3 +1,18 @@
+html, body {
+height: 100% !important;
+}
+
+.wrapper {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -4em;
+}
+
+.footer{
+height: 4em;
+}
+
 .header {
   //position: relative;
   left: 0;
@@ -9,18 +24,58 @@
   backface-visibility: hidden;
 }
 
+.main-container.dashboard {
+  padding: 50px;
+}
+
 .primary-menu .container, .sub-nav-wrapper .container{
   padding: 0px !important;
 }
 
 .primary-menu {
-    background: white;
-    width: 100%;
+  background: white;
+  width: 100%;
 }
 
 .sub-nav-wrapper {
-    background: rgba(44, 62, 80, 0.8);
-    color: white;
+  padding: 10px;
+}
+
+.subnav-dashboard > li > a:hover {
+  color: black;
+}
+
+.subnav-dashboard > li  {
+  margin-left: 10px;
+}
+
+.subnav-dashboard > li > a.active {
+  opacity: 0.8;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  padding: 12px;
+  margin-top: 5px;
+  color: white !important;
+}
+
+.subnav-dashboard > li > a.active:hover {
+  background: whitesmoke;
+  color: rgba(0,0,0,0.8);
+}
+
+@media (max-device-width: 768px) {
+  div.navbar-header {
+    background: rgba(44, 62, 80, 0.8) !important;
+  }
+}
+
+.sub-nav-wrapper {
+  background: rgba(44, 62, 80, 0.8);
+  color: white;
+}
+
+.sub-nav-wrapper li:active{
+  background: black;
 }
 
 .sub-nav a {
@@ -36,7 +91,7 @@
 }
 
 .header .logo {
-  position: fixed;
+  position: absolute;
   z-index: 99;
   //top: .4375em;
   top: 1.2em;

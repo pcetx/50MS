@@ -13,7 +13,6 @@
     <!-- External:css -->
     <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
     <link href="styles/gsdk.css" rel="stylesheet"/>
-    <link href="styles/demo.css" rel="stylesheet"/>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
@@ -31,63 +30,65 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div class="wrapper">
+        <!-- Add your site or application content here -->
+        <div class="header dashboard" ng-cloak>
+          <nav class="navbar primary-menu nav-dashboard" role="navigation">
+            <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar bar1"></span>
+                  <span class="icon-bar bar2"></span>
+                  <span class="icon-bar bar3"></span>
+                </button>
+              </div>
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <nav class="navbar primary-menu" role="navigation">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button id="menu-toggle" type="button" class="navbar-toggle">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar bar1"></span>
-              <span class="icon-bar bar2"></span>
-              <span class="icon-bar bar3"></span>
-            </button>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" data-nav-image='assets/img/blog_1.png'>
-            <ul class="nav navbar-nav">
-              <li><a ng-href="#/dashboard"> My Account </a></li>
-              <li><a ng-href="#/dashboard"> Courses </a></li>
-              <li><a ng-href="#/dashboard"> Tutorials </a></li>
-            </ul>
-              <div class="arrow-up"></div>
-              <ul class="nav navbar-nav navbar-right dashboard-right">
-                  <li><a ng-hide-auth="" ng-href="login.html" class="btn btn-fill">Logout</a></li>
-             </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-
-       <a href="http://www.canva.com/" target="_blank" class="logo"> <span class="element-invisible">Canva logo</span> 
-            </a>
-      <!--  The secondary Menu  -->
-      <div class="sub-nav-wrapper">
-        <div class="container sub-nav">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <nav class="primary-nav">
-            <div class="navbar-header">
-              <div class="collapse navbar-collapse" data-nav-image='assets/img/blog_1.png'>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                  <li><a ng-href="#/dashboard"> Profile </a></li>
-                  <li><a ng-href="#/dashboard"> Progress </a></li>
-                  <li><a ng-href="#/dashboard"> Invites </a></li>
+                  <li><a ng-href="#/dashboard"> My Account </a></li>
+                  <li><a ng-href="#/dashboard"> Courses </a></li>
+                  <li><a ng-href="#/dashboard"> Tutorials </a></li>
                 </ul>
+                  <div class="arrow-up"></div>
+                  <ul class="nav navbar-nav navbar-right">                    
+                    <li><a ng-show-auth="" ng-cloak>Welcome Peter {{John}}</a></li>
+                    <li><a ng-show-auth="" ng-cloak ng-href="#/account" class="btn btn-fill">Logout</a></li>
+                  </ul>
               </div><!-- /.navbar-collapse -->
-            </div>
+            </div><!-- /.container-fluid -->
           </nav>
-        </div><!-- /.container-fluid -->
-      </div>
-    </div>
 
-    <div class="main-container dashboard" ng-cloak>
-        <div class="container">
-           <h1 class="text-center">Take the next step<small class="subtitle">This is like a small motto before the story.</small></h1>
-           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
-               <!--     end extras -->        
+           <a href="" target="_blank" class="logo"> <span class="element-invisible">logo</span> 
+                </a>
+          <!--  The secondary Menu  -->
+          <div class="sub-nav-wrapper">
+            <div class="container sub-nav">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <nav class="secondary-nav">
+                <div class="navbar-header">
+                  <div class="collapse navbar-collapse" data-nav-image='assets/img/blog_1.png'>
+                    <ul class="nav navbar-nav subnav-dashboard">
+                      <li><a ng-href="#/dashboard" class="active"> Profile </a></li>
+                      <li><a ng-href="#/dashboard"> Progress </a></li>
+                      <li><a ng-href="#/dashboard"> Invites </a></li>
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div>
+              </nav>
+            </div><!-- /.container-fluid -->
+          </div>
+        </div>
+
+        <div class="main-container dashboard" ng-cloak>
+            <div class="container">
+               <h1 class="text-center">Take the next step<small class="subtitle">This is like a small motto before the story.</small></h1>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
+                   <!--     end extras -->        
+            </div>
         </div>
     </div>
 

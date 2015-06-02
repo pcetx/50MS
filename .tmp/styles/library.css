@@ -1,4 +1,22 @@
 /* line 1, ../../app/styles/library.scss */
+html, body {
+  height: 100% !important;
+}
+
+/* line 5, ../../app/styles/library.scss */
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+/* line 12, ../../app/styles/library.scss */
+.footer {
+  height: 4em;
+}
+
+/* line 16, ../../app/styles/library.scss */
 .header {
   left: 0;
   top: 0;
@@ -8,29 +26,76 @@
   backface-visibility: hidden;
 }
 
-/* line 12, ../../app/styles/library.scss */
+/* line 27, ../../app/styles/library.scss */
+.main-container.dashboard {
+  padding: 50px;
+}
+
+/* line 31, ../../app/styles/library.scss */
 .primary-menu .container, .sub-nav-wrapper .container {
   padding: 0px !important;
 }
 
-/* line 16, ../../app/styles/library.scss */
+/* line 35, ../../app/styles/library.scss */
 .primary-menu {
   background: white;
   width: 100%;
 }
 
-/* line 21, ../../app/styles/library.scss */
+/* line 40, ../../app/styles/library.scss */
+.sub-nav-wrapper {
+  padding: 10px;
+}
+
+/* line 44, ../../app/styles/library.scss */
+.subnav-dashboard > li > a:hover {
+  color: black;
+}
+
+/* line 48, ../../app/styles/library.scss */
+.subnav-dashboard > li {
+  margin-left: 10px;
+}
+
+/* line 52, ../../app/styles/library.scss */
+.subnav-dashboard > li > a.active {
+  opacity: 0.8;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  padding: 12px;
+  margin-top: 5px;
+  color: white !important;
+}
+
+/* line 61, ../../app/styles/library.scss */
+.subnav-dashboard > li > a.active:hover {
+  background: whitesmoke;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-device-width: 768px) {
+  /* line 67, ../../app/styles/library.scss */
+  div.navbar-header {
+    background: rgba(44, 62, 80, 0.8) !important;
+  }
+}
+/* line 72, ../../app/styles/library.scss */
 .sub-nav-wrapper {
   background: rgba(44, 62, 80, 0.8);
   color: white;
 }
 
-/* line 26, ../../app/styles/library.scss */
+/* line 77, ../../app/styles/library.scss */
+.sub-nav-wrapper li:active {
+  background: black;
+}
+
+/* line 81, ../../app/styles/library.scss */
 .sub-nav a {
   color: white;
 }
 
-/* line 30, ../../app/styles/library.scss */
+/* line 85, ../../app/styles/library.scss */
 .element-invisible {
   position: absolute;
   height: 1px;
@@ -39,9 +104,9 @@
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/* line 38, ../../app/styles/library.scss */
+/* line 93, ../../app/styles/library.scss */
 .header .logo {
-  position: fixed;
+  position: absolute;
   z-index: 99;
   top: 1.2em;
   left: 50%;
@@ -49,7 +114,7 @@
   background: #1abc9c;
 }
 
-/* line 48, ../../app/styles/library.scss */
+/* line 103, ../../app/styles/library.scss */
 .logo {
   width: 6em;
   height: 6em;
@@ -63,7 +128,7 @@
   transition: top .2s ease-out,box-shadow .2s ease-out;
 }
 
-/* line 75, ../../app/styles/library.scss */
+/* line 130, ../../app/styles/library.scss */
 .arrow-up {
   position: absolute;
   top: 56px;

@@ -8,10 +8,13 @@
  * Controller of the 50movesApp
  */
 angular.module('50movesApp')
-  .controller('DashboardCtrl', function ($scope) {
+  .controller('DashboardCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    $scope.logout = function() { Auth.$unauth(); };
+
   });

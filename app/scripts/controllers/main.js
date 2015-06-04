@@ -1,5 +1,10 @@
 'use strict';
 
+@import "controllers/account.js";
+@import "controllers/login.js";
+//@import "controllers/dashboard.js";
+//@import "controllers/library.js";
+
 /**
  * @ngdoc function
  * @name 50movesApp.controller:MainCtrl

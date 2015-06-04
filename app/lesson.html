@@ -2,7 +2,6 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <base href="/" />
     <title></title>
     <meta name="description" content="">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' /> <meta name="viewport" content="width=device-width" />
@@ -50,11 +49,11 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                  <li><a ng-href="#/dashboard"> My Board </a><div class="arrow-up"></li>
+                  <li><a ng-href="#/dashboard"> My Account </a></li>
                   <li><a ng-href="#/dashboard"> Courses </a></li>
                   <li><a ng-href="#/dashboard"> Tutorials </a></li>
-                  <li><a ng-href="#/dashboard"> Account </a></li>
                 </ul>
+                  <div class="arrow-up"></div>
                   <ul class="nav navbar-nav navbar-right">                    
                     <li><p ng-show-auth="" ng-cloak class="user-name">Welcome Peter{{John}}</p></li>
                     <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
@@ -63,7 +62,7 @@
             </div><!-- /.container-fluid -->
           </nav>
 
-           <a href="index.html" class="logo"> <span class="element-invisible">logo</span> 
+           <a href="/" target="_blank" class="logo"> <span class="element-invisible">logo</span> 
                 </a>
           <!--  The secondary Menu  -->
           <div class="sub-nav-wrapper">
@@ -73,9 +72,9 @@
                 <div class="navbar-header">
                   <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav subnav-dashboard">
-                      <li><a ng-href="#/dashboard" class="active"> Timeline </a></li>
-                      <li><a ng-href="#/progress"> Stats </a></li>
-                      <li><a ng-href="#/invites"> Invites </a></li>
+                      <li><a ng-href="#/dashboard" class="active"> Profile </a></li>
+                      <li><a ng-href="#/dashboard"> Progress </a></li>
+                      <li><a ng-href="#/dashboard"> Invites </a></li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
                 </div>
@@ -86,36 +85,24 @@
 
         <div class="main-container dashboard" ng-cloak>
           <div class="container">
-              <div class="col-md-3">
-                <div class="card card-user card-plain">
-                    <div class="image image-plain"></div>
-                    <div class="content">
-                        <div class="author">
-                             <a href="#">
-                            <img class="avatar" src="assets/img/default-avatar.png" alt="..."/>
-                           
-                              <h4 class="title">Username <br />
-                                 <small>email</small>
-                              </h4> 
-                            </a>
-                        </div>  
-                    </div>
-                </div> <!-- end card -->
-              </div> 
-              <div class="achievements col-md-8" style=""> 
-                <h1 class="text-center">Take the next step<small class="subtitle">This is like a small motto before the story.</small></h1>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
-                   <!--     end extras -->       
-                          <h1 class="text-center">Take the next step<small class="subtitle">This is like a small motto before the story.</small></h1>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
-                   <!--     end extras -->      
-
-              </div> <!-- end achievements -->
-          </div>  
+            <div class="col-md-3">
+              <div class="card card-user card-plain">
+                  <div class="image image-plain"></div>
+                  <div class="content">
+                      <div class="author">
+                           <a href="#">
+                          <img class="avatar" src="assets/img/default-avatar.png" alt="..."/>
+                         
+                            <h4 class="title">Username <br />
+                               <small>email</small>
+                            </h4> 
+                          </a>
+                      </div>  
+                  </div>
+              </div> <!-- end card -->
+            </div>                  
+          </div>     
         </div>
-
     <!-- end wrapper -->    
     </div>
 

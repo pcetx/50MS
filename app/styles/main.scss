@@ -3,44 +3,23 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 @import "login.scss";
-@import "library.scss";
+//@import "library.scss";
 
 html,
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   background: #e4e7ec;
   padding: 0;
   margin: 0;
   height: 100%;
 }
 
-#wrapper {
-  min-height:100%;
-  position:relative;
-}
-#header {
-  background:#ededed;
-  padding:10px;
-}
-#content {
-  padding-bottom:100px; /* Height of the footer element */
-}
-#footer {
-  background:#ffab62;
-  width:100%;
-  height:100px;
-  position:absolute;
-  bottom:0;
-  left:0;
-}
-
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
+  font-family: 'Helvetica', sans-serif;
 }
 
-div.motto-text {
-  
+h1, h2 {
+  font-weight: bold;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -68,15 +47,19 @@ button:focus {
   z-index: 1000;
 }
 
-.logo-text {
-
+.transparent {
+  background: none !important;
+  border: none !important;
 }
 
 .footer {
-  padding-top: 20px;
-  padding-bottom: 10px;
+  //padding-top: 20px;
+  //padding-bottom: 10px;
   background: rgba(0,0,0,0.8);
-  color: white;
+}
+
+.footer nav > ul a:not(.btn){
+  color: white !important;
 }
 
 a {

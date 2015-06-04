@@ -1,7 +1,7 @@
 'use strict';
 /**
  * @ngdoc overview
- * @name eastreelApp:routes
+ * @name 50movesApp:routes
  * @description
  * # routes.js
  *
@@ -67,6 +67,23 @@ angular.module('50movesApp')
        templateUrl: 'views/main.html'
      });
 
+     $stateProvider.state('account', {
+       url: '/account',
+       controller: 'AccountCtrl',
+       templateUrl: 'views/account.html'
+     });
+
+     /*$stateProvider.state('dashboard', {
+       url: '/',
+       controller: 'MainCtrl',
+       templateUrl: 'dashboard.html'
+     });
+     */
+     $stateProvider.state('login', {
+       url: 'login',
+       controller: 'LoginCtrl',
+       templateUrl: 'login.html'
+     });
   })
 /*
   /**

@@ -70,10 +70,9 @@ angular.module('50movesApp')
       return f + str.substr(1);
     }
 
-  
-
     function redirect() {
-      $location.path('/account');
+      //$location.path('/account');
+      $location.path('/');
     }
 
     function showError(err) {

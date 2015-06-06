@@ -8500,7 +8500,339 @@ button.close {
   padding-top: 7px;
 }
 
-/* line 8, ../../app/styles/main.scss */
+/* line 1, ../../app/styles/library.scss */
+html, body {
+  height: 100% !important;
+}
+
+/* line 5, ../../app/styles/library.scss */
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* line 13, ../../app/styles/library.scss */
+.footer.footer-dashboard {
+  color: white !important;
+}
+
+/* line 19, ../../app/styles/library.scss */
+.header {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 998;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* line 34, ../../app/styles/library.scss */
+.primary-menu .container, .sub-nav-wrapper .container {
+  padding: 0px !important;
+}
+
+/* line 38, ../../app/styles/library.scss */
+.primary-menu {
+  background: white;
+  width: 100%;
+}
+
+/* line 43, ../../app/styles/library.scss */
+.sub-nav-wrapper {
+  padding: 10px;
+}
+
+/* line 47, ../../app/styles/library.scss */
+.subnav-dashboard > li > a:hover {
+  color: black;
+}
+
+/* line 51, ../../app/styles/library.scss */
+.subnav-dashboard > li {
+  margin-left: 10px;
+}
+
+/* line 55, ../../app/styles/library.scss */
+.subnav-dashboard > li > a.active {
+  opacity: 0.8;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  padding: 12px;
+  margin-top: 5px;
+  color: white !important;
+}
+
+/* line 64, ../../app/styles/library.scss */
+.subnav-dashboard > li > a.active:hover {
+  background: whitesmoke !important;
+  color: black !important;
+}
+
+@media (max-device-width: 768px) {
+  /* line 70, ../../app/styles/library.scss */
+  div.navbar-header {
+    background: rgba(44, 62, 80, 0.8) !important;
+  }
+}
+/* line 75, ../../app/styles/library.scss */
+.sub-nav-wrapper {
+  background: rgba(44, 62, 80, 0.8);
+  color: white;
+}
+
+/* line 80, ../../app/styles/library.scss */
+.sub-nav-wrapper li:active {
+  background: black;
+}
+
+/* line 84, ../../app/styles/library.scss */
+.sub-nav a {
+  color: white;
+}
+
+/* line 88, ../../app/styles/library.scss */
+.element-invisible {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* line 96, ../../app/styles/library.scss */
+.header .logo {
+  position: absolute;
+  z-index: 99;
+  top: 1.2em;
+  left: 50%;
+  margin-left: -2.1875em;
+  background: #1abc9c;
+}
+
+/* line 106, ../../app/styles/library.scss */
+.logo {
+  width: 6em;
+  height: 6em;
+  display: block;
+  background-repeat: no-repeat;
+  background-color: #00c4cc;
+  transition: all .3s;
+  background-size: contain;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: top .2s ease-out,box-shadow .2s ease-out;
+}
+
+/* line 133, ../../app/styles/library.scss */
+.arrow-up {
+  position: absolute;
+  left: 35%;
+  top: 3.5em;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgba(44, 62, 80, 0.8);
+}
+
+/* line 148, ../../app/styles/library.scss */
+p.user-name {
+  margin: 20px;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+/* line 154, ../../app/styles/library.scss */
+.no-padding {
+  padding: 0px !important;
+}
+
+/*  
+
+  For the Courses Page
+
+*/
+/* line 165, ../../app/styles/library.scss */
+.container.content {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+/* line 171, ../../app/styles/library.scss */
+.section {
+  width: 100% !important;
+}
+
+/* line 176, ../../app/styles/library.scss */
+.module {
+  padding: 40px 0px;
+  min-height: 150px;
+  text-align: center;
+}
+
+/* line 182, ../../app/styles/library.scss */
+.module-group {
+  background: #ecf0f1;
+}
+
+/* line 186, ../../app/styles/library.scss */
+.module-header {
+  background: rgba(44, 62, 80, 0.8);
+  min-height: 300px;
+}
+
+/* line 191, ../../app/styles/library.scss */
+.module-header h1 {
+  font-family: Helvetica;
+  font-size: 100px;
+  color: white;
+}
+
+/* line 197, ../../app/styles/library.scss */
+.module-header h3 {
+  font-family: open-sans;
+  font-size: 30px;
+  color: white;
+}
+
+/* line 203, ../../app/styles/library.scss */
+.module-lessons {
+  background: whitesmoke;
+}
+
+/* line 207, ../../app/styles/library.scss */
+.pack-group-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* line 212, ../../app/styles/library.scss */
+.module-content {
+  width: 800px;
+  height: 180px;
+  margin: auto;
+}
+
+/* line 218, ../../app/styles/library.scss */
+.module-copy {
+  width: 500px;
+  height: 100%;
+  float: right;
+  padding: 20px;
+}
+
+/* line 225, ../../app/styles/library.scss */
+.module-copy p {
+  text-align: left;
+}
+
+/* line 229, ../../app/styles/library.scss */
+.module-img {
+  height: 100%;
+  width: 300px;
+}
+
+/* line 1, ../../app/styles/video.scss */
+.videogular-container {
+  width: 100%;
+  height: 320px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 1200px) {
+  /* line 9, ../../app/styles/video.scss */
+  .videogular-container {
+    width: 768px;
+    height: 432px;
+    float: left;
+  }
+
+  /* line 15, ../../app/styles/video.scss */
+  .videogular-container.audio {
+    width: 1170px;
+    height: 50px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* line 23, ../../app/styles/video.scss */
+  .videogular-container {
+    width: 940px;
+    height: 528.75px;
+  }
+
+  /* line 28, ../../app/styles/video.scss */
+  .videogular-container.audio {
+    width: 940px;
+    height: 50px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 36, ../../app/styles/video.scss */
+  .videogular-container {
+    width: 728px;
+    height: 409.5px;
+  }
+
+  /* line 41, ../../app/styles/video.scss */
+  .videogular-container.audio {
+    width: 728px;
+    height: 50px;
+  }
+}
+/* line 47, ../../app/styles/video.scss */
+.card {
+  float: left;
+  max-width: 320px;
+  width: 320px;
+  margin: 30px;
+  margin-top: 0px;
+}
+
+/* line 56, ../../app/styles/video.scss */
+.coach-facebook {
+  color: #3b5998;
+}
+
+/* line 60, ../../app/styles/video.scss */
+.coach-twitter {
+  color: #55acee;
+}
+
+/* line 64, ../../app/styles/video.scss */
+.fa-facebook-square.coach-facebook:hover, .fa-facebook-square.coach-twitter:hover {
+  border: none !important;
+}
+
+/* line 68, ../../app/styles/video.scss */
+.go-back {
+  margin-left: 45px;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  margin-right: 30px;
+}
+
+/*
+* Comment Box on the page
+* - make it responsive
+* - set under the main video
+*/
+/* line 80, ../../app/styles/video.scss */
+.comment-container {
+  max-width: 768px;
+  padding: 15px;
+}
+
+/* line 85, ../../app/styles/video.scss */
+.dsq-comment-header {
+  white-space: normal !important;
+}
+
+/* line 9, ../../app/styles/main.scss */
 html,
 body {
   font-family: 'Helvetica', sans-serif;
@@ -8510,22 +8842,22 @@ body {
   height: 100%;
 }
 
-/* line 17, ../../app/styles/main.scss */
+/* line 18, ../../app/styles/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Helvetica', sans-serif;
 }
 
-/* line 21, ../../app/styles/main.scss */
+/* line 22, ../../app/styles/main.scss */
 h1, h2 {
   font-weight: bold;
 }
 
-/* line 25, ../../app/styles/main.scss */
+/* line 26, ../../app/styles/main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
-/* line 29, ../../app/styles/main.scss */
+/* line 30, ../../app/styles/main.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -8533,7 +8865,7 @@ button:focus {
   outline: none;
 }
 
-/* line 36, ../../app/styles/main.scss */
+/* line 37, ../../app/styles/main.scss */
 .circle {
   width: 140px;
   height: 140px;
@@ -8548,66 +8880,66 @@ button:focus {
   z-index: 1000;
 }
 
-/* line 50, ../../app/styles/main.scss */
+/* line 51, ../../app/styles/main.scss */
 .transparent {
   background: none !important;
   border: none !important;
 }
 
-/* line 55, ../../app/styles/main.scss */
+/* line 56, ../../app/styles/main.scss */
 .footer {
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* line 61, ../../app/styles/main.scss */
+/* line 60, ../../app/styles/main.scss */
 .footer nav > ul a:not(.btn) {
   color: white !important;
 }
 
-/* line 65, ../../app/styles/main.scss */
+/* line 64, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 69, ../../app/styles/main.scss */
+/* line 68, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 73, ../../app/styles/main.scss */
-div.row.marketing {
-  padding: 30px;
+/* line 72, ../../app/styles/main.scss */
+.main-container {
+  padding: 30px 0px 30px 0px;
 }
 
-/* line 77, ../../app/styles/main.scss */
+/* line 76, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 82, ../../app/styles/main.scss */
+/* line 81, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 86, ../../app/styles/main.scss */
+/* line 85, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 91, ../../app/styles/main.scss */
+/* line 90, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 95, ../../app/styles/main.scss */
+/* line 94, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 101, ../../app/styles/main.scss */
+/* line 100, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
@@ -8617,24 +8949,24 @@ div.row.marketing {
   border-color: #cfd9db;
 }
 
-/* line 110, ../../app/styles/main.scss */
+/* line 109, ../../app/styles/main.scss */
 .form-control {
   border-radius: 0;
 }
 
-/* line 114, ../../app/styles/main.scss */
+/* line 113, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
 @media (max-width: 768px) {
-  /* line 120, ../../app/styles/main.scss */
+  /* line 119, ../../app/styles/main.scss */
   .center-form {
     margin-top: 18%;
   }
 }
-/* line 125, ../../app/styles/main.scss */
+/* line 124, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -8642,14 +8974,14 @@ div.row.marketing {
   background: none;
 }
 
-/* line 132, ../../app/styles/main.scss */
+/* line 131, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 138, ../../app/styles/main.scss */
+/* line 137, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -8657,7 +8989,7 @@ div.row.marketing {
   background-color: #fff;
 }
 
-/* line 145, ../../app/styles/main.scss */
+/* line 144, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -8667,7 +8999,7 @@ div.row.marketing {
   color: #555;
 }
 
-/* line 154, ../../app/styles/main.scss */
+/* line 153, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -8676,7 +9008,7 @@ div.row.marketing {
   padding: 0 15px;
 }
 
-/* line 162, ../../app/styles/main.scss */
+/* line 161, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -8686,12 +9018,12 @@ div.row.marketing {
   border-radius: 5px;
 }
 
-/* line 171, ../../app/styles/main.scss */
+/* line 170, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
 }
 
-/* line 175, ../../app/styles/main.scss */
+/* line 174, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -8700,32 +9032,33 @@ div.row.marketing {
 /*********************
 * Social Buttons
 *********************/
-/* line 184, ../../app/styles/main.scss */
+/* line 183, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 190, ../../app/styles/main.scss */
+/* line 189, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
 }
 
-/* line 196, ../../app/styles/main.scss */
+/* line 195, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 202, ../../app/styles/main.scss */
+/* line 201, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
   background-color: #294786;
+  border: none;
 }
 
 /* line 208, ../../app/styles/main.scss */
@@ -8740,12 +9073,13 @@ div.row.marketing {
 .btn-twitter:focus {
   color: #fff;
   background-color: #0090c7;
+  border: none;
 }
 
 /*********************
 * Animations
 *********************/
-/* line 224, ../../app/styles/main.scss */
+/* line 225, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -8753,7 +9087,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 235, ../../app/styles/main.scss */
+/* line 236, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -8761,7 +9095,7 @@ div.row.marketing {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 246, ../../app/styles/main.scss */
+/* line 247, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;

@@ -1,0 +1,31 @@
+<!-- Add your site or application content here -->
+  <div class="container login-container">
+    <div class="row" style="background-image: url(images/color-blur.jpg)">
+      <div class="center-form panel">
+        <div class="circle" ng-href="index.html"> </div>
+        <div class="panel-body">
+          <h2 class="text-center">Forgot Password</h2>
+
+          <form role="form">
+            <div class="form-group has-feedback" >
+              <input id="forgotConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control input-lg" placeholder="Enter your email"/>
+              <span class="fa fa-key form-control-feedback"></span>
+            </div>
+
+            <p>
+              <button  class="btn btn-primary btn-lg btn-block btn-success" ng-click="">
+                Recover my password</button>
+            </p>
+
+            <br/>
+
+            <p class="text-center text-muted" >
+              <small>Go back to <a href="#/login">Login</a></small>
+            </p>
+
+          <p ng-show="err" ng-clock class="bg-danger">{{err}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,48 @@
+<!-- Add your site or application content here -->
+  <div class="container login-container">
+    <div class="row" style="background-image: url(images/color-blur.jpg)">
+      <div class="center-form panel">
+        <div class="circle" ng-href="index.html"> </div>
+        <div class="panel-body">
+          <h2 class="text-center">Register</h2>
+
+          <form role="form">
+            <div class="form-group has-feedback">
+              <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control input-lg" placeholder="Email" required autofocus/>
+              <span class="fa fa-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control input-lg" placeholder="Password"/>
+              <span class="fa fa-key form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control input-lg" placeholder="Confirm Password" />
+              <span class="fa fa-key form-control-feedback"></span>
+            </div>
+
+            <p>
+
+              <p class="text-center text-muted" ><small>By clicking on Sign up, you agree to </br><a href="#">Terms & Conditions</a> and <a href="#">Privacy policy</a></small></p>
+
+              <button  class="btn btn-primary btn-lg btn-block btn-success" ng-cloak
+                ng-click="createAccount(email, pass, confirm)">Create Account</button>
+            </p>
+
+            <br/>
+
+            <p class="text-center">
+              <a ng-href="#/forgot">Forgot your password?</a>
+            </p>
+
+            <p class="text-center text-muted">
+              <small>Already have an account? <a ng-href="#/login">Login</a></small>
+            </p>
+
+          </form>
+
+          <p ng-show="err" class="bg-danger">{{err}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>

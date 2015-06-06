@@ -55,7 +55,53 @@ angular.module('50movesApp')
   
   // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
   // before trying to access that route
+   // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
+  // before trying to access that route
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
 
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'LoginCtrl'
+      })
+
+      .when('/forgot', {
+        templateUrl: 'views/forgot.html',
+        controller: 'LoginCtrl'
+      })
+
+      .when('/lesson', {
+        templateUrl: 'views/lesson/lesson.html',
+        controller: 'LessonCtrl'
+      })
+
+      .whenAuthenticated('/user', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+      })
+
+      .whenAuthenticated('/course', {
+        templateUrl: 'views/library.html',
+        controller: 'LibraryCtrl'
+      })
+
+      .whenAuthenticated('/account', {
+        templateUrl: 'views/account.html',
+        controller: 'AccountCtrl'
+      })
+      .otherwise({redirectTo: '/'});
+  }])
+
+/*
   .config( function($stateProvider, $locationProvider, $urlRouterProvider) {
      //$locationProvider.html5Mode(true);
 
@@ -73,18 +119,8 @@ angular.module('50movesApp')
        templateUrl: 'views/account.html'
      });
 
-     /*$stateProvider.state('dashboard', {
-       url: '/',
-       controller: 'MainCtrl',
-       templateUrl: 'dashboard.html'
-     });
-     */
-     $stateProvider.state('login', {
-       url: 'login',
-       controller: 'LoginCtrl',
-       templateUrl: 'login.html'
-     });
   })
+*/
 /*
   /**
    * Apply some route security. Any route's resolve method can reject the promise with

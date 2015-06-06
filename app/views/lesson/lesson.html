@@ -1,0 +1,169 @@
+<div class="wrapper">
+  <div class="header dashboard" ng-cloak>
+      <nav class="navbar primary-menu nav-dashboard" role="navigation">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button id="menu-toggle" type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar bar1"></span>
+              <span class="icon-bar bar2"></span>
+              <span class="icon-bar bar3"></span>
+            </button>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a ng-href="#/dashboard"> My Board </a></li>
+              <li><a ng-href="#/dashboard"> Courses </a><div class="arrow-up"></li>
+              <li><a ng-href="#/dashboard"> Tutorials </a></li>
+              <li><a ng-href="#/dashboard"> Account </a></li>
+            </ul>
+              <ul class="nav navbar-nav navbar-right">                    
+                <li><p ng-show-auth="" ng-cloak class="user-name">Welcome Peter{{John}}</p></li>
+                <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
+              </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+       <a href="index.html" class="logo"> <span class="element-invisible">logo</span> 
+            </a>
+      <!--  The secondary Menu  -->
+      <div class="sub-nav-wrapper">
+        <div class="container sub-nav">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <nav class="secondary-nav">
+            <div class="navbar-header">
+              <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav subnav-dashboard">
+                  <li><a ng-href="#/dashboard" class="active"> Library </a></li>
+                  <li><a ng-href="#/progress"> Video </a></li>
+                  <li><a ng-href="#/invites"> Lesson </a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div>
+          </nav>
+        </div><!-- /.container-fluid -->
+      </div>
+    </div>
+  <!-- Button to go back to library -->
+  <div class="go-back"><h3><i class="fa fa-arrow-circle-left"> </i> Library </h3></div>
+  <!-- Main container for content -->
+  <div class="container main-container">
+    <!-- The video for the lesson -->
+    <div ng-controller="LessonCtrl as controller" class="videogular-container">
+        <videogular vg-theme="controller.config.theme.url">
+            <vg-media vg-src="controller.config.sources"
+                      vg-tracks="controller.config.tracks">
+            </vg-media>
+
+            <vg-controls>
+                <vg-play-pause-button></vg-play-pause-button>
+                <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+                <vg-scrub-bar>
+                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                </vg-scrub-bar>
+                <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+                <vg-volume>
+                    <vg-mute-button></vg-mute-button>
+                    <vg-volume-bar></vg-volume-bar>
+                </vg-volume>
+                <vg-fullscreen-button></vg-fullscreen-button>
+            </vg-controls>
+
+            <vg-overlay-play></vg-overlay-play>
+            <vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
+        </videogular>
+    </div>
+    <!-- The profile of the Teacher -->
+     <div class="card card-user">
+    
+        <div class="image">
+    
+             <img src="https://unsplash.imgix.net/41/pHyYeNZMRFOIRpYeW7X3_manacloseup%20copy.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=befb073386542ab0a27cd34e4ecba7a9" alt="..."/>
+    
+        </div>
+    
+        <div class="content">   
+            <div class="author">    
+                 <a href="#">
+                <img class="avatar" src="assets/img/default-avatar.png" alt="..."/>
+                  <h4 class="title">Name of Tutor <br />
+                     <small>Role</small>
+                  </h4> 
+                </a>
+            </div>  
+            <p class="description text-center">
+                <i class="fa fa-map-marker text-muted"></i> Brisbane, Australia <br>
+                <i class="fa fa-envelope-o text-muted"></i> moulthun@hello.com <br>
+                <i class="fa fa-clock-o text-muted"></i> Since 2013
+            </p>
+        </div>
+        <hr>
+        <div class="text-center">
+            <button href="#" class="btn btn-social btn-simple"><i class="fa fa-facebook-square coach-facebook"></i></button>
+    
+            <button href="#" class="btn btn-social btn-simple"><i class="fa fa-twitter coach-twitter"></i></button>
+
+        </div>
+    </div> <!-- end card -->
+
+    <!-- The comments area -->
+    <div class="comment-container">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = '50movesacademy';
+          
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+    <!-- Students Enrolled area -->
+
+  </div>
+
+<footer class="footer">
+  <div class="container">
+      <nav class="pull-left">
+          <ul>
+              <li>
+                  <a href="#">
+                      Home
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      About
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      Program
+                  </a>
+              </li>
+          </ul>
+      </nav>
+      <div class="social-area pull-right">                
+          <a class="btn btn-social btn-facebook btn-simple transparent">
+              <i class="fa fa-facebook-square"></i>
+          </a>
+          <a class="btn btn-social btn-twitter btn-simple transparent">
+              <i class="fa fa-twitter"></i>
+          </a>
+      </div>
+      <div class="copyright">
+          
+      </div>
+  </div>
+</footer>
+
+
+<!-- <div ng-include src="'partials/sections/footer.html'"></div> -->

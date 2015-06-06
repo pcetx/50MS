@@ -19,5 +19,9 @@ angular.module('50movesApp', [
     'firebase',
     'ui.router',
     'firebase.ref',
-    'firebase.auth'
+    'firebase.auth',
+    "com.2fdevs.videogular",
+    "com.2fdevs.videogular.plugins.controls",
+    "com.2fdevs.videogular.plugins.overlayplay",
+    "com.2fdevs.videogular.plugins.poster"
   ]);

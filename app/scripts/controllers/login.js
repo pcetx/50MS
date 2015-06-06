@@ -72,7 +72,7 @@ angular.module('50movesApp')
 
     function redirect() {
       //$location.path('/account');
-      $location.path('/');
+      $location.path('/user');
     }
 
     function showError(err) {

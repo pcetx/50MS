@@ -1851,7 +1851,7 @@ fieldset[disabled] .form-control {
 }
 .navbar-transparent .navbar-nav > li > a:not(.btn),
 [class*="navbar-ct"] .navbar-nav > li > a:not(.btn) {
-  color: #ffffff;
+  //color: #ffffff;
   border-color: #ffffff;
   opacity: 0.8;
   filter: alpha(opacity=80);
@@ -2059,6 +2059,7 @@ fieldset[disabled] .form-control {
   margin: 0;
   padding: 0;
   font-weight: normal;
+  display:inline-flex;
 }
 .footer nav > ul a:not(.btn) {
   color: #9a9a9a;
@@ -2077,7 +2078,7 @@ fieldset[disabled] .form-control {
 }
 .footer .social-area > a:not(.btn) {
   color: #9a9a9a;
-  display: inline-block;
+  //display: inline-block;
   vertical-align: top;
   padding: 10px 5px;
   font-size: 20px;

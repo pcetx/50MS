@@ -3,3 +3,5 @@ angular.module('firebase.config', [])
   .constant('SIMPLE_LOGIN_PROVIDERS', ['password','facebook','google','twitter'])
 
   .constant('loginRedirectPath', '/login');
+
+

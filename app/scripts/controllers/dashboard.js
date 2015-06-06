@@ -15,6 +15,5 @@ angular.module('50movesApp')
       'Karma'
     ];
 
-    $scope.logout = function() { Auth.$unauth(); };
 
   });

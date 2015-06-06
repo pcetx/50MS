@@ -1851,7 +1851,7 @@ fieldset[disabled] .form-control {
 }
 .navbar-transparent .navbar-nav > li > a:not(.btn),
 [class*="navbar-ct"] .navbar-nav > li > a:not(.btn) {
-  //color: #ffffff;
+  color: #ffffff;
   border-color: #ffffff;
   opacity: 0.8;
   filter: alpha(opacity=80);

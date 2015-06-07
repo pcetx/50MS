@@ -1,12 +1,142 @@
 <div class="wrapper">
-  <!-- Add your site or application content here -->
-  <div ng-include src="'partials/sections/header-timeline.html'"></div>
+        <!-- Add your site or application content here -->
+        <div class="header dashboard" ng-cloak>
+          <nav class="navbar primary-menu nav-dashboard" role="navigation">
+            <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar bar1"></span>
+                  <span class="icon-bar bar2"></span>
+                  <span class="icon-bar bar3"></span>
+                </button>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li><a ng-href="#/dashboard"> My Board </a></li>
+                  <li><a ng-href="#/dashboard"> Courses </a><div class="arrow-up"></li>
+                  <li><a ng-href="#/dashboard"> Tutorials </a></li>
+                  <li><a ng-href="#/dashboard"> Account </a></li>
+                </ul>
+                  <ul class="nav navbar-nav navbar-right">                    
+                    <li><p ng-show-auth="" ng-cloak class="user-name">Welcome Peter{{John}}</p></li>
+                    <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
+                  </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+
+           <a href="index.html" class="logo"> <span class="element-invisible">logo</span> 
+                </a>
+          <!--  The secondary Menu  -->
+          <div class="sub-nav-wrapper">
+            <div class="container sub-nav">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <nav class="secondary-nav">
+                <div class="navbar-header">
+                  <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav subnav-dashboard">
+                      <li><a ng-href="#/library" class="active"> Library </a></li>
+                      <li><a ng-href="#/progress"> Exercises </a></li>
+                      <li><a ng-href="#/invites"> Videos </a></li>
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div>
+              </nav>
+            </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      <!-- end of header -->
 
       <div class="main-container dashboard" ng-cloak>
- 
+          <div class="container">
+            <div class="well well-lg well-library-display transparent">
+                <div class="btn-group btn-group-library-display">
+                    <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list" >
+                    </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                        class="glyphicon glyphicon-th"></span>Grid</a>
+                </div>
+            </div>
+            <div id="products" class="row list-group">
+                <div class="course col-md-4">
+                    <div class="course-container padded">
+                        <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Getting Started</h4>
+                            <p class="group inner list-group-item-text">
+                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="course col-md-4">
+                    <div class="course-container padded">
+                        <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Beginner Essentials</h4>
+                            <p class="group inner list-group-item-text">
+                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                       
+                        </div>
+                    </div>
+                </div>
+                <div class="course col-md-4">
+                    <div class="course-container padded">
+                        <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Intermediate</h4>
+                            <p class="group inner list-group-item-text">
+                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
       </div>
 
-  <!-- end wrapper -->    
+      <!-- end wrapper -->  
   </div>
 
-<div ng-include src="'partials/sections/footer.html'"></div>
+  <footer class="footer">
+      <div class="container">
+          <nav class="pull-left">
+              <ul>
+                  <li>
+                      <a href="#">
+                          Home
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#">
+                          About
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#">
+                          Program
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+          <div class="social-area pull-right">                
+              <a class="btn btn-social btn-facebook btn-simple transparent">
+                  <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="btn btn-social btn-twitter btn-simple transparent">
+                  <i class="fa fa-twitter"></i>
+              </a>
+          </div>
+          <div class="copyright">
+              
+          </div>
+      </div>
+    </footer>

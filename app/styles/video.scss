@@ -52,8 +52,12 @@
     width: 320px;
     margin: 20px;
     margin-top: 0px;
+    background-color: whitesmoke;
 }
 
+button.btn.btn-social.btn-simple.btn-coach:hover {
+    border-color: whitesmoke;
+}
 
 .coach-facebook {
     color: #3b5998;
@@ -87,8 +91,14 @@
 .padded {
   padding: 35px 20px 30px;
   background-color: whitesmoke;
-  border-bottom-left-radius: 0.2cm;
-  border-bottom-right-radius: 0.2cm;
+  border-radius: 10px;
+}
+
+.half-border {
+  //border-top-left-radius: 0px !important;
+  //border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .video-description {

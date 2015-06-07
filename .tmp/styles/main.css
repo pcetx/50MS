@@ -8650,74 +8650,97 @@ p.user-name {
   padding: 0px !important;
 }
 
+/* line 154, ../../app/styles/dashboard.scss */
+.btn-group a span {
+  padding: 8px;
+}
+
+/* line 158, ../../app/styles/dashboard.scss */
+.btn-group-library-display {
+  float: right;
+}
+
+/* line 162, ../../app/styles/dashboard.scss */
+.well-library-display {
+  padding-right: 0px;
+  padding-bottom: 40px;
+}
+
+/* line 167, ../../app/styles/dashboard.scss */
+.course {
+  padding: 15px !important;
+  margin-bottom: 0px;
+  padding-top: 0px !important;
+}
+
 /*  
 
   For the Courses Page
 
 */
-/* line 161, ../../app/styles/dashboard.scss */
+/* line 179, ../../app/styles/dashboard.scss */
 .container.content {
   margin: 0px;
   padding: 0px;
   width: 100%;
 }
 
-/* line 167, ../../app/styles/dashboard.scss */
+/* line 185, ../../app/styles/dashboard.scss */
 .section {
   width: 100% !important;
 }
 
-/* line 172, ../../app/styles/dashboard.scss */
+/* line 190, ../../app/styles/dashboard.scss */
 .module {
   padding: 40px 0px;
   min-height: 150px;
   text-align: center;
 }
 
-/* line 178, ../../app/styles/dashboard.scss */
+/* line 196, ../../app/styles/dashboard.scss */
 .module-group {
   background: #ecf0f1;
 }
 
-/* line 182, ../../app/styles/dashboard.scss */
+/* line 200, ../../app/styles/dashboard.scss */
 .module-header {
   background: rgba(44, 62, 80, 0.8);
   min-height: 300px;
 }
 
-/* line 187, ../../app/styles/dashboard.scss */
+/* line 205, ../../app/styles/dashboard.scss */
 .module-header h1 {
   font-family: Helvetica;
   font-size: 100px;
   color: white;
 }
 
-/* line 193, ../../app/styles/dashboard.scss */
+/* line 211, ../../app/styles/dashboard.scss */
 .module-header h3 {
   font-family: open-sans;
   font-size: 30px;
   color: white;
 }
 
-/* line 199, ../../app/styles/dashboard.scss */
+/* line 217, ../../app/styles/dashboard.scss */
 .module-lessons {
   background: whitesmoke;
 }
 
-/* line 203, ../../app/styles/dashboard.scss */
+/* line 221, ../../app/styles/dashboard.scss */
 .pack-group-title {
   font-size: 20px;
   font-weight: 500;
 }
 
-/* line 208, ../../app/styles/dashboard.scss */
+/* line 226, ../../app/styles/dashboard.scss */
 .module-content {
   width: 800px;
   height: 180px;
   margin: auto;
 }
 
-/* line 214, ../../app/styles/dashboard.scss */
+/* line 232, ../../app/styles/dashboard.scss */
 .module-copy {
   width: 500px;
   height: 100%;
@@ -8725,12 +8748,12 @@ p.user-name {
   padding: 20px;
 }
 
-/* line 221, ../../app/styles/dashboard.scss */
+/* line 239, ../../app/styles/dashboard.scss */
 .module-copy p {
   text-align: left;
 }
 
-/* line 225, ../../app/styles/dashboard.scss */
+/* line 243, ../../app/styles/dashboard.scss */
 .module-img {
   height: 100%;
   width: 300px;
@@ -8790,24 +8813,30 @@ p.user-name {
   width: 320px;
   margin: 20px;
   margin-top: 0px;
+  background-color: whitesmoke;
 }
 
 /* line 58, ../../app/styles/video.scss */
+button.btn.btn-social.btn-simple.btn-coach:hover {
+  border-color: whitesmoke;
+}
+
+/* line 62, ../../app/styles/video.scss */
 .coach-facebook {
   color: #3b5998;
 }
 
-/* line 62, ../../app/styles/video.scss */
+/* line 66, ../../app/styles/video.scss */
 .coach-twitter {
   color: #55acee;
 }
 
-/* line 66, ../../app/styles/video.scss */
+/* line 70, ../../app/styles/video.scss */
 .fa-facebook-square.coach-facebook:hover, .fa-facebook-square.coach-twitter:hover {
   border: none !important;
 }
 
-/* line 70, ../../app/styles/video.scss */
+/* line 74, ../../app/styles/video.scss */
 .go-back {
   margin-left: 0px;
   margin-top: 40px;
@@ -8820,30 +8849,35 @@ p.user-name {
 * - make it responsive
 * - set under the main video
 */
-/* line 82, ../../app/styles/video.scss */
+/* line 86, ../../app/styles/video.scss */
 .comment-container {
   max-width: 768px;
 }
 
-/* line 87, ../../app/styles/video.scss */
+/* line 91, ../../app/styles/video.scss */
 .padded {
   padding: 35px 20px 30px;
   background-color: whitesmoke;
-  border-bottom-left-radius: 0.2cm;
-  border-bottom-right-radius: 0.2cm;
+  border-radius: 10px;
 }
 
-/* line 94, ../../app/styles/video.scss */
+/* line 97, ../../app/styles/video.scss */
+.half-border {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* line 104, ../../app/styles/video.scss */
 .video-description {
   margin-bottom: 20px;
 }
 
-/* line 98, ../../app/styles/video.scss */
+/* line 108, ../../app/styles/video.scss */
 .social-share {
   float: right;
 }
 
-/* line 102, ../../app/styles/video.scss */
+/* line 112, ../../app/styles/video.scss */
 .dsq-comment-header {
   white-space: normal !important;
 }
@@ -8859,21 +8893,26 @@ body {
 }
 
 /* line 18, ../../app/styles/main.scss */
+* {
+  margin: 0;
+}
+
+/* line 22, ../../app/styles/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Helvetica', sans-serif;
 }
 
-/* line 22, ../../app/styles/main.scss */
+/* line 26, ../../app/styles/main.scss */
 h1, h2 {
   font-weight: bold;
 }
 
-/* line 26, ../../app/styles/main.scss */
+/* line 30, ../../app/styles/main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
-/* line 30, ../../app/styles/main.scss */
+/* line 34, ../../app/styles/main.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -8881,7 +8920,7 @@ button:focus {
   outline: none;
 }
 
-/* line 37, ../../app/styles/main.scss */
+/* line 41, ../../app/styles/main.scss */
 .circle {
   width: 140px;
   height: 140px;
@@ -8896,61 +8935,61 @@ button:focus {
   z-index: 1000;
 }
 
-/* line 51, ../../app/styles/main.scss */
+/* line 55, ../../app/styles/main.scss */
 .transparent {
   background: none !important;
   border: none !important;
 }
 
-/* line 56, ../../app/styles/main.scss */
+/* line 60, ../../app/styles/main.scss */
 .footer {
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* line 60, ../../app/styles/main.scss */
+/* line 64, ../../app/styles/main.scss */
 .footer nav > ul a:not(.btn) {
   color: white !important;
 }
 
-/* line 64, ../../app/styles/main.scss */
+/* line 68, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 68, ../../app/styles/main.scss */
+/* line 72, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 76, ../../app/styles/main.scss */
+/* line 80, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 81, ../../app/styles/main.scss */
+/* line 85, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 85, ../../app/styles/main.scss */
+/* line 89, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 90, ../../app/styles/main.scss */
+/* line 94, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 94, ../../app/styles/main.scss */
+/* line 98, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 100, ../../app/styles/main.scss */
+/* line 104, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
@@ -8960,24 +8999,24 @@ a {
   border-color: #cfd9db;
 }
 
-/* line 109, ../../app/styles/main.scss */
+/* line 113, ../../app/styles/main.scss */
 .form-control {
   border-radius: 0;
 }
 
-/* line 113, ../../app/styles/main.scss */
+/* line 117, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
 @media (max-width: 768px) {
-  /* line 119, ../../app/styles/main.scss */
+  /* line 123, ../../app/styles/main.scss */
   .center-form {
     margin-top: 18%;
   }
 }
-/* line 124, ../../app/styles/main.scss */
+/* line 128, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -8985,14 +9024,14 @@ a {
   background: none;
 }
 
-/* line 131, ../../app/styles/main.scss */
+/* line 135, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 137, ../../app/styles/main.scss */
+/* line 141, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -9000,7 +9039,7 @@ a {
   background-color: #fff;
 }
 
-/* line 144, ../../app/styles/main.scss */
+/* line 148, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -9010,7 +9049,7 @@ a {
   color: #555;
 }
 
-/* line 153, ../../app/styles/main.scss */
+/* line 157, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -9019,7 +9058,7 @@ a {
   padding: 0 15px;
 }
 
-/* line 161, ../../app/styles/main.scss */
+/* line 165, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -9029,12 +9068,12 @@ a {
   border-radius: 5px;
 }
 
-/* line 170, ../../app/styles/main.scss */
+/* line 174, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
 }
 
-/* line 174, ../../app/styles/main.scss */
+/* line 178, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -9043,28 +9082,28 @@ a {
 /*********************
 * Social Buttons
 *********************/
-/* line 183, ../../app/styles/main.scss */
+/* line 187, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 189, ../../app/styles/main.scss */
+/* line 193, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
 }
 
-/* line 195, ../../app/styles/main.scss */
+/* line 199, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 201, ../../app/styles/main.scss */
+/* line 205, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
@@ -9072,14 +9111,14 @@ a {
   border: none;
 }
 
-/* line 208, ../../app/styles/main.scss */
+/* line 212, ../../app/styles/main.scss */
 .btn-twitter {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #009fdb;
 }
 
-/* line 214, ../../app/styles/main.scss */
+/* line 218, ../../app/styles/main.scss */
 .btn-twitter:hover,
 .btn-twitter:focus {
   color: #fff;
@@ -9090,7 +9129,7 @@ a {
 /*********************
 * Animations
 *********************/
-/* line 225, ../../app/styles/main.scss */
+/* line 229, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -9098,7 +9137,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 236, ../../app/styles/main.scss */
+/* line 240, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -9106,7 +9145,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 247, ../../app/styles/main.scss */
+/* line 251, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;

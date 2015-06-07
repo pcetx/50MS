@@ -8,12 +8,7 @@
  * Controller of the 50movesApp
  */
 angular.module('50movesApp')
-  .controller('LibraryCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('LibraryCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout) {
 
     //$scope.view = 'list.html';
     $scope.data = [{

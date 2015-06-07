@@ -52,24 +52,30 @@
   width: 320px;
   margin: 20px;
   margin-top: 0px;
+  background-color: whitesmoke;
 }
 
 /* line 58, ../../app/styles/video.scss */
+button.btn.btn-social.btn-simple.btn-coach:hover {
+  border-color: whitesmoke;
+}
+
+/* line 62, ../../app/styles/video.scss */
 .coach-facebook {
   color: #3b5998;
 }
 
-/* line 62, ../../app/styles/video.scss */
+/* line 66, ../../app/styles/video.scss */
 .coach-twitter {
   color: #55acee;
 }
 
-/* line 66, ../../app/styles/video.scss */
+/* line 70, ../../app/styles/video.scss */
 .fa-facebook-square.coach-facebook:hover, .fa-facebook-square.coach-twitter:hover {
   border: none !important;
 }
 
-/* line 70, ../../app/styles/video.scss */
+/* line 74, ../../app/styles/video.scss */
 .go-back {
   margin-left: 0px;
   margin-top: 40px;
@@ -82,30 +88,35 @@
 * - make it responsive
 * - set under the main video
 */
-/* line 82, ../../app/styles/video.scss */
+/* line 86, ../../app/styles/video.scss */
 .comment-container {
   max-width: 768px;
 }
 
-/* line 87, ../../app/styles/video.scss */
+/* line 91, ../../app/styles/video.scss */
 .padded {
   padding: 35px 20px 30px;
   background-color: whitesmoke;
-  border-bottom-left-radius: 0.2cm;
-  border-bottom-right-radius: 0.2cm;
+  border-radius: 10px;
 }
 
-/* line 94, ../../app/styles/video.scss */
+/* line 97, ../../app/styles/video.scss */
+.half-border {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* line 104, ../../app/styles/video.scss */
 .video-description {
   margin-bottom: 20px;
 }
 
-/* line 98, ../../app/styles/video.scss */
+/* line 108, ../../app/styles/video.scss */
 .social-share {
   float: right;
 }
 
-/* line 102, ../../app/styles/video.scss */
+/* line 112, ../../app/styles/video.scss */
 .dsq-comment-header {
   white-space: normal !important;
 }

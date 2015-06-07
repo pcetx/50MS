@@ -89,9 +89,14 @@ angular.module('50movesApp')
         controller: 'DashboardCtrl'
       })
 
+      .whenAuthenticated('/settings', {
+        templateUrl: 'views/profile.html',
+        controller: 'AccountCtrl'
+      })
+
       .whenAuthenticated('/course', {
-        templateUrl: 'views/library.html',
-        controller: 'LibraryCtrl'
+        templateUrl: 'views/course.html',
+        controller: 'CourseCtrl'
       })
 
       .whenAuthenticated('/account', {

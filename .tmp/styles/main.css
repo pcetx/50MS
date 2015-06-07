@@ -8500,12 +8500,12 @@ button.close {
   padding-top: 7px;
 }
 
-/* line 1, ../../app/styles/library.scss */
+/* line 1, ../../app/styles/dashboard.scss */
 html, body {
   height: 100% !important;
 }
 
-/* line 5, ../../app/styles/library.scss */
+/* line 5, ../../app/styles/dashboard.scss */
 .wrapper {
   min-height: 100%;
   height: auto !important;
@@ -8513,12 +8513,12 @@ html, body {
   margin: 0 auto;
 }
 
-/* line 13, ../../app/styles/library.scss */
+/* line 13, ../../app/styles/dashboard.scss */
 .footer.footer-dashboard {
   color: white !important;
 }
 
-/* line 19, ../../app/styles/library.scss */
+/* line 19, ../../app/styles/dashboard.scss */
 .header {
   left: 0;
   top: 0;
@@ -8528,33 +8528,33 @@ html, body {
   backface-visibility: hidden;
 }
 
-/* line 34, ../../app/styles/library.scss */
+/* line 30, ../../app/styles/dashboard.scss */
 .primary-menu .container, .sub-nav-wrapper .container {
   padding: 0px !important;
 }
 
-/* line 38, ../../app/styles/library.scss */
+/* line 34, ../../app/styles/dashboard.scss */
 .primary-menu {
   background: white;
   width: 100%;
 }
 
-/* line 43, ../../app/styles/library.scss */
+/* line 39, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper {
   padding: 10px;
 }
 
-/* line 47, ../../app/styles/library.scss */
+/* line 43, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a:hover {
   color: black;
 }
 
-/* line 51, ../../app/styles/library.scss */
+/* line 47, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li {
   margin-left: 10px;
 }
 
-/* line 55, ../../app/styles/library.scss */
+/* line 51, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a.active {
   opacity: 0.8;
   border-radius: 10px;
@@ -8564,35 +8564,35 @@ html, body {
   color: white !important;
 }
 
-/* line 64, ../../app/styles/library.scss */
+/* line 60, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a.active:hover {
   background: whitesmoke !important;
   color: black !important;
 }
 
 @media (max-device-width: 768px) {
-  /* line 70, ../../app/styles/library.scss */
+  /* line 66, ../../app/styles/dashboard.scss */
   div.navbar-header {
     background: rgba(44, 62, 80, 0.8) !important;
   }
 }
-/* line 75, ../../app/styles/library.scss */
+/* line 71, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper {
   background: rgba(44, 62, 80, 0.8);
   color: white;
 }
 
-/* line 80, ../../app/styles/library.scss */
+/* line 76, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper li:active {
   background: black;
 }
 
-/* line 84, ../../app/styles/library.scss */
+/* line 80, ../../app/styles/dashboard.scss */
 .sub-nav a {
   color: white;
 }
 
-/* line 88, ../../app/styles/library.scss */
+/* line 84, ../../app/styles/dashboard.scss */
 .element-invisible {
   position: absolute;
   height: 1px;
@@ -8601,7 +8601,7 @@ html, body {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/* line 96, ../../app/styles/library.scss */
+/* line 92, ../../app/styles/dashboard.scss */
 .header .logo {
   position: absolute;
   z-index: 99;
@@ -8611,7 +8611,7 @@ html, body {
   background: #1abc9c;
 }
 
-/* line 106, ../../app/styles/library.scss */
+/* line 102, ../../app/styles/dashboard.scss */
 .logo {
   width: 6em;
   height: 6em;
@@ -8625,7 +8625,7 @@ html, body {
   transition: top .2s ease-out,box-shadow .2s ease-out;
 }
 
-/* line 133, ../../app/styles/library.scss */
+/* line 129, ../../app/styles/dashboard.scss */
 .arrow-up {
   position: absolute;
   left: 35%;
@@ -8638,14 +8638,14 @@ html, body {
   border-bottom: 15px solid rgba(44, 62, 80, 0.8);
 }
 
-/* line 148, ../../app/styles/library.scss */
+/* line 144, ../../app/styles/dashboard.scss */
 p.user-name {
   margin: 20px;
   overflow: hidden;
   max-width: 400px;
 }
 
-/* line 154, ../../app/styles/library.scss */
+/* line 150, ../../app/styles/dashboard.scss */
 .no-padding {
   padding: 0px !important;
 }
@@ -8655,69 +8655,69 @@ p.user-name {
   For the Courses Page
 
 */
-/* line 165, ../../app/styles/library.scss */
+/* line 161, ../../app/styles/dashboard.scss */
 .container.content {
   margin: 0px;
   padding: 0px;
   width: 100%;
 }
 
-/* line 171, ../../app/styles/library.scss */
+/* line 167, ../../app/styles/dashboard.scss */
 .section {
   width: 100% !important;
 }
 
-/* line 176, ../../app/styles/library.scss */
+/* line 172, ../../app/styles/dashboard.scss */
 .module {
   padding: 40px 0px;
   min-height: 150px;
   text-align: center;
 }
 
-/* line 182, ../../app/styles/library.scss */
+/* line 178, ../../app/styles/dashboard.scss */
 .module-group {
   background: #ecf0f1;
 }
 
-/* line 186, ../../app/styles/library.scss */
+/* line 182, ../../app/styles/dashboard.scss */
 .module-header {
   background: rgba(44, 62, 80, 0.8);
   min-height: 300px;
 }
 
-/* line 191, ../../app/styles/library.scss */
+/* line 187, ../../app/styles/dashboard.scss */
 .module-header h1 {
   font-family: Helvetica;
   font-size: 100px;
   color: white;
 }
 
-/* line 197, ../../app/styles/library.scss */
+/* line 193, ../../app/styles/dashboard.scss */
 .module-header h3 {
   font-family: open-sans;
   font-size: 30px;
   color: white;
 }
 
-/* line 203, ../../app/styles/library.scss */
+/* line 199, ../../app/styles/dashboard.scss */
 .module-lessons {
   background: whitesmoke;
 }
 
-/* line 207, ../../app/styles/library.scss */
+/* line 203, ../../app/styles/dashboard.scss */
 .pack-group-title {
   font-size: 20px;
   font-weight: 500;
 }
 
-/* line 212, ../../app/styles/library.scss */
+/* line 208, ../../app/styles/dashboard.scss */
 .module-content {
   width: 800px;
   height: 180px;
   margin: auto;
 }
 
-/* line 218, ../../app/styles/library.scss */
+/* line 214, ../../app/styles/dashboard.scss */
 .module-copy {
   width: 500px;
   height: 100%;
@@ -8725,95 +8725,94 @@ p.user-name {
   padding: 20px;
 }
 
-/* line 225, ../../app/styles/library.scss */
+/* line 221, ../../app/styles/dashboard.scss */
 .module-copy p {
   text-align: left;
 }
 
-/* line 229, ../../app/styles/library.scss */
+/* line 225, ../../app/styles/dashboard.scss */
 .module-img {
   height: 100%;
   width: 300px;
 }
 
-/* line 1, ../../app/styles/video.scss */
-.videogular-container {
-  width: 100%;
-  height: 320px;
-  margin: auto;
-  margin-bottom: 30px;
+/*.videogular-container {
+    width: 100%;
+    height: 320px;
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 @media (min-width: 1200px) {
-  /* line 9, ../../app/styles/video.scss */
-  .videogular-container {
-    width: 768px;
-    height: 432px;
-    float: left;
-  }
+    .videogular-container {
+        width: 768px;
+        height: 432px;
+        float: left;
+    }
 
-  /* line 15, ../../app/styles/video.scss */
-  .videogular-container.audio {
-    width: 1170px;
-    height: 50px;
-  }
+    .videogular-container.audio {
+        width: 1170px;
+        height: 50px;
+    }
+
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
-  /* line 23, ../../app/styles/video.scss */
-  .videogular-container {
-    width: 940px;
-    height: 528.75px;
-  }
+    .videogular-container {
+        width: 940px;
+        height: 528.75px;
+    }
 
-  /* line 28, ../../app/styles/video.scss */
-  .videogular-container.audio {
-    width: 940px;
-    height: 50px;
-  }
+    .videogular-container.audio {
+        width: 940px;
+        height: 50px;
+    }
+
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 36, ../../app/styles/video.scss */
-  .videogular-container {
-    width: 728px;
-    height: 409.5px;
-  }
+    .videogular-container {
+        width: 728px;
+        height: 409.5px;
+    }
 
-  /* line 41, ../../app/styles/video.scss */
-  .videogular-container.audio {
-    width: 728px;
-    height: 50px;
-  }
+    .videogular-container.audio {
+        width: 728px;
+        height: 50px;
+    }
 }
-/* line 47, ../../app/styles/video.scss */
+
+*/
+/* line 49, ../../app/styles/video.scss */
 .card {
   float: left;
   max-width: 320px;
   width: 320px;
-  margin: 30px;
+  margin: 20px;
   margin-top: 0px;
 }
 
-/* line 56, ../../app/styles/video.scss */
+/* line 58, ../../app/styles/video.scss */
 .coach-facebook {
   color: #3b5998;
 }
 
-/* line 60, ../../app/styles/video.scss */
+/* line 62, ../../app/styles/video.scss */
 .coach-twitter {
   color: #55acee;
 }
 
-/* line 64, ../../app/styles/video.scss */
+/* line 66, ../../app/styles/video.scss */
 .fa-facebook-square.coach-facebook:hover, .fa-facebook-square.coach-twitter:hover {
   border: none !important;
 }
 
-/* line 68, ../../app/styles/video.scss */
+/* line 70, ../../app/styles/video.scss */
 .go-back {
-  margin-left: 45px;
+  margin-left: 0px;
   margin-top: 40px;
-  margin-bottom: 0px;
-  margin-right: 30px;
+  margin-bottom: 40px;
+  margin-right: 0px;
 }
 
 /*
@@ -8821,13 +8820,30 @@ p.user-name {
 * - make it responsive
 * - set under the main video
 */
-/* line 80, ../../app/styles/video.scss */
+/* line 82, ../../app/styles/video.scss */
 .comment-container {
   max-width: 768px;
-  padding: 15px;
 }
 
-/* line 85, ../../app/styles/video.scss */
+/* line 87, ../../app/styles/video.scss */
+.padded {
+  padding: 35px 20px 30px;
+  background-color: whitesmoke;
+  border-bottom-left-radius: 0.2cm;
+  border-bottom-right-radius: 0.2cm;
+}
+
+/* line 94, ../../app/styles/video.scss */
+.video-description {
+  margin-bottom: 20px;
+}
+
+/* line 98, ../../app/styles/video.scss */
+.social-share {
+  float: right;
+}
+
+/* line 102, ../../app/styles/video.scss */
 .dsq-comment-header {
   white-space: normal !important;
 }
@@ -8904,11 +8920,6 @@ a {
 /* line 68, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
-}
-
-/* line 72, ../../app/styles/main.scss */
-.main-container {
-  padding: 30px 0px 30px 0px;
 }
 
 /* line 76, ../../app/styles/main.scss */
@@ -9121,5 +9132,3 @@ a {
     opacity: 1;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

@@ -3,7 +3,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 @import "login.scss";
-@import "library.scss";
+@import "dashboard.scss";
 @import "video.scss";
 
 html,
@@ -70,7 +70,7 @@ a {
 }
 
 .main-container {
-  padding: 30px 0px 30px 0px;
+  //padding: 30px 0px 30px 0px;
 }
 
 .login-container {

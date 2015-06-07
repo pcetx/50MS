@@ -1,9 +1,9 @@
-/* line 1, ../../app/styles/library.scss */
+/* line 1, ../../app/styles/dashboard.scss */
 html, body {
   height: 100% !important;
 }
 
-/* line 5, ../../app/styles/library.scss */
+/* line 5, ../../app/styles/dashboard.scss */
 .wrapper {
   min-height: 100%;
   height: auto !important;
@@ -11,12 +11,12 @@ html, body {
   margin: 0 auto;
 }
 
-/* line 13, ../../app/styles/library.scss */
+/* line 13, ../../app/styles/dashboard.scss */
 .footer.footer-dashboard {
   color: white !important;
 }
 
-/* line 19, ../../app/styles/library.scss */
+/* line 19, ../../app/styles/dashboard.scss */
 .header {
   left: 0;
   top: 0;
@@ -26,33 +26,33 @@ html, body {
   backface-visibility: hidden;
 }
 
-/* line 30, ../../app/styles/library.scss */
+/* line 30, ../../app/styles/dashboard.scss */
 .primary-menu .container, .sub-nav-wrapper .container {
   padding: 0px !important;
 }
 
-/* line 34, ../../app/styles/library.scss */
+/* line 34, ../../app/styles/dashboard.scss */
 .primary-menu {
   background: white;
   width: 100%;
 }
 
-/* line 39, ../../app/styles/library.scss */
+/* line 39, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper {
   padding: 10px;
 }
 
-/* line 43, ../../app/styles/library.scss */
+/* line 43, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a:hover {
   color: black;
 }
 
-/* line 47, ../../app/styles/library.scss */
+/* line 47, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li {
   margin-left: 10px;
 }
 
-/* line 51, ../../app/styles/library.scss */
+/* line 51, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a.active {
   opacity: 0.8;
   border-radius: 10px;
@@ -62,35 +62,35 @@ html, body {
   color: white !important;
 }
 
-/* line 60, ../../app/styles/library.scss */
+/* line 60, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a.active:hover {
   background: whitesmoke !important;
   color: black !important;
 }
 
 @media (max-device-width: 768px) {
-  /* line 66, ../../app/styles/library.scss */
+  /* line 66, ../../app/styles/dashboard.scss */
   div.navbar-header {
     background: rgba(44, 62, 80, 0.8) !important;
   }
 }
-/* line 71, ../../app/styles/library.scss */
+/* line 71, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper {
   background: rgba(44, 62, 80, 0.8);
   color: white;
 }
 
-/* line 76, ../../app/styles/library.scss */
+/* line 76, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper li:active {
   background: black;
 }
 
-/* line 80, ../../app/styles/library.scss */
+/* line 80, ../../app/styles/dashboard.scss */
 .sub-nav a {
   color: white;
 }
 
-/* line 84, ../../app/styles/library.scss */
+/* line 84, ../../app/styles/dashboard.scss */
 .element-invisible {
   position: absolute;
   height: 1px;
@@ -99,7 +99,7 @@ html, body {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/* line 92, ../../app/styles/library.scss */
+/* line 92, ../../app/styles/dashboard.scss */
 .header .logo {
   position: absolute;
   z-index: 99;
@@ -109,7 +109,7 @@ html, body {
   background: #1abc9c;
 }
 
-/* line 102, ../../app/styles/library.scss */
+/* line 102, ../../app/styles/dashboard.scss */
 .logo {
   width: 6em;
   height: 6em;
@@ -123,7 +123,7 @@ html, body {
   transition: top .2s ease-out,box-shadow .2s ease-out;
 }
 
-/* line 129, ../../app/styles/library.scss */
+/* line 129, ../../app/styles/dashboard.scss */
 .arrow-up {
   position: absolute;
   left: 35%;
@@ -136,14 +136,14 @@ html, body {
   border-bottom: 15px solid rgba(44, 62, 80, 0.8);
 }
 
-/* line 144, ../../app/styles/library.scss */
+/* line 144, ../../app/styles/dashboard.scss */
 p.user-name {
   margin: 20px;
   overflow: hidden;
   max-width: 400px;
 }
 
-/* line 150, ../../app/styles/library.scss */
+/* line 150, ../../app/styles/dashboard.scss */
 .no-padding {
   padding: 0px !important;
 }
@@ -153,69 +153,69 @@ p.user-name {
   For the Courses Page
 
 */
-/* line 161, ../../app/styles/library.scss */
+/* line 161, ../../app/styles/dashboard.scss */
 .container.content {
   margin: 0px;
   padding: 0px;
   width: 100%;
 }
 
-/* line 167, ../../app/styles/library.scss */
+/* line 167, ../../app/styles/dashboard.scss */
 .section {
   width: 100% !important;
 }
 
-/* line 172, ../../app/styles/library.scss */
+/* line 172, ../../app/styles/dashboard.scss */
 .module {
   padding: 40px 0px;
   min-height: 150px;
   text-align: center;
 }
 
-/* line 178, ../../app/styles/library.scss */
+/* line 178, ../../app/styles/dashboard.scss */
 .module-group {
   background: #ecf0f1;
 }
 
-/* line 182, ../../app/styles/library.scss */
+/* line 182, ../../app/styles/dashboard.scss */
 .module-header {
   background: rgba(44, 62, 80, 0.8);
   min-height: 300px;
 }
 
-/* line 187, ../../app/styles/library.scss */
+/* line 187, ../../app/styles/dashboard.scss */
 .module-header h1 {
   font-family: Helvetica;
   font-size: 100px;
   color: white;
 }
 
-/* line 193, ../../app/styles/library.scss */
+/* line 193, ../../app/styles/dashboard.scss */
 .module-header h3 {
   font-family: open-sans;
   font-size: 30px;
   color: white;
 }
 
-/* line 199, ../../app/styles/library.scss */
+/* line 199, ../../app/styles/dashboard.scss */
 .module-lessons {
   background: whitesmoke;
 }
 
-/* line 203, ../../app/styles/library.scss */
+/* line 203, ../../app/styles/dashboard.scss */
 .pack-group-title {
   font-size: 20px;
   font-weight: 500;
 }
 
-/* line 208, ../../app/styles/library.scss */
+/* line 208, ../../app/styles/dashboard.scss */
 .module-content {
   width: 800px;
   height: 180px;
   margin: auto;
 }
 
-/* line 214, ../../app/styles/library.scss */
+/* line 214, ../../app/styles/dashboard.scss */
 .module-copy {
   width: 500px;
   height: 100%;
@@ -223,12 +223,12 @@ p.user-name {
   padding: 20px;
 }
 
-/* line 221, ../../app/styles/library.scss */
+/* line 221, ../../app/styles/dashboard.scss */
 .module-copy p {
   text-align: left;
 }
 
-/* line 225, ../../app/styles/library.scss */
+/* line 225, ../../app/styles/dashboard.scss */
 .module-img {
   height: 100%;
   width: 300px;

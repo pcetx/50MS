@@ -91,42 +91,14 @@
   padding: 38px 0px 0px;
 }
 
-/*#LI_8*/
-/*
-#active:after {
-    bottom: -10px;
-    box-sizing: border-box;
-    color: rgb(96, 95, 93);
-    display: block;
-    height: 10px;
-    left: 55.390625px;
-    letter-spacing: 1px;
-    position: absolute;
-    text-align: center;
-    text-transform: uppercase;
-    width: 20px;
-    align-self: stretch;
-    perspective-origin: 10px 5px;
-    transform-origin: 10px 5px;
-    content: '';
-    border-top: 10px solid rgb(255, 255, 255);
-    border-right: 10px solid rgba(0, 0, 0, 0);
-    border-bottom: 0px none rgb(96, 95, 93);
-    border-left: 10px solid rgba(0, 0, 0, 0);
-    font: normal normal 500 normal 13px/18.5714302062988px 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    list-style: none outside none;
-    margin: 0px 0px 0px -10px;
-    outline: rgb(96, 95, 93) none 0px;
-}
-*/
-/* line 113, ../../app/styles/styles.scss */
+/* line 85, ../../app/styles/styles.scss */
 .primary-nav li .menu-item {
   box-sizing: border-box;
   color: #f79b60;
   display: block;
 }
 
-/* line 119, ../../app/styles/styles.scss */
+/* line 91, ../../app/styles/styles.scss */
 .secondary-nav {
   padding: 12px 0;
   background-color: orange;
@@ -135,26 +107,24 @@
   width: 100%;
 }
 
-/* line 128, ../../app/styles/styles.scss */
+/* line 100, ../../app/styles/styles.scss */
 .secondary-nav ul {
   margin-left: 110px;
 }
 
-/* line 132, ../../app/styles/styles.scss */
+/* line 104, ../../app/styles/styles.scss */
 .secondary-nav li {
   display: inline-block;
   padding: 0 15px;
   border-left: 1px solid #d6d6d6;
 }
 
-/* line 138, ../../app/styles/styles.scss */
+/* line 110, ../../app/styles/styles.scss */
 .masthead a {
   color: #8f8e8b;
 }
 
-/* line 142, ../../app/styles/styles.scss */
+/* line 114, ../../app/styles/styles.scss */
 .main-container.dashboard {
   padding: 80px !important;
 }
-
-/*# sourceMappingURL=styles.css.map */

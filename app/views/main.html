@@ -25,3 +25,10 @@
 </div> <!-- wrapper --> 
 
 <div ng-include src="'partials/sections/footer.html'"></div>
+
+
+<script type="text/javascript">
+    $().ready(function(){
+        $(window).on('scroll', gsdk.checkScrollForTransparentNavbar);
+    });       
+</script>

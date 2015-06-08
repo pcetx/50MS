@@ -1,0 +1,21 @@
+/*
+* Navigation Bar
+* 
+*/
+/* line 6, ../../app/styles/mobile.scss */
+.navbar-toggle .ib {
+  background-color: rgba(44, 62, 80, 0.8) !important;
+}
+
+@media (max-width: 768px) {
+  /* line 26, ../../app/styles/mobile.scss */
+  .sub-nav-wrapper {
+    min-height: 60px;
+  }
+
+  /* line 30, ../../app/styles/mobile.scss */
+  .social-area.pull-right {
+    float: none !important;
+    padding: 0;
+  }
+}

@@ -1,0 +1,35 @@
+/*
+* Navigation Bar
+* 
+*/
+
+.navbar-toggle .ib {
+  background-color: rgba(44, 62, 80, 0.8) !important;
+}
+
+@media (min-width: 1200px) {
+
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+}
+
+@media (max-width: 768px){
+  .sub-nav-wrapper {
+    min-height: 60px;
+  }
+
+  .social-area.pull-right {
+    float: none !important;
+    padding: 0;
+  }
+
+}

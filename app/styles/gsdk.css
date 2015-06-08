@@ -2091,7 +2091,8 @@ fieldset[disabled] .form-control {
   color: #777777;
 }
 .footer .copyright {
-  color: #777777;
+  //color: #777777;
+  color: white;
   padding: 10px 15px;
   margin: 15px 3px;
   line-height: 20px;
@@ -5090,7 +5091,7 @@ fieldset[disabled] .form-control {
     float: none;
   }
   .social-area.pull-right {
-    float: none !important;
+    //float: none !important;
   }
   .form-control + .form-control-feedback {
     margin-top: -8px;

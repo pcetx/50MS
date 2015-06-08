@@ -128,8 +128,6 @@ color: white !important;
 
 .arrow-up {
   position: absolute;
-  //top: 56px;
-  //left: 120px;
   left: 35%;
   top: 3.5em;
   margin:auto;
@@ -140,7 +138,6 @@ color: white !important;
   border-bottom: 15px solid rgba(44, 62, 80, 0.8);
 }
 
-
 p.user-name {
   margin: 20px;
   overflow: hidden;  
@@ -150,6 +147,12 @@ p.user-name {
 .no-padding {
   padding: 0px !important;
 }
+
+/*  
+*
+* For the Library Page
+*
+*/
 
 .btn-group a span {
   padding: 8px;
@@ -170,10 +173,30 @@ p.user-name {
   padding-top: 0px !important;
 }
 
+.course-container {
+  min-height: 200px;
+  border: 2px solid rgba(0,0,0,0.2);
+  background: white;
+  color: rgba(0,0,0,0.6);
+}
+
+.course-container h4 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.course-container .course-text {
+
+}
+
+.course-container p {
+
+}
+
 /*  
-
-  For the Courses Page
-
+*
+* For the Courses Page
+*
 */
 
 .container.content {

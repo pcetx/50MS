@@ -8638,109 +8638,128 @@ html, body {
   border-bottom: 15px solid rgba(44, 62, 80, 0.8);
 }
 
-/* line 144, ../../app/styles/dashboard.scss */
+/* line 141, ../../app/styles/dashboard.scss */
 p.user-name {
   margin: 20px;
   overflow: hidden;
   max-width: 400px;
 }
 
-/* line 150, ../../app/styles/dashboard.scss */
+/* line 147, ../../app/styles/dashboard.scss */
 .no-padding {
   padding: 0px !important;
 }
 
-/* line 154, ../../app/styles/dashboard.scss */
+/*  
+*
+* For the Library Page
+*
+*/
+/* line 157, ../../app/styles/dashboard.scss */
 .btn-group a span {
   padding: 8px;
 }
 
-/* line 158, ../../app/styles/dashboard.scss */
+/* line 161, ../../app/styles/dashboard.scss */
 .btn-group-library-display {
   float: right;
 }
 
-/* line 162, ../../app/styles/dashboard.scss */
+/* line 165, ../../app/styles/dashboard.scss */
 .well-library-display {
   padding-right: 0px;
   padding-bottom: 40px;
 }
 
-/* line 167, ../../app/styles/dashboard.scss */
+/* line 170, ../../app/styles/dashboard.scss */
 .course {
   padding: 15px !important;
   margin-bottom: 0px;
   padding-top: 0px !important;
 }
 
+/* line 176, ../../app/styles/dashboard.scss */
+.course-container {
+  min-height: 200px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: white;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* line 183, ../../app/styles/dashboard.scss */
+.course-container h4 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 /*  
-
-  For the Courses Page
-
+*
+* For the Courses Page
+*
 */
-/* line 179, ../../app/styles/dashboard.scss */
+/* line 202, ../../app/styles/dashboard.scss */
 .container.content {
   margin: 0px;
   padding: 0px;
   width: 100%;
 }
 
-/* line 185, ../../app/styles/dashboard.scss */
+/* line 208, ../../app/styles/dashboard.scss */
 .section {
   width: 100% !important;
 }
 
-/* line 190, ../../app/styles/dashboard.scss */
+/* line 213, ../../app/styles/dashboard.scss */
 .module {
   padding: 40px 0px;
   min-height: 150px;
   text-align: center;
 }
 
-/* line 196, ../../app/styles/dashboard.scss */
+/* line 219, ../../app/styles/dashboard.scss */
 .module-group {
   background: #ecf0f1;
 }
 
-/* line 200, ../../app/styles/dashboard.scss */
+/* line 223, ../../app/styles/dashboard.scss */
 .module-header {
   background: rgba(44, 62, 80, 0.8);
   min-height: 300px;
 }
 
-/* line 205, ../../app/styles/dashboard.scss */
+/* line 228, ../../app/styles/dashboard.scss */
 .module-header h1 {
   font-family: Helvetica;
   font-size: 100px;
   color: white;
 }
 
-/* line 211, ../../app/styles/dashboard.scss */
+/* line 234, ../../app/styles/dashboard.scss */
 .module-header h3 {
   font-family: open-sans;
   font-size: 30px;
   color: white;
 }
 
-/* line 217, ../../app/styles/dashboard.scss */
+/* line 240, ../../app/styles/dashboard.scss */
 .module-lessons {
   background: whitesmoke;
 }
 
-/* line 221, ../../app/styles/dashboard.scss */
+/* line 244, ../../app/styles/dashboard.scss */
 .pack-group-title {
   font-size: 20px;
   font-weight: 500;
 }
 
-/* line 226, ../../app/styles/dashboard.scss */
+/* line 249, ../../app/styles/dashboard.scss */
 .module-content {
   width: 800px;
   height: 180px;
   margin: auto;
 }
 
-/* line 232, ../../app/styles/dashboard.scss */
+/* line 255, ../../app/styles/dashboard.scss */
 .module-copy {
   width: 500px;
   height: 100%;
@@ -8748,12 +8767,12 @@ p.user-name {
   padding: 20px;
 }
 
-/* line 239, ../../app/styles/dashboard.scss */
+/* line 262, ../../app/styles/dashboard.scss */
 .module-copy p {
   text-align: left;
 }
 
-/* line 243, ../../app/styles/dashboard.scss */
+/* line 266, ../../app/styles/dashboard.scss */
 .module-img {
   height: 100%;
   width: 300px;
@@ -8882,7 +8901,28 @@ button.btn.btn-social.btn-simple.btn-coach:hover {
   white-space: normal !important;
 }
 
-/* line 9, ../../app/styles/main.scss */
+/*
+* Navigation Bar
+* 
+*/
+/* line 6, ../../app/styles/mobile.scss */
+.navbar-toggle .ib {
+  background-color: rgba(44, 62, 80, 0.8) !important;
+}
+
+@media (max-width: 768px) {
+  /* line 26, ../../app/styles/mobile.scss */
+  .sub-nav-wrapper {
+    min-height: 60px;
+  }
+
+  /* line 30, ../../app/styles/mobile.scss */
+  .social-area.pull-right {
+    float: none !important;
+    padding: 0;
+  }
+}
+/* line 10, ../../app/styles/main.scss */
 html,
 body {
   font-family: 'Helvetica', sans-serif;
@@ -8892,27 +8932,27 @@ body {
   height: 100%;
 }
 
-/* line 18, ../../app/styles/main.scss */
+/* line 19, ../../app/styles/main.scss */
 * {
   margin: 0;
 }
 
-/* line 22, ../../app/styles/main.scss */
+/* line 23, ../../app/styles/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Helvetica', sans-serif;
 }
 
-/* line 26, ../../app/styles/main.scss */
+/* line 27, ../../app/styles/main.scss */
 h1, h2 {
   font-weight: bold;
 }
 
-/* line 30, ../../app/styles/main.scss */
+/* line 31, ../../app/styles/main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
-/* line 34, ../../app/styles/main.scss */
+/* line 35, ../../app/styles/main.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -8920,7 +8960,7 @@ button:focus {
   outline: none;
 }
 
-/* line 41, ../../app/styles/main.scss */
+/* line 42, ../../app/styles/main.scss */
 .circle {
   width: 140px;
   height: 140px;
@@ -8935,61 +8975,61 @@ button:focus {
   z-index: 1000;
 }
 
-/* line 55, ../../app/styles/main.scss */
+/* line 56, ../../app/styles/main.scss */
 .transparent {
   background: none !important;
   border: none !important;
 }
 
-/* line 60, ../../app/styles/main.scss */
+/* line 61, ../../app/styles/main.scss */
 .footer {
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* line 64, ../../app/styles/main.scss */
+/* line 65, ../../app/styles/main.scss */
 .footer nav > ul a:not(.btn) {
   color: white !important;
 }
 
-/* line 68, ../../app/styles/main.scss */
+/* line 69, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 72, ../../app/styles/main.scss */
+/* line 73, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 80, ../../app/styles/main.scss */
+/* line 81, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 85, ../../app/styles/main.scss */
+/* line 86, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 89, ../../app/styles/main.scss */
+/* line 90, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 94, ../../app/styles/main.scss */
+/* line 95, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 98, ../../app/styles/main.scss */
+/* line 99, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 104, ../../app/styles/main.scss */
+/* line 105, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
@@ -8999,24 +9039,24 @@ a {
   border-color: #cfd9db;
 }
 
-/* line 113, ../../app/styles/main.scss */
+/* line 114, ../../app/styles/main.scss */
 .form-control {
   border-radius: 0;
 }
 
-/* line 117, ../../app/styles/main.scss */
+/* line 118, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
 @media (max-width: 768px) {
-  /* line 123, ../../app/styles/main.scss */
+  /* line 124, ../../app/styles/main.scss */
   .center-form {
     margin-top: 18%;
   }
 }
-/* line 128, ../../app/styles/main.scss */
+/* line 129, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -9024,14 +9064,14 @@ a {
   background: none;
 }
 
-/* line 135, ../../app/styles/main.scss */
+/* line 136, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 141, ../../app/styles/main.scss */
+/* line 142, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -9039,7 +9079,7 @@ a {
   background-color: #fff;
 }
 
-/* line 148, ../../app/styles/main.scss */
+/* line 149, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -9049,7 +9089,7 @@ a {
   color: #555;
 }
 
-/* line 157, ../../app/styles/main.scss */
+/* line 158, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -9058,7 +9098,7 @@ a {
   padding: 0 15px;
 }
 
-/* line 165, ../../app/styles/main.scss */
+/* line 166, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -9068,12 +9108,12 @@ a {
   border-radius: 5px;
 }
 
-/* line 174, ../../app/styles/main.scss */
+/* line 175, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
 }
 
-/* line 178, ../../app/styles/main.scss */
+/* line 179, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -9082,28 +9122,28 @@ a {
 /*********************
 * Social Buttons
 *********************/
-/* line 187, ../../app/styles/main.scss */
+/* line 188, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 193, ../../app/styles/main.scss */
+/* line 194, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
 }
 
-/* line 199, ../../app/styles/main.scss */
+/* line 200, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 205, ../../app/styles/main.scss */
+/* line 206, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
@@ -9111,14 +9151,14 @@ a {
   border: none;
 }
 
-/* line 212, ../../app/styles/main.scss */
+/* line 213, ../../app/styles/main.scss */
 .btn-twitter {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #009fdb;
 }
 
-/* line 218, ../../app/styles/main.scss */
+/* line 219, ../../app/styles/main.scss */
 .btn-twitter:hover,
 .btn-twitter:focus {
   color: #fff;
@@ -9129,7 +9169,7 @@ a {
 /*********************
 * Animations
 *********************/
-/* line 229, ../../app/styles/main.scss */
+/* line 230, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -9137,7 +9177,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 240, ../../app/styles/main.scss */
+/* line 241, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -9145,7 +9185,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 251, ../../app/styles/main.scss */
+/* line 252, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;

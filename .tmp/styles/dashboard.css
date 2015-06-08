@@ -136,109 +136,128 @@ html, body {
   border-bottom: 15px solid rgba(44, 62, 80, 0.8);
 }
 
-/* line 144, ../../app/styles/dashboard.scss */
+/* line 141, ../../app/styles/dashboard.scss */
 p.user-name {
   margin: 20px;
   overflow: hidden;
   max-width: 400px;
 }
 
-/* line 150, ../../app/styles/dashboard.scss */
+/* line 147, ../../app/styles/dashboard.scss */
 .no-padding {
   padding: 0px !important;
 }
 
-/* line 154, ../../app/styles/dashboard.scss */
+/*  
+*
+* For the Library Page
+*
+*/
+/* line 157, ../../app/styles/dashboard.scss */
 .btn-group a span {
   padding: 8px;
 }
 
-/* line 158, ../../app/styles/dashboard.scss */
+/* line 161, ../../app/styles/dashboard.scss */
 .btn-group-library-display {
   float: right;
 }
 
-/* line 162, ../../app/styles/dashboard.scss */
+/* line 165, ../../app/styles/dashboard.scss */
 .well-library-display {
   padding-right: 0px;
   padding-bottom: 40px;
 }
 
-/* line 167, ../../app/styles/dashboard.scss */
+/* line 170, ../../app/styles/dashboard.scss */
 .course {
   padding: 15px !important;
   margin-bottom: 0px;
   padding-top: 0px !important;
 }
 
+/* line 176, ../../app/styles/dashboard.scss */
+.course-container {
+  min-height: 200px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: white;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* line 183, ../../app/styles/dashboard.scss */
+.course-container h4 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 /*  
-
-  For the Courses Page
-
+*
+* For the Courses Page
+*
 */
-/* line 179, ../../app/styles/dashboard.scss */
+/* line 202, ../../app/styles/dashboard.scss */
 .container.content {
   margin: 0px;
   padding: 0px;
   width: 100%;
 }
 
-/* line 185, ../../app/styles/dashboard.scss */
+/* line 208, ../../app/styles/dashboard.scss */
 .section {
   width: 100% !important;
 }
 
-/* line 190, ../../app/styles/dashboard.scss */
+/* line 213, ../../app/styles/dashboard.scss */
 .module {
   padding: 40px 0px;
   min-height: 150px;
   text-align: center;
 }
 
-/* line 196, ../../app/styles/dashboard.scss */
+/* line 219, ../../app/styles/dashboard.scss */
 .module-group {
   background: #ecf0f1;
 }
 
-/* line 200, ../../app/styles/dashboard.scss */
+/* line 223, ../../app/styles/dashboard.scss */
 .module-header {
   background: rgba(44, 62, 80, 0.8);
   min-height: 300px;
 }
 
-/* line 205, ../../app/styles/dashboard.scss */
+/* line 228, ../../app/styles/dashboard.scss */
 .module-header h1 {
   font-family: Helvetica;
   font-size: 100px;
   color: white;
 }
 
-/* line 211, ../../app/styles/dashboard.scss */
+/* line 234, ../../app/styles/dashboard.scss */
 .module-header h3 {
   font-family: open-sans;
   font-size: 30px;
   color: white;
 }
 
-/* line 217, ../../app/styles/dashboard.scss */
+/* line 240, ../../app/styles/dashboard.scss */
 .module-lessons {
   background: whitesmoke;
 }
 
-/* line 221, ../../app/styles/dashboard.scss */
+/* line 244, ../../app/styles/dashboard.scss */
 .pack-group-title {
   font-size: 20px;
   font-weight: 500;
 }
 
-/* line 226, ../../app/styles/dashboard.scss */
+/* line 249, ../../app/styles/dashboard.scss */
 .module-content {
   width: 800px;
   height: 180px;
   margin: auto;
 }
 
-/* line 232, ../../app/styles/dashboard.scss */
+/* line 255, ../../app/styles/dashboard.scss */
 .module-copy {
   width: 500px;
   height: 100%;
@@ -246,12 +265,12 @@ p.user-name {
   padding: 20px;
 }
 
-/* line 239, ../../app/styles/dashboard.scss */
+/* line 262, ../../app/styles/dashboard.scss */
 .module-copy p {
   text-align: left;
 }
 
-/* line 243, ../../app/styles/dashboard.scss */
+/* line 266, ../../app/styles/dashboard.scss */
 .module-img {
   height: 100%;
   width: 300px;

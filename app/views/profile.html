@@ -1,6 +1,6 @@
-  <div class="wrapper">
+<div class="wrapper">
         <!-- Add your site or application content here -->
-        <div class="header dashboard" ng-cloak>
+        <div class="header dashboard" ng-controller="HeaderCtrl" ng-cloak>
           <nav class="navbar primary-menu nav-dashboard" role="navigation">
             <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,10 +16,10 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                  <li><a ng-href="#/dashboard"> My Board </a><div class="arrow-up"></li>
+                  <li><a ng-href="#/dashboard"> My Board </a></li>
                   <li><a ng-href="#/dashboard"> Courses </a></li>
                   <li><a ng-href="#/dashboard"> Tutorials </a></li>
-                  <li><a ng-href="#/dashboard"> Account </a></li>
+                  <li><a ng-href=""> Account </a><div class="arrow-up"></li>
                 </ul>
                   <ul class="nav navbar-nav navbar-right">                    
                     <li><p ng-show-auth="" ng-cloak class="user-name">Welcome Peter{{John}}</p></li>
@@ -29,8 +29,7 @@
             </div><!-- /.container-fluid -->
           </nav>
 
-           <a href="index.html" class="logo"> <span class="element-invisible">logo</span> 
-                </a>
+           <a href="#/" class="logo"> <span class="element-invisible">logo</span></a>
           <!--  The secondary Menu  -->
           <div class="sub-nav-wrapper">
             <div class="container sub-nav">
@@ -39,9 +38,8 @@
                 <div class="navbar-header">
                   <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav subnav-dashboard">
-                      <li><a ng-href="#/dashboard" class="active"> Timeline </a></li>
-                      <li><a ng-href="#/progress"> Stats </a></li>
-                      <li><a ng-href="#/invites"> Invites </a></li>
+                      <li><a ng-href="" class="active"> Profile </a></li>
+                      <li><a ng-href="#/subscription"> Subscription </a></li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
                 </div>
@@ -51,50 +49,47 @@
         </div>
 
         <div class="main-container dashboard" ng-cloak>
-          <div class="container">
-              
-          </div>  
-        </div>
+            <section class="module">
+              <div class="container fixed-center-container">
+                <form action="" method="post" role="form" novalidate="novalidate" >       
+                  <h3 class="module-title">Personal details</h3>
+                  <hr class="rule">
+                  <fieldset class="form-fields">
+          
+                  <div class="form-group">
+                    <label for="user_profile_firstname" class="required">Your first name</label>
+                    <input type="text" id="user_profile_firstname" name="user_profile[firstname]" required="required" value="Moulthun"  class="form-control"></div>
+                  
+                  <div class="form-group">
+                    <label for="user_profile_lastname" class="required">Your surname</label>
+                    <input type="text"id="user_profile_lastname" name="user_profile[lastname]" required="required" value="Ly"  class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="user_profile_email" class="required">Your email</label>
+                    <input type="email" id="user_profile_email" name="user_profile[email]" required="required" value="moulthunl@gmail.com"  class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="user_profile_password" class="required">Your password</label>
+                    <input type="password" id="user_profile_password" name="user_profile[password]" required="required" autocomplete="off" data-help="Your password must be a minimum of eight characters, with no spaces."  class="form-control"></div>
+
+                  <div class="form-group  full-width">
+                    To change your communication preferences click <a href="http://pages.headspace.com/SubscriptionManagement.html" target="_blank">here</a>.
+                  </div>
+
+              </fieldset>
+
+              <h4 class="module-title">Your 50 Moves profile</h4>
+              <hr class="rule">
+              <fieldset class="form-fields">
+                  <div class="form-group">
+                    <label for="user_profile_displayName">Display name</label>
+                    <input type="text" id="user_profile_displayName" name="user_profile[displayName]" value="meditator-21LB2I"  class="form-control">
+                  </div>
+            </div>
 
     <!-- end wrapper -->    
     </div>
 
-    <footer class="footer">
-      <div class="container">
-          <nav class="pull-left">
-              <ul>
-                  <li>
-                      <a href="#">
-                          Home
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          About
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Program
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="social-area pull-right">                
-              <a class="btn btn-social btn-facebook btn-simple transparent">
-                  <i class="fa fa-facebook-square"></i>
-              </a>
-              <a class="btn btn-social btn-twitter btn-simple transparent">
-                  <i class="fa fa-twitter"></i>
-              </a>
-          </div>
-          <div class="copyright">
-              
-          </div>
-      </div>
-    </footer>
-
-
-   <!-- <div ng-include src="'partials/sections/footer.html'"></div> -->
-   <!-- <div ng-include src="'partials/sections/footer.html'"></div> -->
-
+    <div ng-include src="'partials/sections/footer.html'"></div> 

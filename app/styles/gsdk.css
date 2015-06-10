@@ -1811,6 +1811,8 @@ fieldset[disabled] .form-control {
 .navbar .navbar-nav > li > a {
   padding: 10px 15px;
   margin: 15px 3px;
+  //text-transform: uppercase;
+  //font-size: 15px;
 }
 .navbar .navbar-nav > li > a.btn {
   margin: 15px 3px;
@@ -2093,7 +2095,7 @@ fieldset[disabled] .form-control {
 .footer .copyright {
   //color: #777777;
   color: white;
-  padding: 10px 15px;
+  padding: 10px 15px 3px;
   margin: 15px 3px;
   line-height: 20px;
   text-align: center;

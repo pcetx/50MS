@@ -10,7 +10,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 html,
 body {
   font-family: 'Helvetica', sans-serif;
-  background: #e4e7ec;
+  //background: #e4e7ec;
+  background: #f7f7f7;
   padding: 0;
   margin: 0;
   height: 100%;
@@ -59,11 +60,22 @@ button:focus {
 }
 
 .footer {
-  background: rgba(0,0,0,0.8);
+  //background: rgba(0,0,0,0.8);
+  background: #434548;
 }
 
 .footer nav > ul a:not(.btn){
   color: white !important;
+  font-weight: bold;
+}
+
+.footer nav > ul a:not(.btn):hover{
+  text-decoration: none;
+}
+
+.footer .copyright p {
+  font-weight: bold;
+  font-size: 15px !important;
 }
 
 a {
@@ -74,13 +86,8 @@ a {
   margin-bottom: 0px !important;
 }
 
-.main-container {
-  //padding: 30px 0px 30px 0px;
-}
-
 .login-container {
   width: 100%;
-  //background: black;
 }
 
 .btn-fill.btn-login, .btn-fill.btn-register  {
@@ -113,6 +120,43 @@ a {
 
 .form-control {
   border-radius: 0;
+  display: block;
+  width: 100%;
+  border: 0;
+  font-size: 25px;
+  font-weight: 300;
+  color: #8f8e8b;
+  line-height: 1.5;
+  padding: 1em;
+  -webkit-transition: background-color 300ms linear;
+  -moz-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+  }
+
+@media (min-width: 768px){
+  .form-group {
+    display: inline-block;
+    width: 325px;
+    margin-bottom: 25px;
+    vertical-align: top;
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 768px){
+.form-fields {
+  text-align: justify;
+  font-size: 1px;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+}
+
+.fixed-center-container {
+  max-width: 768px;
 }
 
 .center-form {

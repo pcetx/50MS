@@ -8,12 +8,12 @@
 }
 
 @media (max-width: 768px) {
-  /* line 26, ../../app/styles/mobile.scss */
+  /* line 25, ../../app/styles/mobile.scss */
   .sub-nav-wrapper {
     min-height: 60px;
   }
 
-  /* line 30, ../../app/styles/mobile.scss */
+  /* line 29, ../../app/styles/mobile.scss */
   .social-area.pull-right {
     float: none !important;
     padding: 0;

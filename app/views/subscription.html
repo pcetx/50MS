@@ -1,0 +1,95 @@
+<div class="wrapper">
+        <!-- Add your site or application content here -->
+        <div class="header dashboard" ng-controller="HeaderCtrl" ng-cloak>
+          <nav class="navbar primary-menu nav-dashboard" role="navigation">
+            <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar bar1"></span>
+                  <span class="icon-bar bar2"></span>
+                  <span class="icon-bar bar3"></span>
+                </button>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li><a ng-href="#/dashboard"> My Board </a></li>
+                  <li><a ng-href="#/dashboard"> Courses </a></li>
+                  <li><a ng-href="#/dashboard"> Tutorials </a></li>
+                  <li><a ng-href=""> Account </a><div class="arrow-up"></li>
+                </ul>
+                  <ul class="nav navbar-nav navbar-right">                    
+                    <li><p ng-show-auth="" ng-cloak class="user-name">Welcome Peter{{John}}</p></li>
+                    <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
+                  </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+
+           <a href="#/" class="logo"> <span class="element-invisible">logo</span></a>
+          <!--  The secondary Menu  -->
+          <div class="sub-nav-wrapper">
+            <div class="container sub-nav">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <nav class="secondary-nav">
+                <div class="navbar-header">
+                  <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav subnav-dashboard">
+                      <li><a ng-href="#/profile"> Profile </a></li>
+                      <li><a ng-href="" class="active"> Subscription </a></li>
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div>
+              </nav>
+            </div><!-- /.container-fluid -->
+          </div>
+        </div>
+
+        <div class="main-container dashboard" ng-cloak>
+          <div class="container">
+            <section class="module">
+   <div class="container">
+      <h1 class="module-title">Your subscription</h1>
+      <div class="row">
+         <div class="col-md-8">
+            <div class="well">
+               <dl>
+                  <dt>
+                     Subscription
+                  </dt>
+                  <dd>Type: 
+                     Free trial
+                  </dd>
+                  <dd>Saved credit card: none</dd>
+               </dl>
+            </div>
+         </div>
+         <div class="col-md-4">
+            <div class="btn  btn-block">
+               <a href="/my/settings/change-subscription" class="btn-element">
+               <span class="btn-text">
+               Buy a subscription
+               </span>
+               </a>
+            </div>
+            <div class="btn  btn-grey btn-block">
+               <a href="/my/settings/about-you" class="btn-element">
+               <span class="btn-text">Settings</span>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+            
+          </div>  
+        </div>
+
+    <!-- end wrapper -->    
+    </div>
+
+   <div ng-include src="'partials/sections/footer.html'"></div> 
+   <!-- <div ng-include src="'partials/sections/footer.html'"></div> -->

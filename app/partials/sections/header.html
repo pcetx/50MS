@@ -1,4 +1,4 @@
- <div class="header">
+ <div class="header" ng-controller="HeaderCtrl">
       <nav class="navbar navbar-ct-red navbar-transparent navbar-fixed-top" role="navigation">
         <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,12 +15,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" data-nav-image='assets/img/blog_1.png'>
           <ul class="nav navbar-nav">
-            <li><a ng-href="#/user"> Dashboard </a></li>
+            <li><a ng-href="#/blog"> Blog </a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a ng-hide-auth="" ng-href="#/login" class="btn btn-fill btn-login">Login</a></li>
-                <li><a ng-show-auth="" ng-cloak ng-href="#/account" class="btn btn-fill">Account</a></li>
-                <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
+                <li><a ng-show-auth="" class="btn btn-fill btn-login" ng-cloak ng-href="#/dashboard"> My Dashboard</a></li>
+                <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill btn-login">Logout</a></li>
                 <li><a ng-hide-auth="" ng-href="#/register" class="btn btn-square btn-fill btn-register">Register</a></li>
            </ul>
         </div><!-- /.navbar-collapse -->

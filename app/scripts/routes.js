@@ -79,12 +79,17 @@ angular.module('50movesApp')
         controller: 'LoginCtrl'
       })
 
-      .when('/lesson', {
+      .when('/blog', {
+        templateUrl: 'views/blog/blog.html',
+        controller: 'BlogCtrl'
+      })
+
+      .whenAuthenticated('/lesson', {
         templateUrl: 'views/lesson/lesson.html',
         controller: 'LessonCtrl'
       })
 
-      .whenAuthenticated('/user', {
+      .whenAuthenticated('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
       })
@@ -92,6 +97,11 @@ angular.module('50movesApp')
       .whenAuthenticated('/settings', {
         templateUrl: 'views/profile.html',
         controller: 'AccountCtrl'
+      })
+
+      .whenAuthenticated('/subscription', {
+        templateUrl: 'views/subscription.html',
+        controller: 'SubscriptionCtrl'
       })
 
       .whenAuthenticated('/library', {
@@ -104,8 +114,8 @@ angular.module('50movesApp')
         controller: 'CourseCtrl'
       })
 
-      .whenAuthenticated('/account', {
-        templateUrl: 'views/account.html',
+      .whenAuthenticated('/profile', {
+        templateUrl: 'views/profile.html',
         controller: 'AccountCtrl'
       })
       .otherwise({redirectTo: '/'});

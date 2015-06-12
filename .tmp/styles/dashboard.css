@@ -11,12 +11,12 @@ html, body {
   margin: 0 auto;
 }
 
-/* line 13, ../../app/styles/dashboard.scss */
+/* line 12, ../../app/styles/dashboard.scss */
 .footer.footer-dashboard {
   color: white !important;
 }
 
-/* line 19, ../../app/styles/dashboard.scss */
+/* line 16, ../../app/styles/dashboard.scss */
 .header {
   left: 0;
   top: 0;
@@ -26,33 +26,33 @@ html, body {
   backface-visibility: hidden;
 }
 
-/* line 30, ../../app/styles/dashboard.scss */
+/* line 27, ../../app/styles/dashboard.scss */
 .primary-menu .container, .sub-nav-wrapper .container {
   padding: 0px !important;
 }
 
-/* line 34, ../../app/styles/dashboard.scss */
+/* line 31, ../../app/styles/dashboard.scss */
 .primary-menu {
   background: white;
   width: 100%;
 }
 
-/* line 39, ../../app/styles/dashboard.scss */
+/* line 36, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper {
   padding: 10px;
 }
 
-/* line 43, ../../app/styles/dashboard.scss */
+/* line 40, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a:hover {
   color: black;
 }
 
-/* line 47, ../../app/styles/dashboard.scss */
+/* line 44, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li {
   margin-left: 10px;
 }
 
-/* line 51, ../../app/styles/dashboard.scss */
+/* line 48, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a.active {
   opacity: 0.8;
   border-radius: 10px;
@@ -62,35 +62,35 @@ html, body {
   color: white !important;
 }
 
-/* line 60, ../../app/styles/dashboard.scss */
+/* line 57, ../../app/styles/dashboard.scss */
 .subnav-dashboard > li > a.active:hover {
   background: whitesmoke !important;
   color: black !important;
 }
 
 @media (max-device-width: 768px) {
-  /* line 66, ../../app/styles/dashboard.scss */
+  /* line 63, ../../app/styles/dashboard.scss */
   div.navbar-header {
     background: rgba(44, 62, 80, 0.8) !important;
   }
 }
-/* line 71, ../../app/styles/dashboard.scss */
+/* line 68, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper {
   background: rgba(44, 62, 80, 0.8);
   color: white;
 }
 
-/* line 76, ../../app/styles/dashboard.scss */
+/* line 73, ../../app/styles/dashboard.scss */
 .sub-nav-wrapper li:active {
   background: black;
 }
 
-/* line 80, ../../app/styles/dashboard.scss */
+/* line 77, ../../app/styles/dashboard.scss */
 .sub-nav a {
   color: white;
 }
 
-/* line 84, ../../app/styles/dashboard.scss */
+/* line 81, ../../app/styles/dashboard.scss */
 .element-invisible {
   position: absolute;
   height: 1px;
@@ -99,7 +99,7 @@ html, body {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/* line 92, ../../app/styles/dashboard.scss */
+/* line 89, ../../app/styles/dashboard.scss */
 .header .logo {
   position: absolute;
   z-index: 99;
@@ -109,7 +109,7 @@ html, body {
   background: #1abc9c;
 }
 
-/* line 102, ../../app/styles/dashboard.scss */
+/* line 99, ../../app/styles/dashboard.scss */
 .logo {
   width: 6em;
   height: 6em;
@@ -123,7 +123,7 @@ html, body {
   transition: top .2s ease-out,box-shadow .2s ease-out;
 }
 
-/* line 129, ../../app/styles/dashboard.scss */
+/* line 126, ../../app/styles/dashboard.scss */
 .arrow-up {
   position: absolute;
   left: 35%;
@@ -136,14 +136,14 @@ html, body {
   border-bottom: 15px solid rgba(44, 62, 80, 0.8);
 }
 
-/* line 141, ../../app/styles/dashboard.scss */
+/* line 138, ../../app/styles/dashboard.scss */
 p.user-name {
   margin: 20px;
   overflow: hidden;
   max-width: 400px;
 }
 
-/* line 147, ../../app/styles/dashboard.scss */
+/* line 144, ../../app/styles/dashboard.scss */
 .no-padding {
   padding: 0px !important;
 }
@@ -153,30 +153,30 @@ p.user-name {
 * For the Library Page
 *
 */
-/* line 157, ../../app/styles/dashboard.scss */
+/* line 154, ../../app/styles/dashboard.scss */
 .btn-group a span {
   padding: 8px;
 }
 
-/* line 161, ../../app/styles/dashboard.scss */
+/* line 158, ../../app/styles/dashboard.scss */
 .btn-group-library-display {
   float: right;
 }
 
-/* line 165, ../../app/styles/dashboard.scss */
+/* line 162, ../../app/styles/dashboard.scss */
 .well-library-display {
   padding-right: 0px;
   padding-bottom: 40px;
 }
 
-/* line 170, ../../app/styles/dashboard.scss */
+/* line 167, ../../app/styles/dashboard.scss */
 .course {
   padding: 15px !important;
   margin-bottom: 0px;
   padding-top: 0px !important;
 }
 
-/* line 176, ../../app/styles/dashboard.scss */
+/* line 173, ../../app/styles/dashboard.scss */
 .course-container {
   min-height: 200px;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -184,7 +184,7 @@ p.user-name {
   color: rgba(0, 0, 0, 0.6);
 }
 
-/* line 183, ../../app/styles/dashboard.scss */
+/* line 180, ../../app/styles/dashboard.scss */
 .course-container h4 {
   font-weight: bold;
   margin-bottom: 20px;
@@ -195,69 +195,69 @@ p.user-name {
 * For the Courses Page
 *
 */
-/* line 202, ../../app/styles/dashboard.scss */
+/* line 199, ../../app/styles/dashboard.scss */
 .container.content {
   margin: 0px;
   padding: 0px;
   width: 100%;
 }
 
-/* line 208, ../../app/styles/dashboard.scss */
+/* line 205, ../../app/styles/dashboard.scss */
 .section {
   width: 100% !important;
 }
 
-/* line 213, ../../app/styles/dashboard.scss */
+/* line 210, ../../app/styles/dashboard.scss */
 .module {
   padding: 40px 0px;
   min-height: 150px;
   text-align: center;
 }
 
-/* line 219, ../../app/styles/dashboard.scss */
+/* line 216, ../../app/styles/dashboard.scss */
 .module-group {
   background: #ecf0f1;
 }
 
-/* line 223, ../../app/styles/dashboard.scss */
+/* line 220, ../../app/styles/dashboard.scss */
 .module-header {
   background: rgba(44, 62, 80, 0.8);
   min-height: 300px;
 }
 
-/* line 228, ../../app/styles/dashboard.scss */
+/* line 225, ../../app/styles/dashboard.scss */
 .module-header h1 {
   font-family: Helvetica;
   font-size: 100px;
   color: white;
 }
 
-/* line 234, ../../app/styles/dashboard.scss */
+/* line 231, ../../app/styles/dashboard.scss */
 .module-header h3 {
   font-family: open-sans;
   font-size: 30px;
   color: white;
 }
 
-/* line 240, ../../app/styles/dashboard.scss */
+/* line 237, ../../app/styles/dashboard.scss */
 .module-lessons {
   background: whitesmoke;
 }
 
-/* line 244, ../../app/styles/dashboard.scss */
+/* line 241, ../../app/styles/dashboard.scss */
 .pack-group-title {
   font-size: 20px;
   font-weight: 500;
 }
 
-/* line 249, ../../app/styles/dashboard.scss */
+/* line 246, ../../app/styles/dashboard.scss */
 .module-content {
   width: 800px;
   height: 180px;
   margin: auto;
 }
 
-/* line 255, ../../app/styles/dashboard.scss */
+/* line 252, ../../app/styles/dashboard.scss */
 .module-copy {
   width: 500px;
   height: 100%;
@@ -265,12 +265,12 @@ p.user-name {
   padding: 20px;
 }
 
-/* line 262, ../../app/styles/dashboard.scss */
+/* line 259, ../../app/styles/dashboard.scss */
 .module-copy p {
   text-align: left;
 }
 
-/* line 266, ../../app/styles/dashboard.scss */
+/* line 263, ../../app/styles/dashboard.scss */
 .module-img {
   height: 100%;
   width: 300px;

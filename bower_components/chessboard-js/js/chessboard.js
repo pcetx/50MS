@@ -1,1581 +1,1714 @@
-/*jslint plusplus: true, nomen: true, es5: true, regexp: true, browser: true, devel: true*/
-/*global $, ChessUtils, module */
+/*!
+ * chessboard.js v0.3.0
+ *
+ * Copyright 2013 Chris Oakman
+ * Released under the MIT license
+ * http://chessboardjs.com/license
+ *
+ * Date: 10 Aug 2013
+ */
 
+// start anonymous scope
+;(function() {
+'use strict';
 
-/*
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+// Chess Util Functions
+//------------------------------------------------------------------------------
+var COLUMNS = 'abcdefgh'.split('');
 
-ChessboardJS
+function validMove(move) {
+  // move should be a string
+  if (typeof move !== 'string') return false;
 
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
-*/
-/**
-Chessboard class to create a responsive chessboard from javascript.
-Further info https://github.com/caustique/chessboard-js
+  // move should be in the form of "e2-e4", "f6-d5"
+  var tmp = move.split('-');
+  if (tmp.length !== 2) return false;
 
-@class Chessboard
-@constructor
-*/
-
-function Chessboard(containerId, config) {
-	
-	'use strict';
-	
-	/*
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-  
-	CONSTANTS
-	
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	*/
-		
-	Chessboard.ANIMATION = {
-		fadeInTime: 1000,
-		fadeOutTime: 1000
-	};
-	
-	Chessboard.CSS_PREFIX = 'chess_';
-	Chessboard.CSS = {
-		pathSeparator: '_',
-		board: {
-			id: Chessboard.CSS_PREFIX +  'board',
-			className: Chessboard.CSS_PREFIX +  'board'
-		},
-		square: {
-			className: Chessboard.CSS_PREFIX + 'square',
-			lastColumn: { className: Chessboard.CSS_PREFIX + 'square_last_column'},
-			idPrefix: Chessboard.CSS_PREFIX + 'square',
-			dark: { className: Chessboard.CSS_PREFIX + 'square_dark' },
-			light: { className: Chessboard.CSS_PREFIX + 'square_light' },
-			createClassName: function (index) {
-				return ' ' + (((index + ChessUtils.convertIndexToRow(index)) % 2 === 0) ?
-									Chessboard.CSS.square.dark.className : Chessboard.CSS.square.light.className);
-			},
-			selected: { className: Chessboard.CSS_PREFIX + 'square_selected'},
-			validMove: { className: Chessboard.CSS_PREFIX + 'square_valid_move' }
-		},
-		player: {
-			black: { className: Chessboard.CSS_PREFIX + 'player_' + ChessUtils.PLAYER.black.className },
-			white: { className: Chessboard.CSS_PREFIX + 'player_' + ChessUtils.PLAYER.white.className },
-			createClassName: function (player) {
-				return (player === 'white') ?
-						Chessboard.CSS.player.white.className :
-						Chessboard.CSS.player.black.className;
-			}
-		},
-		piece: {
-			idPrefix: Chessboard.CSS_PREFIX + 'piece',
-			className: Chessboard.CSS_PREFIX + 'piece',
-			createClassName: function (piece) {
-				return Chessboard.CSS.piece.className + '_' + piece;
-			},
-			none: { className: Chessboard.CSS_PREFIX + 'piece_none' }
-		},
-		label: {
-			className: Chessboard.CSS_PREFIX +  'label',
-			hidden: { className: Chessboard.CSS_PREFIX +  'label_hidden' },
-			row: {
-				className: Chessboard.CSS_PREFIX +  'label_row',
-				reversed: {
-					className: Chessboard.CSS_PREFIX +  'label_row_reversed'
-				}
-			},
-			column: {
-				className: Chessboard.CSS_PREFIX +  'label_column',
-				reversed: { className: Chessboard.CSS_PREFIX +  'label_column_reversed' }
-			}
-		},
-		style: {
-			id: Chessboard.CSS_PREFIX + 'style'
-		}
-		
-	};
-	
-	/*
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-  
-	VARIABLE AND METHOD DECLARATIONS
-	
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	*/
-	// PRIVATE METHODS
-	var init,
-		initConfig,
-		initDOM,
-		// Event handlers
-		bindEvents,
-		unbindEvents,
-		onSizeChanged,
-		onSquareClicked,
-		// Managing pieces on board
-		getSquareElement,
-		getSquareIndexFromId,
-		clearSelection,
-		setSelectedSquareElement,
-		isSquareEmpty,
-		getPieceElement,
-		drawPiece,
-		drawPosition,
-		drawAnimations,
-		// ----------------
-		// HELPER FUNCTIONS
-		// ----------------
-		// CSS helper functions
-		cssGetUniquePrefix,
-		cssGetBoardUniqueId,
-		cssGetSquareUniqueId,
-		cssGetPieceUniqueId,
-		cssGetStyleUniqueId,
-		// PRIVATE VARIABLES
-		// All private variables are prefixed with _
-		_that = this,											// For event handlers 
-		_containerSelector,								// Element selector that is given by the client to create chessboard in
-		_userInputEnabled = false,				// Shows if user input is enabled like clicks
-		_position = ChessUtils.convertFenToPosition(ChessUtils.FEN.positions.empty),
-																			// Current position on the table string a8-h1 of pieces and '0' (white is capital letter),
-		_selectedSquareIndex = null,			// Index of the selected square
-		_validMoves,											// Array of valid moves for selected piece
-		_orientation = ChessUtils.ORIENTATION.white,	// Who sits south position
-		_config = {
-			useAnimation: true,							// Setting default for useAnimation parameters
-			showBoardLabels: true,					// Show columns and row numbers
-			showNextMove: true							// Show the valid moves of the selected piece
-		},
-		_eventHandlers = {
-			/**
-			 * Fired when the user clicks on one of the available moves. Next position after move should be returned. Any format is accepted that setPosition() accepts. Returning null cancels move.
-			 *
-			 * @event onMove
-			 * @param {Object} move in notation format (ie. {from: 'e2', to: 'e4'})
-			 */
-			onMove: null,
-			onPieceSelected: null,
-			onChange: null,
-			onChanged: null
-		},																// Function references to event handlers
-		_preventPositionChange = false,		// If true position change is not allowed
-		_preventCallingEvents = true;			// If true the system is not calling events. Used during running of constructor function.
-	
-	
-	/*
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-  
-	PUBLIC METHODS
-	
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	*/
-	
-	/**
-	Clears the chessboard of all pieces. 
-	Change chessboard orientation to white.
-	
-	@method clear
-	@public
-	*/
-	this.clear = function () {
-		if (_preventPositionChange) { return; }
-		this.setPosition(ChessUtils.FEN.positions.empty);
-		this.setOrientation(ChessUtils.ORIENTATION.white);
-	};
-	/**
-	Destroys the DOM structure that was created
-	
-	@method destroy
-	@public
-	*/
-	this.destroy = function () {
-		$(_containerSelector).html('');
-
-		unbindEvents();
-	};
-	/**
-	Sets or gets the chessboard position.
-	The method doesn't change the chessboard orientation, so it has to be manually if needed.
-	Deprecated method for compatibility reasons, use setPosition and getPosition instead.
-	(No parameter checking!)
-	
-	@method position
-	@public
-	@deprecated
-	@param {Object} [position]  If omitted returns the internal position string. If ChessUtils.FEN.id (which is 'fen' for compatibility reasons) which returns a fen string (see http://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation). If Chessboard.NOTATION.id then returns a notation object. Otherwise it can be a position string, fen string or notation object to set the current position.
-	@param {Boolean} [useAnimation=true]  Whether to use animation for the process.
-	@return {Object} The current position of the chessboard in different format.
-	*/
-	this.position = function (position, useAnimation) {
-		var format;
-		
-		if (((arguments.length === 0) || typeof position === 'undefined') ||
-				(typeof position === 'string' && position.toLowerCase() === ChessUtils.FEN.id) ||
-				(typeof position === 'string' && position.toLowerCase() === ChessUtils.NOTATION.id)) {
-			return this.getPosition(position);
-		} else {
-			this.setPosition(position, useAnimation);
-		}
-	};
-	/**
-	Sets the chessboard position.
-	The method doesn't change the chessboard orientation, so it has to be manually if needed.
-	(No parameter checking!)
-	
-	@method setPosition
-	@public
-	@param {Object} [position]  It can be a position string, fen string or notation object to set the current position.
-	@param {Boolean} [useAnimation=true]  Whether to use animation for the process.
-	*/
-	this.setPosition = function (position, useAnimation) {
-		var prevUserInputEnabled = _userInputEnabled;
-		
-		if (_preventPositionChange) { return; }
-		
-		clearSelection();
-		
-		useAnimation = (arguments.length === 1 || typeof useAnimation === 'undefined') ? _config.useAnimation : useAnimation;
-		
-		// start position		
-		if (typeof position === 'string' && (position.toLowerCase() === ChessUtils.FEN.startId)) {
-			position = ChessUtils.convertFenToPosition(ChessUtils.FEN.positions.start);
-		} else if (typeof position === 'string' && (position.toLowerCase() === ChessUtils.FEN.emptyId)) {
-			position = ChessUtils.convertFenToPosition(ChessUtils.FEN.positions.empty);
-		} else if (typeof position === 'string') {
-			if (position.indexOf(ChessUtils.FEN.rowSeparator) !== -1) {
-				position = ChessUtils.convertFenToPosition(position);
-			}
-		} else if (typeof position === 'object') {
-			position = ChessUtils.convertNotationToPosition(position);
-		}
-		
-		
-		if (_position === position) { return; }
-		
-		// run the onChange function
-		if (_eventHandlers.hasOwnProperty('onChange') === true &&
-				typeof _eventHandlers.onChange === 'function' &&
-				!_preventCallingEvents) {
-			_preventPositionChange = true;
-			if (!_eventHandlers.onChange(_position, position)) { return; }
-			_preventPositionChange = false;
-		}
-		
-		_userInputEnabled = false;
-		if (useAnimation === true) {
-			drawAnimations(position);
-			_position = position;
-		} else {
-			_position = position;
-			drawPosition();
-		}
-		
-		// run the onChanged function
-		if (_eventHandlers.hasOwnProperty('onChanged') === true &&
-				typeof _eventHandlers.onChanged === 'function' &&
-				!_preventCallingEvents) {
-			_preventPositionChange = true;
-			_eventHandlers.onChanged(_position);
-			_preventPositionChange = false;
-		}
-		
-		_userInputEnabled = prevUserInputEnabled;
-	};
-	/**
-	Gets the chessboard position.
-	(No strict parameter checking!)
-	
-	@method getPosition
-	@public
-	@param {String} [format]  If omitted returns the internal position string. If ChessUtils.FEN.id (which is 'fen' for compatibility reasons) which returns a fen string (see http://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation). If Chessboard.NOTATION.id then returns a notation object.
-	@return {Object} The current position of the chessboard in different format.
-	*/
-	this.getPosition = function (format) {
-		// no arguments, return the current position
-		if ((arguments.length === 0) || !format) {
-			return _position;
-		}
-		// get position as fen
-		if (format.toLowerCase() === ChessUtils.FEN.id) {
-			return ChessUtils.convertPositionToFen(_position);
-		}
-		// get position as notation object
-		if (format.toLowerCase() === ChessUtils.NOTATION.id) {
-			return ChessUtils.convertPositionToNotation(_position);
-		}
-	};
-	
-	this.move = function (firstMove) {
-		var movesFrom = [],
-			movesTo = [],
-			position = _position,
-			i,
-			useAnimation = _config.useAnimation,
-			count;
-		
-		if (_preventPositionChange) { return; }
-		
-		// TODO: parameter checking
-		
-		if (typeof arguments[arguments.length - 1] === 'boolean') {
-			useAnimation = arguments[arguments.length - 1];
-			count = arguments.length - 1;
-		} else {
-			count = arguments.length;
-		}
-		
-		if (typeof firstMove === 'string') {
-			if (firstMove.search('-') !== -1) {
-				for (i = 0; i < count; i++) {
-					movesFrom.push(ChessUtils.convertNotationSquareToIndex(arguments[i].split('-')[0]));
-					movesTo.push(ChessUtils.convertNotationSquareToIndex(arguments[i].split('-')[1]));
-				}
-			} else {
-				for (i = 0; i < count; i += 2) {
-					movesFrom.push(ChessUtils.convertNotationSquareToIndex(arguments[i]));
-					movesTo.push(ChessUtils.convertNotationSquareToIndex(arguments[i + 1]));
-				}
-			}
-		} else {
-			for (i = 0; i < count; i += 2) {
-				movesFrom.push(arguments[i]);
-				movesTo.push(arguments[i + 1]);
-			}
-		}
-			
-		for (i = 0; i < movesFrom.length; i++) {
-			if (_position[movesFrom[i]] !== ChessUtils.POSITION.empty) {
-				position = ChessUtils.replaceStringAt(position, movesFrom[i], ChessUtils.POSITION.empty);
-				position = ChessUtils.replaceStringAt(position, movesTo[i], _position[movesFrom[i]]);
-			}
-		}
-		
-		this.setPosition(position, useAnimation);
-		
-	};
-	/**
-	Public method to set or get the chessboard position with a fen string (see http://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation).
-	A shortcut to the position method. Use setPosition and getPosition instead.
-	The method doesn't change the chessboard orientation, so it has to be manually if needed.
-	(No parameter checking!)
-	
-	@method fen
-	@public
-	@deprecated
-	@param {String} [fen]  If omitted returns the fen string of the current postion on the checkboard. If given it is a fen string to set the current position.
-	@param {Boolean} [useAnimation=true]  Whether to use animation for the process.
-	@return {String or Object} The current position of the chessboard in different format.
-	*/
-	this.fen = function (fen, useAnimation) {
-		return this.position(ChessUtils.FEN.id, fen, useAnimation);
-	};
-	this.orientation = function (orientation) {
-		if (arguments.length === 0) {
-			return this.getOrientation();
-		} else {
-			this.setOrientation(orientation);
-		}
-	};
-	
-	this.setOrientation = function (orientation) {
-		var position;
-		
-		if (orientation === ChessUtils.ORIENTATION.flip || _orientation !== orientation) {
-			
-			clearSelection();
-			
-			_orientation = (_orientation === ChessUtils.ORIENTATION.white) ?
-					ChessUtils.ORIENTATION.black : ChessUtils.ORIENTATION.white;
-				
-			if (_orientation === ChessUtils.ORIENTATION.white) {
-				$('.' + Chessboard.CSS.label.row.className).removeClass(Chessboard.CSS.label.hidden.className);
-				$('.' + Chessboard.CSS.label.column.className).removeClass(Chessboard.CSS.label.hidden.className);
-				$('.' + Chessboard.CSS.label.row.reversed.className).addClass(Chessboard.CSS.label.hidden.className);
-				$('.' + Chessboard.CSS.label.column.reversed.className).addClass(Chessboard.CSS.label.hidden.className);
-			} else {
-				$('.' + Chessboard.CSS.label.row.className).addClass(Chessboard.CSS.label.hidden.className);
-				$('.' + Chessboard.CSS.label.column.className).addClass(Chessboard.CSS.label.hidden.className);
-				$('.' + Chessboard.CSS.label.row.reversed.className).removeClass(Chessboard.CSS.label.hidden.className);
-				$('.' + Chessboard.CSS.label.column.reversed.className).removeClass(Chessboard.CSS.label.hidden.className);
-			}
-			
-			drawPosition();
-		}
-	};
-	this.getOrientation = function () {
-		return _orientation;
-	};
-	/**
-	Sets the chessboard size to match the container element size.
-	
-	@method resize
-	@public
-	@deprecated
-	*/
-	this.resize = function () {
-		onSizeChanged();
-	};
-	/**
-	Sets the chessboard position to the classical start position.
-	The method sets the chessboard orientation to Chessboard.ORIENTATION.white.
-	
-	@method start
-	@public
-	@param {Boolean} [useAnimation=true]  Whether to use animation for the process.
-	*/
-	this.start = function (useAnimation) {
-		
-		if (_preventPositionChange) { return; }
-		
-		useAnimation = (arguments.length === 0) ? _config.useAnimation : useAnimation;
-		this.position(ChessUtils.FEN.positions.start, useAnimation);
-		_orientation = ChessUtils.ORIENTATION.white;
-	};
-	
-	/**
-	Sets wether the board reacts to user clicks and other inputs. After initialization it is set to true. 
-	The game controller logic should take care of setting it according to who plays.
-	
-	@method enableUserInput
-	@public
-	@param {Boolean} [enabled=true]  Whether to enable user interaction.
-	*/
-	this.enableUserInput = function (enabled) {
-		if (arguments.length === 0) {
-			enabled = true;
-		}
-		_userInputEnabled = enabled;
-	};
-	/**
-	Gets wether the board reacts to user clicks and other inputs.
-	
-	@method isUserInputEnabled
-	@public
-	@return {Boolean} Returns whether to enable user interaction.
-	*/
-	this.isUserInputEnabled = function () {
-		return _userInputEnabled;
-	};
-	
-	
-	
-	/*
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-  
-	PRIVATE METHODS
-	
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	*/
-	/*
-	----------------------------------------------------------------------------
-	Init methods
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Initializes the chessboard.
-	
-	@method init
-	@private
-	@param {String} containerId The html id of the container div where the chessboard will be created.
-	@param {Object} config Configuration object which is either a position string or an object.
-	*/
-	init = function (containerId, config) {
-		var position;
-		
-		position = initConfig(config);
-		initDOM(containerId);
-		bindEvents();
-		
-		_userInputEnabled = true;
-		
-		return position;
-	};
-	/**
-	Processes the config object given at init.
-	
-	@method initConfig
-	@private
-	@param {Object} config Configuration object which is either a position string or an object with the following attributes: position, useAnimation, orientation, showBoardLabels.
-	*/
-	initConfig = function (config) {
-		var position;
-		
-		if (typeof config === 'undefined') {
-			position = ChessUtils.convertFenToPosition(ChessUtils.FEN.positions.start);
-			return position;
-		} else if (typeof config === 'string') {
-			if (config.toLowerCase() === ChessUtils.FEN.startId) {
-				position = ChessUtils.convertFenToPosition(ChessUtils.FEN.positions.start);
-			} else if (config.toLowerCase() === ChessUtils.FEN.emptyId) {
-				position = ChessUtils.convertFenToPosition(ChessUtils.FEN.positions.empty);
-			} else {
-				position = config;
-			}
-			return position;
-		} else if (typeof config.position === 'undefined') {
-			position = ChessUtils.convertNotationToPosition(config);
-			return position;
-		} else if (config.position !== null) {
-			if (ChessUtils.isValidFen(config.position)) {
-				config.position = ChessUtils.convertFenToPosition(config.position);
-			}
-			position = config.position;
-		}
-		_orientation = config.orientation === ChessUtils.ORIENTATION.black ?
-				ChessUtils.ORIENTATION.black : ChessUtils.ORIENTATION.white;
-		
-		_config.useAnimation = config.useAnimation === false ? false : true;
-		_config.showBoardLabels = (config.showNotation === false) || (config.showBoardLabels === false) ? false : true;
-		_config.showNextMove = config.showNextMove === false ? false : true;
-		
-		if (config.eventHandlers) {
-
-			if (config.eventHandlers.onChange &&
-					typeof config.eventHandlers.onChange === 'function') {
-				_eventHandlers.onChange = config.eventHandlers.onChange;
-			}
-			if (config.eventHandlers.onChanged &&
-					typeof config.eventHandlers.onChanged === 'function') {
-				_eventHandlers.onChanged = config.eventHandlers.onChanged;
-			}
-			if (config.eventHandlers.onPieceSelected &&
-					typeof config.eventHandlers.onPieceSelected === 'function') {
-				_eventHandlers.onPieceSelected = config.eventHandlers.onPieceSelected;
-			}
-			if (config.eventHandlers.onMove &&
-					typeof config.eventHandlers.onMove === 'function') {
-				_eventHandlers.onMove = config.eventHandlers.onMove;
-			}
-	
-		}
-		
-		return position;
-		// TODO:  Deprecated compatibility settings
-	};
-	/**
-	Initialises the DOM tree for the chessboard.
-	
-	@method initDOM
-	@private
-	@param {String} containerId The html id of the container div where the chessboard will be created.
-	*/
-	initDOM = function (containerId) {
-		var i,
-			html = '',
-			id,
-			className;
-		
-		_containerSelector = '#' + containerId;
-		
-		if (!$(_containerSelector)) { throw new Error("ContainerId provided doesn't point to a DOM element."); }
-		
-		// Adding dynamic style for resize events
-		html += '<style id="' + cssGetStyleUniqueId() + '"></style>';
-		
-		
-		// Board div
-		html += '<div id="' + cssGetBoardUniqueId() + '" class="' +
-			Chessboard.CSS.board.className + '">';
-		
-		for (i = 0; i < 64; i++) {
-			// Square div
-			id = cssGetSquareUniqueId(i);
-			className = Chessboard.CSS.square.className;
-			className += ' ' + Chessboard.CSS.square.createClassName(i);
-			if (i % 8 === 7) {
-				className += ' ' + Chessboard.CSS.square.lastColumn.className;
-			}
-			html += '<div id="' + id + '" class="' + className + '">';
-						
-			// Column indicators
-			if (ChessUtils.convertIndexToRow(i) === 0) {
-				html += '<div class="' + Chessboard.CSS.label.className + ' ' +
-					Chessboard.CSS.label.column.className + '">' +
-					ChessUtils.NOTATION.columnConverter[ChessUtils.convertIndexToColumn(i)] + '</div>';
-			}
-			if (ChessUtils.convertIndexToRow(i) === 7) {
-				html += '<div class="' + Chessboard.CSS.label.className + ' ' +
-					Chessboard.CSS.label.hidden.className + ' ' +
-					Chessboard.CSS.label.column.reversed.className + '">' +
-					ChessUtils.NOTATION.columnConverter[ChessUtils.convertIndexToColumn(7 - i)] + '</div>';
-			}
-			// Row indicators
-			if (ChessUtils.convertIndexToColumn(i) === 0) {
-				html += '<div class="' + Chessboard.CSS.label.className + ' ' +
-					Chessboard.CSS.label.row.className + '">' +
-					ChessUtils.NOTATION.rowConverter[ChessUtils.convertIndexToRow(i)] + '</div>';
-			}
-			if (ChessUtils.convertIndexToColumn(i) === 7) {
-				html += '<div class="' + Chessboard.CSS.label.className + ' ' +
-					Chessboard.CSS.label.hidden.className + ' ' +
-					Chessboard.CSS.label.row.reversed.className + '">' +
-					ChessUtils.NOTATION.rowConverter[7 - ChessUtils.convertIndexToRow(i)] + '</div>';
-			}
-			
-			// Piece placeholders
-			className = Chessboard.CSS.piece.className;
-			className += ' ' + Chessboard.CSS.piece.none.className;
-			html += '<div id="' + cssGetPieceUniqueId(i) + '" class="' + className + '"></div>';
-						
-			html += '</div>';
-		}
-		
-		html += '</div>';
-		
-		$(_containerSelector).html(html);
-		$(_containerSelector).css('display', 'inline-block');
-	};
-	
-	/*
-	----------------------------------------------------------------------------
-	Event handling related methods
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Binds chessboard events to elements.
-	
-	@method bindEvents
-	@private
-	*/
-	bindEvents = function () {
-		$(window).on('resize.chessEvents', onSizeChanged);
-		
-		$('div' + _containerSelector + ' div.' + Chessboard.CSS.square.className).on('click', onSquareClicked);
-	};
-	/**
-	Unbinds chessboard events to elements in case the board is detroyed.
-	
-	@method unbindEvents
-	@private
-	*/
-	unbindEvents = function () {
-		$(window).unbind('resize.chessEvents');
-		$('div' + _containerSelector + ' div.' + Chessboard.CSS.square.className).unbind('click');
-	};
-	/**
-	Resizes elements in case the window is resized.
-	
-	@method onSizeChanged
-	@private
-	*/
-	onSizeChanged = function () {
-		var	newSquareWidth,
-			newPieceFontSize,
-			newLabelFontSize,
-			html;
-		
-		newSquareWidth = Math.floor($(_containerSelector).width() / 8);
-		newPieceFontSize = newSquareWidth * 0.85;
-		newLabelFontSize = Math.min(Math.max(newSquareWidth * 0.5, 8), 20);
-
-		html = '\
-			div' + _containerSelector + ' div.' + Chessboard.CSS.piece.className + ' {\
-				font-size: ' + newPieceFontSize + 'px;\
-				height: ' + newSquareWidth + 'px;\
-			}\
-			div' + _containerSelector + ' div.' + Chessboard.CSS.label.className + ' {\
-				font-size: ' + newLabelFontSize + 'px;\
-				' + (!_config.showBoardLabels ? 'display: none;' : '') + '\
-			}';
-		$('#' + cssGetStyleUniqueId()).html(html);
-	};
-	/**
-	Handles onClick event on squares.
-	
-	@method onSquareClicked
-	@private
-	*/
-	onSquareClicked = function () {
-		var index = getSquareIndexFromId($(this).context.id),
-			i,
-			nextPosition;
-		
-		if (!_userInputEnabled) { return; }
-		
-		if (_selectedSquareIndex !== null && _validMoves.indexOf(index) > -1) {
-			if (_eventHandlers.onMove) {
-				nextPosition = _eventHandlers.onMove({from: ChessUtils.convertIndexToNotationSquare(_selectedSquareIndex),
-																		to: ChessUtils.convertIndexToNotationSquare(index)});
-				if (nextPosition !== null) {
-					_that.setPosition(nextPosition);
-					clearSelection();
-				}
-			}
-		} else {
-		
-			if (_selectedSquareIndex !== index) {
-				if (_eventHandlers.onPieceSelected) {
-					_validMoves = _eventHandlers.onPieceSelected(ChessUtils.convertIndexToNotationSquare(index));
-					
-					if (_validMoves && _validMoves.length !== 0) {
-						setSelectedSquareElement(index);
-						
-						if (!isSquareEmpty(index)) {
-							for (i = 0; i < _validMoves.length; i++) {
-								getSquareElement(_validMoves[i]).addClass(Chessboard.CSS.square.validMove.className);
-							}
-						}
-					} else {
-						clearSelection();
-					}
-				}
-			}
-		}
-	
-	};
-	/**
-	Clears the current selection.
-	
-	@method clearSelection
-	@private
-	*/
-	clearSelection = function () {
-		if (_selectedSquareIndex !== null) {
-			getSquareElement(_selectedSquareIndex).removeClass(Chessboard.CSS.square.selected.className);
-			$('div' + _containerSelector + ' div.' + Chessboard.CSS.square.validMove.className).
-					removeClass(Chessboard.CSS.square.validMove.className);
-		}
-		_selectedSquareIndex = null;
-	};
-	/**
-	Sets the index-th square to selected if there is a piece on it. It deletes the previous selection.
-	
-	@method setSelectedSquareElement
-	@private
-	@param {Integer} index The index of the quare to be selected.
-	*/
-	setSelectedSquareElement = function (index) {
-		clearSelection();
-		if (!isSquareEmpty(index)) {
-			_selectedSquareIndex = index;
-			getSquareElement(_selectedSquareIndex).addClass(Chessboard.CSS.square.selected.className);
-		}
-	};
-	
-	/*
-	----------------------------------------------------------------------------
-	Managing board
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Returns the a JQuery object of the square div selected by the index.
-	
-	@method getSquareElement
-	@private
-	@param {Integer} index Index of a square (0-63)
-	@return {Object} The JQuery object of the square div
-	*/
-	getSquareElement = function (index) {
-		return $('#' + cssGetSquareUniqueId(index));
-	};
-	/**
-	Returns the index of a square div based on the html id attribute.
-	
-	@method getSquareIndexFromId
-	@private
-	@param {String} htmlId The html id attribute of the square (The last piece contains the id part)
-	@return {Integer} The index of the square (0-63)
-	*/
-	getSquareIndexFromId = function (htmlId) {
-		var classParts,
-			originalIndex;
-		
-		classParts = htmlId.split(Chessboard.CSS.pathSeparator);
-		originalIndex = parseInt(classParts[classParts.length - 1], 10);
-		return _orientation === ChessUtils.ORIENTATION.white ? originalIndex : 63 - originalIndex;
-	};
-	/**
-	Returns the a JQuery object of the piece div selected by the index.
-	
-	@method getPieceElement
-	@private
-	@param {Integer} index Index of a square (0-63)
-	@return {Object} The JQuery object of the piece div
-	*/
-	getPieceElement = function (index) {
-		return $('#' + cssGetPieceUniqueId(index));
-	};
-	/**
-	Returns if a selected index is empty.
-	
-	@method isSquareEmpty
-	@private
-	@param {Integer} index Index of a square (0-63)
-	@return {Boolean}
-	*/
-	isSquareEmpty = function (index) {
-		// TODO: Check why not using position string
-		return $(getPieceElement(index)).hasClass(Chessboard.CSS.piece.none.className);
-	};
-	/**
-	Draws a piece at the selected position.
-	
-	@method drawPiece
-	@private
-	@param {Integer} index Index of a square (0-63)
-	@param {String} positionPiece The string representing one piece in the position string.
-	@param {Boolean} isHidden Whether the piece should be placed there as a hidden piece for aimation purposes.
-	*/
-	drawPiece = function (index, positionPiece, isHidden) {
-		var className = '',
-			player = ChessUtils.getPlayerNameFromPiece(positionPiece),
-			piece = ChessUtils.PIECE.codeToPieceName[positionPiece.toLowerCase()];
-		
-		if (isHidden !== true) { isHidden = false; }
-		
-		className = Chessboard.CSS.piece.className;
-		if (positionPiece !== ChessUtils.POSITION.empty) {
-			className += ' ' + Chessboard.CSS.piece.createClassName(piece);
-			className += ' ' + Chessboard.CSS.player.createClassName(player);
-		} else {
-			className += ' ' + Chessboard.CSS.piece.none.className;
-		}
-		if (getPieceElement(index).attr('class') !== className) {
-			getPieceElement(index).attr('class', className);
-		}
-		getPieceElement(index).css('opacity', isHidden ? 0 : 1);
-	};
-	/**
-	Draws the entire board from the position string using the drawPiece method.
-	
-	@method drawPosition
-	@private
-	*/
-	drawPosition = function () {
-		var i;
-		
-		for (i = 0; i < 64; i++) {
-			drawPiece(i, _position[i]);
-		}
-	};
-	/**
-	Draws animated the entire board from the position string.
-	
-	@method drawAnimations
-	@private
-	@param {String} position A position string to animate to from the actual position.
-	*/
-	drawAnimations = function (position) {
-		var i;
-		
-		for (i = 0; i < 64; i++) {
-			if (_position[i] !== position[i]) {
-				if ((_position[i] !== '0') && (position[i] !== '0')) {
-					drawPiece(i, position[i], true);
-					$(getPieceElement(i)).animate({'opacity': '1'}, Chessboard.ANIMATION.fadeInTime);
-					
-					// Replacing characters
-				} else if (_position[i] === '0') {
-					// New piece on square
-					drawPiece(i, position[i], true);
-					$(getPieceElement(i)).animate({'opacity': '1'}, Chessboard.ANIMATION.fadeInTime);
-				} else if (position[i] === '0') {
-					// Removing piece from square
-					drawPiece(i, position[i], true);
-				}
-			}
-		}
-	};
-	
-	
-	
-	/*
-	----------------------------------------------------------------------------
-	CSS helper methods
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Creates a unique prefix for css classnames based on enclosing div id 
-	in order to be able to handle multiple boards on one page.
-	
-	@method cssGetUniquePrefix
-	@private
-	@return {String}
-	*/
-	cssGetUniquePrefix = function () {
-		return $(_containerSelector).attr('id') + '_';
-	};
-	/**
-	Returns unique css classname for the board div.
-	
-	@method cssGetBoardUniqueId
-	@private
-	@return {String}
-	*/
-	cssGetBoardUniqueId = function (index) {
-		return cssGetUniquePrefix() + Chessboard.CSS.board.id;
-	};
-	/**
-	Returns unique css id for a square div.
-	
-	@method cssGetSquareUniqueId
-	@private
-	@return {String}
-	*/
-	cssGetSquareUniqueId = function (index) {
-		return cssGetUniquePrefix() + Chessboard.CSS.square.idPrefix + '_' +
-			(_orientation === ChessUtils.ORIENTATION.white ? index : 63 - index);
-	};
-	/**
-	Returns unique css id for a piece div.
-	
-	@method cssGetPieceUniqueId
-	@private
-	@return {String}
-	*/
-	cssGetPieceUniqueId = function (index) {
-		return cssGetUniquePrefix() + Chessboard.CSS.piece.idPrefix + '_' +
-			(_orientation === ChessUtils.ORIENTATION.white ? index : 63 - index);
-	};
-	/**
-	Returns unique css id for the style div.
-	
-	@method cssGetStyleUniqueId
-	@private
-	@return {String}
-	*/
-	cssGetStyleUniqueId = function () {
-		return cssGetUniquePrefix() + Chessboard.CSS.style.id;
-	};
-	
-	
-	/*
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-  
-	CONSTRUCTOR CODE
-	
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	*/
-	
-	this.setPosition(init(containerId, config));
-	onSizeChanged();
-	
-	// It is a bit of a hack.
-	if (_orientation === ChessUtils.ORIENTATION.black) {
-		this.setOrientation(ChessUtils.ORIENTATION.flip);
-		_orientation = ChessUtils.ORIENTATION.black;
-	}
-	
-	_preventCallingEvents = false;
-	
+  return (validSquare(tmp[0]) === true && validSquare(tmp[1]) === true);
 }
 
+function validSquare(square) {
+  if (typeof square !== 'string') return false;
+  return (square.search(/^[a-h][1-8]$/) !== -1);
+}
 
+function validPieceCode(code) {
+  if (typeof code !== 'string') return false;
+  return (code.search(/^[bw][KQRNBP]$/) !== -1);
+}
 
+// TODO: this whole function could probably be replaced with a single regex
+function validFen(fen) {
+  if (typeof fen !== 'string') return false;
 
+  // cut off any move, castling, etc info from the end
+  // we're only interested in position information
+  fen = fen.replace(/ .+$/, '');
 
+  // FEN should be 8 sections separated by slashes
+  var chunks = fen.split('/');
+  if (chunks.length !== 8) return false;
 
+  // check the piece sections
+  for (var i = 0; i < 8; i++) {
+    if (chunks[i] === '' ||
+        chunks[i].length > 8 ||
+        chunks[i].search(/[^kqrbnpKQRNBP1-8]/) !== -1) {
+      return false;
+    }
+  }
 
+  return true;
+}
 
+function validPositionObject(pos) {
+  if (typeof pos !== 'object') return false;
 
+  for (var i in pos) {
+    if (pos.hasOwnProperty(i) !== true) continue;
 
+    if (validSquare(i) !== true || validPieceCode(pos[i]) !== true) {
+      return false;
+    }
+  }
 
+  return true;
+}
 
+// convert FEN piece code to bP, wK, etc
+function fenToPieceCode(piece) {
+  // black piece
+  if (piece.toLowerCase() === piece) {
+    return 'b' + piece.toUpperCase();
+  }
 
+  // white piece
+  return 'w' + piece.toUpperCase();
+}
 
+// convert bP, wK, etc code to FEN structure
+function pieceCodeToFen(piece) {
+  var tmp = piece.split('');
 
+  // white piece
+  if (tmp[0] === 'w') {
+    return tmp[1].toUpperCase();
+  }
 
+  // black piece
+  return tmp[1].toLowerCase();
+}
+
+// convert FEN string to position object
+// returns false if the FEN string is invalid
+function fenToObj(fen) {
+  if (validFen(fen) !== true) {
+    return false;
+  }
+
+  // cut off any move, castling, etc info from the end
+  // we're only interested in position information
+  fen = fen.replace(/ .+$/, '');
+
+  var rows = fen.split('/');
+  var position = {};
+
+  var currentRow = 8;
+  for (var i = 0; i < 8; i++) {
+    var row = rows[i].split('');
+    var colIndex = 0;
+
+    // loop through each character in the FEN section
+    for (var j = 0; j < row.length; j++) {
+      // number / empty squares
+      if (row[j].search(/[1-8]/) !== -1) {
+        var emptySquares = parseInt(row[j], 10);
+        colIndex += emptySquares;
+      }
+      // piece
+      else {
+        var square = COLUMNS[colIndex] + currentRow;
+        position[square] = fenToPieceCode(row[j]);
+        colIndex++;
+      }
+    }
+
+    currentRow--;
+  }
+
+  return position;
+}
+
+// position object to FEN string
+// returns false if the obj is not a valid position object
+function objToFen(obj) {
+  if (validPositionObject(obj) !== true) {
+    return false;
+  }
+
+  var fen = '';
+
+  var currentRow = 8;
+  for (var i = 0; i < 8; i++) {
+    for (var j = 0; j < 8; j++) {
+      var square = COLUMNS[j] + currentRow;
+
+      // piece exists
+      if (obj.hasOwnProperty(square) === true) {
+        fen += pieceCodeToFen(obj[square]);
+      }
+
+      // empty space
+      else {
+        fen += '1';
+      }
+    }
+
+    if (i !== 7) {
+      fen += '/';
+    }
+
+    currentRow--;
+  }
+
+  // squeeze the numbers together
+  // haha, I love this solution...
+  fen = fen.replace(/11111111/g, '8');
+  fen = fen.replace(/1111111/g, '7');
+  fen = fen.replace(/111111/g, '6');
+  fen = fen.replace(/11111/g, '5');
+  fen = fen.replace(/1111/g, '4');
+  fen = fen.replace(/111/g, '3');
+  fen = fen.replace(/11/g, '2');
+
+  return fen;
+}
+
+window['ChessBoard'] = window['ChessBoard'] || function(containerElOrId, cfg) {
+'use strict';
+
+cfg = cfg || {};
+
+//------------------------------------------------------------------------------
+// Constants
+//------------------------------------------------------------------------------
+
+var MINIMUM_JQUERY_VERSION = '1.7.0',
+  START_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR',
+  START_POSITION = fenToObj(START_FEN);
+
+// use unique class names to prevent clashing with anything else on the page
+// and simplify selectors
+var CSS = {
+  alpha: 'alpha-d2270',
+  black: 'black-3c85d',
+  board: 'board-b72b1',
+  chessboard: 'chessboard-63f37',
+  clearfix: 'clearfix-7da63',
+  highlight1: 'highlight1-32417',
+  highlight2: 'highlight2-9c5d2',
+  notation: 'notation-322f9',
+  numeric: 'numeric-fc462',
+  piece: 'piece-417db',
+  row: 'row-5277c',
+  sparePieces: 'spare-pieces-7492f',
+  sparePiecesBottom: 'spare-pieces-bottom-ae20f',
+  sparePiecesTop: 'spare-pieces-top-4028b',
+  square: 'square-55d63',
+  white: 'white-1e1d7'
+};
+
+//------------------------------------------------------------------------------
+// Module Scope Variables
+//------------------------------------------------------------------------------
+
+// DOM elements
+var containerEl,
+  boardEl,
+  draggedPieceEl,
+  sparePiecesTopEl,
+  sparePiecesBottomEl;
+
+// constructor return object
+var widget = {};
+
+//------------------------------------------------------------------------------
+// Stateful
+//------------------------------------------------------------------------------
+
+var ANIMATION_HAPPENING = false,
+  BOARD_BORDER_SIZE = 2,
+  CURRENT_ORIENTATION = 'white',
+  CURRENT_POSITION = {},
+  SQUARE_SIZE,
+  DRAGGED_PIECE,
+  DRAGGED_PIECE_LOCATION,
+  DRAGGED_PIECE_SOURCE,
+  DRAGGING_A_PIECE = false,
+  SPARE_PIECE_ELS_IDS = {},
+  SQUARE_ELS_IDS = {},
+  SQUARE_ELS_OFFSETS;
+
+//------------------------------------------------------------------------------
+// JS Util Functions
+//------------------------------------------------------------------------------
+
+// http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+function createId() {
+  return 'xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx'.replace(/x/g, function(c) {
+    var r = Math.random() * 16 | 0;
+    return r.toString(16);
+  });
+}
+
+function deepCopy(thing) {
+  return JSON.parse(JSON.stringify(thing));
+}
+
+function parseSemVer(version) {
+  var tmp = version.split('.');
+  return {
+    major: parseInt(tmp[0], 10),
+    minor: parseInt(tmp[1], 10),
+    patch: parseInt(tmp[2], 10)
+  };
+}
+
+// returns true if version is >= minimum
+function compareSemVer(version, minimum) {
+  version = parseSemVer(version);
+  minimum = parseSemVer(minimum);
+
+  var versionNum = (version.major * 10000 * 10000) +
+    (version.minor * 10000) + version.patch;
+  var minimumNum = (minimum.major * 10000 * 10000) +
+    (minimum.minor * 10000) + minimum.patch;
+
+  return (versionNum >= minimumNum);
+}
+
+//------------------------------------------------------------------------------
+// Validation / Errors
+//------------------------------------------------------------------------------
+
+function error(code, msg, obj) {
+  // do nothing if showErrors is not set
+  if (cfg.hasOwnProperty('showErrors') !== true ||
+      cfg.showErrors === false) {
+    return;
+  }
+
+  var errorText = 'ChessBoard Error ' + code + ': ' + msg;
+
+  // print to console
+  if (cfg.showErrors === 'console' &&
+      typeof console === 'object' &&
+      typeof console.log === 'function') {
+    console.log(errorText);
+    if (arguments.length >= 2) {
+      console.log(obj);
+    }
+    return;
+  }
+
+  // alert errors
+  if (cfg.showErrors === 'alert') {
+    if (obj) {
+      errorText += '\n\n' + JSON.stringify(obj);
+    }
+    window.alert(errorText);
+    return;
+  }
+
+  // custom function
+  if (typeof cfg.showErrors === 'function') {
+    cfg.showErrors(code, msg, obj);
+  }
+}
+
+// check dependencies
+function checkDeps() {
+  // if containerId is a string, it must be the ID of a DOM node
+  if (typeof containerElOrId === 'string') {
+    // cannot be empty
+    if (containerElOrId === '') {
+      window.alert('ChessBoard Error 1001: ' +
+        'The first argument to ChessBoard() cannot be an empty string.' +
+        '\n\nExiting...');
+      return false;
+    }
+
+    // make sure the container element exists in the DOM
+    var el = document.getElementById(containerElOrId);
+    if (! el) {
+      window.alert('ChessBoard Error 1002: Element with id "' +
+        containerElOrId + '" does not exist in the DOM.' +
+        '\n\nExiting...');
+      return false;
+    }
+
+    // set the containerEl
+    containerEl = $(el);
+  }
+
+  // else it must be something that becomes a jQuery collection
+  // with size 1
+  // ie: a single DOM node or jQuery object
+  else {
+    containerEl = $(containerElOrId);
+
+    if (containerEl.length !== 1) {
+      window.alert('ChessBoard Error 1003: The first argument to ' +
+        'ChessBoard() must be an ID or a single DOM node.' +
+        '\n\nExiting...');
+      return false;
+    }
+  }
+
+  // JSON must exist
+  if (! window.JSON ||
+      typeof JSON.stringify !== 'function' ||
+      typeof JSON.parse !== 'function') {
+    window.alert('ChessBoard Error 1004: JSON does not exist. ' +
+      'Please include a JSON polyfill.\n\nExiting...');
+    return false;
+  }
+
+  // check for a compatible version of jQuery
+  if (! (typeof window.$ && $.fn && $.fn.jquery &&
+      compareSemVer($.fn.jquery, MINIMUM_JQUERY_VERSION) === true)) {
+    window.alert('ChessBoard Error 1005: Unable to find a valid version ' +
+      'of jQuery. Please include jQuery ' + MINIMUM_JQUERY_VERSION + ' or ' +
+      'higher on the page.\n\nExiting...');
+    return false;
+  }
+
+  return true;
+}
+
+function validAnimationSpeed(speed) {
+  if (speed === 'fast' || speed === 'slow') {
+    return true;
+  }
+
+  if ((parseInt(speed, 10) + '') !== (speed + '')) {
+    return false;
+  }
+
+  return (speed >= 0);
+}
+
+// validate config / set default options
+function expandConfig() {
+  if (typeof cfg === 'string' || validPositionObject(cfg) === true) {
+    cfg = {
+      position: cfg
+    };
+  }
+
+  // default for orientation is white
+  if (cfg.orientation !== 'black') {
+    cfg.orientation = 'white';
+  }
+  CURRENT_ORIENTATION = cfg.orientation;
+
+  // default for showNotation is true
+  if (cfg.showNotation !== false) {
+    cfg.showNotation = true;
+  }
+
+  // default for draggable is false
+  if (cfg.draggable !== true) {
+    cfg.draggable = false;
+  }
+
+  // default for dropOffBoard is 'snapback'
+  if (cfg.dropOffBoard !== 'trash') {
+    cfg.dropOffBoard = 'snapback';
+  }
+
+  // default for sparePieces is false
+  if (cfg.sparePieces !== true) {
+    cfg.sparePieces = false;
+  }
+
+  // draggable must be true if sparePieces is enabled
+  if (cfg.sparePieces === true) {
+    cfg.draggable = true;
+  }
+
+  // default piece theme is wikipedia
+  if (cfg.hasOwnProperty('pieceTheme') !== true ||
+      (typeof cfg.pieceTheme !== 'string' &&
+       typeof cfg.pieceTheme !== 'function')) {
+    cfg.pieceTheme = 'img/chesspieces/wikipedia/{piece}.png';
+  }
+
+  // animation speeds
+  if (cfg.hasOwnProperty('appearSpeed') !== true ||
+      validAnimationSpeed(cfg.appearSpeed) !== true) {
+    cfg.appearSpeed = 200;
+  }
+  if (cfg.hasOwnProperty('moveSpeed') !== true ||
+      validAnimationSpeed(cfg.moveSpeed) !== true) {
+    cfg.moveSpeed = 200;
+  }
+  if (cfg.hasOwnProperty('snapbackSpeed') !== true ||
+      validAnimationSpeed(cfg.snapbackSpeed) !== true) {
+    cfg.snapbackSpeed = 50;
+  }
+  if (cfg.hasOwnProperty('snapSpeed') !== true ||
+      validAnimationSpeed(cfg.snapSpeed) !== true) {
+    cfg.snapSpeed = 25;
+  }
+  if (cfg.hasOwnProperty('trashSpeed') !== true ||
+      validAnimationSpeed(cfg.trashSpeed) !== true) {
+    cfg.trashSpeed = 100;
+  }
+
+  // make sure position is valid
+  if (cfg.hasOwnProperty('position') === true) {
+    if (cfg.position === 'start') {
+      CURRENT_POSITION = deepCopy(START_POSITION);
+    }
+
+    else if (validFen(cfg.position) === true) {
+      CURRENT_POSITION = fenToObj(cfg.position);
+    }
+
+    else if (validPositionObject(cfg.position) === true) {
+      CURRENT_POSITION = deepCopy(cfg.position);
+    }
+
+    else {
+      error(7263, 'Invalid value passed to config.position.', cfg.position);
+    }
+  }
+
+  return true;
+}
+
+//------------------------------------------------------------------------------
+// DOM Misc
+//------------------------------------------------------------------------------
+
+// calculates square size based on the width of the container
+// got a little CSS black magic here, so let me explain:
+// get the width of the container element (could be anything), reduce by 1 for
+// fudge factor, and then keep reducing until we find an exact mod 8 for
+// our square size
+function calculateSquareSize() {
+  var containerWidth = parseInt(containerEl.css('width'), 10);
+
+  // defensive, prevent infinite loop
+  if (! containerWidth || containerWidth <= 0) {
+    return 0;
+  }
+
+  // pad one pixel
+  var boardWidth = containerWidth - 1;
+
+  while (boardWidth % 8 !== 0 && boardWidth > 0) {
+    boardWidth--;
+  }
+
+  return (boardWidth / 8);
+}
+
+// create random IDs for elements
+function createElIds() {
+  // squares on the board
+  for (var i = 0; i < COLUMNS.length; i++) {
+    for (var j = 1; j <= 8; j++) {
+      var square = COLUMNS[i] + j;
+      SQUARE_ELS_IDS[square] = square + '-' + createId();
+    }
+  }
+
+  // spare pieces
+  var pieces = 'KQRBNP'.split('');
+  for (var i = 0; i < pieces.length; i++) {
+    var whitePiece = 'w' + pieces[i];
+    var blackPiece = 'b' + pieces[i];
+    SPARE_PIECE_ELS_IDS[whitePiece] = whitePiece + '-' + createId();
+    SPARE_PIECE_ELS_IDS[blackPiece] = blackPiece + '-' + createId();
+  }
+}
+
+//------------------------------------------------------------------------------
+// Markup Building
+//------------------------------------------------------------------------------
+
+function buildBoardContainer() {
+  var html = '<div class="' + CSS.chessboard + '">';
+
+  if (cfg.sparePieces === true) {
+    html += '<div class="' + CSS.sparePieces + ' ' +
+      CSS.sparePiecesTop + '"></div>';
+  }
+
+  html += '<div class="' + CSS.board + '"></div>';
+
+  if (cfg.sparePieces === true) {
+    html += '<div class="' + CSS.sparePieces + ' ' +
+      CSS.sparePiecesBottom + '"></div>';
+  }
+
+  html += '</div>';
+
+  return html;
+}
 
 /*
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
+var buildSquare = function(color, size, id) {
+  var html = '<div class="' + CSS.square + ' ' + CSS[color] + '" ' +
+  'style="width: ' + size + 'px; height: ' + size + 'px" ' +
+  'id="' + id + '">';
 
-CHESSUTILS
+  if (cfg.showNotation === true) {
 
-----------------------------------------------------------------------------
-----------------------------------------------------------------------------
+  }
+
+  html += '</div>';
+
+  return html;
+};
 */
 
+function buildBoard(orientation) {
+  if (orientation !== 'black') {
+    orientation = 'white';
+  }
 
-/**
-ChessUtils class to contain static utility functions.
+  var html = '';
 
-@class ChessUtils
+  // algebraic notation / orientation
+  var alpha = deepCopy(COLUMNS);
+  var row = 8;
+  if (orientation === 'black') {
+    alpha.reverse();
+    row = 1;
+  }
+
+  var squareColor = 'white';
+  for (var i = 0; i < 8; i++) {
+    html += '<div class="' + CSS.row + '">';
+    for (var j = 0; j < 8; j++) {
+      var square = alpha[j] + row;
+
+      html += '<div class="' + CSS.square + ' ' + CSS[squareColor] + ' ' +
+        'square-' + square + '" ' +
+        'style="width: ' + SQUARE_SIZE + 'px; height: ' + SQUARE_SIZE + 'px" ' +
+        'id="' + SQUARE_ELS_IDS[square] + '" ' +
+        'data-square="' + square + '">';
+
+      if (cfg.showNotation === true) {
+        // alpha notation
+        if ((orientation === 'white' && row === 1) ||
+            (orientation === 'black' && row === 8)) {
+          html += '<div class="' + CSS.notation + ' ' + CSS.alpha + '">' +
+            alpha[j] + '</div>';
+        }
+
+        // numeric notation
+        if (j === 0) {
+          html += '<div class="' + CSS.notation + ' ' + CSS.numeric + '">' +
+            row + '</div>';
+        }
+      }
+
+      html += '</div>'; // end .square
+
+      squareColor = (squareColor === 'white' ? 'black' : 'white');
+    }
+    html += '<div class="' + CSS.clearfix + '"></div></div>';
+
+    squareColor = (squareColor === 'white' ? 'black' : 'white');
+
+    if (orientation === 'white') {
+      row--;
+    }
+    else {
+      row++;
+    }
+  }
+
+  return html;
+}
+
+function buildPieceImgSrc(piece) {
+  if (typeof cfg.pieceTheme === 'function') {
+    return cfg.pieceTheme(piece);
+  }
+
+  if (typeof cfg.pieceTheme === 'string') {
+    return cfg.pieceTheme.replace(/{piece}/g, piece);
+  }
+
+  // NOTE: this should never happen
+  error(8272, 'Unable to build image source for cfg.pieceTheme.');
+  return '';
+}
+
+function buildPiece(piece, hidden, id) {
+  var html = '<img src="' + buildPieceImgSrc(piece) + '" ';
+  if (id && typeof id === 'string') {
+    html += 'id="' + id + '" ';
+  }
+  html += 'alt="" ' +
+  'class="' + CSS.piece + '" ' +
+  'data-piece="' + piece + '" ' +
+  'style="width: ' + SQUARE_SIZE + 'px;' +
+  'height: ' + SQUARE_SIZE + 'px;';
+  if (hidden === true) {
+    html += 'display:none;';
+  }
+  html += '" />';
+
+  return html;
+}
+
+function buildSparePieces(color) {
+  var pieces = ['wK', 'wQ', 'wR', 'wB', 'wN', 'wP'];
+  if (color === 'black') {
+    pieces = ['bK', 'bQ', 'bR', 'bB', 'bN', 'bP'];
+  }
+
+  var html = '';
+  for (var i = 0; i < pieces.length; i++) {
+    html += buildPiece(pieces[i], false, SPARE_PIECE_ELS_IDS[pieces[i]]);
+  }
+
+  return html;
+}
+
+//------------------------------------------------------------------------------
+// Animations
+//------------------------------------------------------------------------------
+
+function animateSquareToSquare(src, dest, piece, completeFn) {
+  // get information about the source and destination squares
+  var srcSquareEl = $('#' + SQUARE_ELS_IDS[src]);
+  var srcSquarePosition = srcSquareEl.offset();
+  var destSquareEl = $('#' + SQUARE_ELS_IDS[dest]);
+  var destSquarePosition = destSquareEl.offset();
+
+  // create the animated piece and absolutely position it
+  // over the source square
+  var animatedPieceId = createId();
+  $('body').append(buildPiece(piece, true, animatedPieceId));
+  var animatedPieceEl = $('#' + animatedPieceId);
+  animatedPieceEl.css({
+    display: '',
+    position: 'absolute',
+    top: srcSquarePosition.top,
+    left: srcSquarePosition.left
+  });
+
+  // remove original piece from source square
+  srcSquareEl.find('.' + CSS.piece).remove();
+
+  // on complete
+  var complete = function() {
+    // add the "real" piece to the destination square
+    destSquareEl.append(buildPiece(piece));
+
+    // remove the animated piece
+    animatedPieceEl.remove();
+
+    // run complete function
+    if (typeof completeFn === 'function') {
+      completeFn();
+    }
+  };
+
+  // animate the piece to the destination square
+  var opts = {
+    duration: cfg.moveSpeed,
+    complete: complete
+  };
+  animatedPieceEl.animate(destSquarePosition, opts);
+}
+
+function animateSparePieceToSquare(piece, dest, completeFn) {
+  var srcOffset = $('#' + SPARE_PIECE_ELS_IDS[piece]).offset();
+  var destSquareEl = $('#' + SQUARE_ELS_IDS[dest]);
+  var destOffset = destSquareEl.offset();
+
+  // create the animate piece
+  var pieceId = createId();
+  $('body').append(buildPiece(piece, true, pieceId));
+  var animatedPieceEl = $('#' + pieceId);
+  animatedPieceEl.css({
+    display: '',
+    position: 'absolute',
+    left: srcOffset.left,
+    top: srcOffset.top
+  });
+
+  // on complete
+  var complete = function() {
+    // add the "real" piece to the destination square
+    destSquareEl.find('.' + CSS.piece).remove();
+    destSquareEl.append(buildPiece(piece));
+
+    // remove the animated piece
+    animatedPieceEl.remove();
+
+    // run complete function
+    if (typeof completeFn === 'function') {
+      completeFn();
+    }
+  };
+
+  // animate the piece to the destination square
+  var opts = {
+    duration: cfg.moveSpeed,
+    complete: complete
+  };
+  animatedPieceEl.animate(destOffset, opts);
+}
+
+// execute an array of animations
+function doAnimations(a, oldPos, newPos) {
+  ANIMATION_HAPPENING = true;
+
+  var numFinished = 0;
+  function onFinish() {
+    numFinished++;
+
+    // exit if all the animations aren't finished
+    if (numFinished !== a.length) return;
+
+    drawPositionInstant();
+    ANIMATION_HAPPENING = false;
+
+    // run their onMoveEnd function
+    if (cfg.hasOwnProperty('onMoveEnd') === true &&
+      typeof cfg.onMoveEnd === 'function') {
+      cfg.onMoveEnd(deepCopy(oldPos), deepCopy(newPos));
+    }
+  }
+
+  for (var i = 0; i < a.length; i++) {
+    // clear a piece
+    if (a[i].type === 'clear') {
+      $('#' + SQUARE_ELS_IDS[a[i].square] + ' .' + CSS.piece)
+        .fadeOut(cfg.trashSpeed, onFinish);
+    }
+
+    // add a piece (no spare pieces)
+    if (a[i].type === 'add' && cfg.sparePieces !== true) {
+      $('#' + SQUARE_ELS_IDS[a[i].square])
+        .append(buildPiece(a[i].piece, true))
+        .find('.' + CSS.piece)
+        .fadeIn(cfg.appearSpeed, onFinish);
+    }
+
+    // add a piece from a spare piece
+    if (a[i].type === 'add' && cfg.sparePieces === true) {
+      animateSparePieceToSquare(a[i].piece, a[i].square, onFinish);
+    }
+
+    // move a piece
+    if (a[i].type === 'move') {
+      animateSquareToSquare(a[i].source, a[i].destination, a[i].piece,
+        onFinish);
+    }
+  }
+}
+
+// returns the distance between two squares
+function squareDistance(s1, s2) {
+  s1 = s1.split('');
+  var s1x = COLUMNS.indexOf(s1[0]) + 1;
+  var s1y = parseInt(s1[1], 10);
+
+  s2 = s2.split('');
+  var s2x = COLUMNS.indexOf(s2[0]) + 1;
+  var s2y = parseInt(s2[1], 10);
+
+  var xDelta = Math.abs(s1x - s2x);
+  var yDelta = Math.abs(s1y - s2y);
+
+  if (xDelta >= yDelta) return xDelta;
+  return yDelta;
+}
+
+// returns an array of closest squares from square
+function createRadius(square) {
+  var squares = [];
+
+  // calculate distance of all squares
+  for (var i = 0; i < 8; i++) {
+    for (var j = 0; j < 8; j++) {
+      var s = COLUMNS[i] + (j + 1);
+
+      // skip the square we're starting from
+      if (square === s) continue;
+
+      squares.push({
+        square: s,
+        distance: squareDistance(square, s)
+      });
+    }
+  }
+
+  // sort by distance
+  squares.sort(function(a, b) {
+    return a.distance - b.distance;
+  });
+
+  // just return the square code
+  var squares2 = [];
+  for (var i = 0; i < squares.length; i++) {
+    squares2.push(squares[i].square);
+  }
+
+  return squares2;
+}
+
+// returns the square of the closest instance of piece
+// returns false if no instance of piece is found in position
+function findClosestPiece(position, piece, square) {
+  // create array of closest squares from square
+  var closestSquares = createRadius(square);
+
+  // search through the position in order of distance for the piece
+  for (var i = 0; i < closestSquares.length; i++) {
+    var s = closestSquares[i];
+
+    if (position.hasOwnProperty(s) === true && position[s] === piece) {
+      return s;
+    }
+  }
+
+  return false;
+}
+
+// calculate an array of animations that need to happen in order to get
+// from pos1 to pos2
+function calculateAnimations(pos1, pos2) {
+  // make copies of both
+  pos1 = deepCopy(pos1);
+  pos2 = deepCopy(pos2);
+
+  var animations = [];
+  var squaresMovedTo = {};
+
+  // remove pieces that are the same in both positions
+  for (var i in pos2) {
+    if (pos2.hasOwnProperty(i) !== true) continue;
+
+    if (pos1.hasOwnProperty(i) === true && pos1[i] === pos2[i]) {
+      delete pos1[i];
+      delete pos2[i];
+    }
+  }
+
+  // find all the "move" animations
+  for (var i in pos2) {
+    if (pos2.hasOwnProperty(i) !== true) continue;
+
+    var closestPiece = findClosestPiece(pos1, pos2[i], i);
+    if (closestPiece !== false) {
+      animations.push({
+        type: 'move',
+        source: closestPiece,
+        destination: i,
+        piece: pos2[i]
+      });
+
+      delete pos1[closestPiece];
+      delete pos2[i];
+      squaresMovedTo[i] = true;
+    }
+  }
+
+  // add pieces to pos2
+  for (var i in pos2) {
+    if (pos2.hasOwnProperty(i) !== true) continue;
+
+    animations.push({
+      type: 'add',
+      square: i,
+      piece: pos2[i]
+    })
+
+    delete pos2[i];
+  }
+
+  // clear pieces from pos1
+  for (var i in pos1) {
+    if (pos1.hasOwnProperty(i) !== true) continue;
+
+    // do not clear a piece if it is on a square that is the result
+    // of a "move", ie: a piece capture
+    if (squaresMovedTo.hasOwnProperty(i) === true) continue;
+
+    animations.push({
+      type: 'clear',
+      square: i,
+      piece: pos1[i]
+    });
+
+    delete pos1[i];
+  }
+
+  return animations;
+}
+
+//------------------------------------------------------------------------------
+// Control Flow
+//------------------------------------------------------------------------------
+
+function drawPositionInstant() {
+  // clear the board
+  boardEl.find('.' + CSS.piece).remove();
+
+  // add the pieces
+  for (var i in CURRENT_POSITION) {
+    if (CURRENT_POSITION.hasOwnProperty(i) !== true) continue;
+
+    $('#' + SQUARE_ELS_IDS[i]).append(buildPiece(CURRENT_POSITION[i]));
+  }
+}
+
+function drawBoard() {
+  boardEl.html(buildBoard(CURRENT_ORIENTATION));
+  drawPositionInstant();
+
+  if (cfg.sparePieces === true) {
+    if (CURRENT_ORIENTATION === 'white') {
+      sparePiecesTopEl.html(buildSparePieces('black'));
+      sparePiecesBottomEl.html(buildSparePieces('white'));
+    }
+    else {
+      sparePiecesTopEl.html(buildSparePieces('white'));
+      sparePiecesBottomEl.html(buildSparePieces('black'));
+    }
+  }
+}
+
+// given a position and a set of moves, return a new position
+// with the moves executed
+function calculatePositionFromMoves(position, moves) {
+  position = deepCopy(position);
+
+  for (var i in moves) {
+    if (moves.hasOwnProperty(i) !== true) continue;
+
+    // skip the move if the position doesn't have a piece on the source square
+    if (position.hasOwnProperty(i) !== true) continue;
+
+    var piece = position[i];
+    delete position[i];
+    position[moves[i]] = piece;
+  }
+
+  return position;
+}
+
+function setCurrentPosition(position) {
+  var oldPos = deepCopy(CURRENT_POSITION);
+  var newPos = deepCopy(position);
+  var oldFen = objToFen(oldPos);
+  var newFen = objToFen(newPos);
+
+  // do nothing if no change in position
+  if (oldFen === newFen) return;
+
+  // run their onChange function
+  if (cfg.hasOwnProperty('onChange') === true &&
+    typeof cfg.onChange === 'function') {
+    cfg.onChange(oldPos, newPos);
+  }
+
+  // update state
+  CURRENT_POSITION = position;
+}
+
+function isXYOnSquare(x, y) {
+  for (var i in SQUARE_ELS_OFFSETS) {
+    if (SQUARE_ELS_OFFSETS.hasOwnProperty(i) !== true) continue;
+
+    var s = SQUARE_ELS_OFFSETS[i];
+    if (x >= s.left && x < s.left + SQUARE_SIZE &&
+        y >= s.top && y < s.top + SQUARE_SIZE) {
+      return i;
+    }
+  }
+
+  return 'offboard';
+}
+
+// records the XY coords of every square into memory
+function captureSquareOffsets() {
+  SQUARE_ELS_OFFSETS = {};
+
+  for (var i in SQUARE_ELS_IDS) {
+    if (SQUARE_ELS_IDS.hasOwnProperty(i) !== true) continue;
+
+    SQUARE_ELS_OFFSETS[i] = $('#' + SQUARE_ELS_IDS[i]).offset();
+  }
+}
+
+function removeSquareHighlights() {
+  boardEl.find('.' + CSS.square)
+    .removeClass(CSS.highlight1 + ' ' + CSS.highlight2);
+}
+
+function snapbackDraggedPiece() {
+  // there is no "snapback" for spare pieces
+  if (DRAGGED_PIECE_SOURCE === 'spare') {
+    trashDraggedPiece();
+    return;
+  }
+
+  removeSquareHighlights();
+
+  // animation complete
+  function complete() {
+    drawPositionInstant();
+    draggedPieceEl.css('display', 'none');
+
+    // run their onSnapbackEnd function
+    if (cfg.hasOwnProperty('onSnapbackEnd') === true &&
+      typeof cfg.onSnapbackEnd === 'function') {
+      cfg.onSnapbackEnd(DRAGGED_PIECE, DRAGGED_PIECE_SOURCE,
+        deepCopy(CURRENT_POSITION), CURRENT_ORIENTATION);
+    }
+  }
+
+  // get source square position
+  var sourceSquarePosition =
+    $('#' + SQUARE_ELS_IDS[DRAGGED_PIECE_SOURCE]).offset();
+
+  // animate the piece to the target square
+  var opts = {
+    duration: cfg.snapbackSpeed,
+    complete: complete
+  };
+  draggedPieceEl.animate(sourceSquarePosition, opts);
+
+  // set state
+  DRAGGING_A_PIECE = false;
+}
+
+function trashDraggedPiece() {
+  removeSquareHighlights();
+
+  // remove the source piece
+  var newPosition = deepCopy(CURRENT_POSITION);
+  delete newPosition[DRAGGED_PIECE_SOURCE];
+  setCurrentPosition(newPosition);
+
+  // redraw the position
+  drawPositionInstant();
+
+  // hide the dragged piece
+  draggedPieceEl.fadeOut(cfg.trashSpeed);
+
+  // set state
+  DRAGGING_A_PIECE = false;
+}
+
+function dropDraggedPieceOnSquare(square) {
+  removeSquareHighlights();
+
+  // update position
+  var newPosition = deepCopy(CURRENT_POSITION);
+  delete newPosition[DRAGGED_PIECE_SOURCE];
+  newPosition[square] = DRAGGED_PIECE;
+  setCurrentPosition(newPosition);
+
+  // get target square information
+  var targetSquarePosition = $('#' + SQUARE_ELS_IDS[square]).offset();
+
+  // animation complete
+  var complete = function() {
+    drawPositionInstant();
+    draggedPieceEl.css('display', 'none');
+
+    // execute their onSnapEnd function
+    if (cfg.hasOwnProperty('onSnapEnd') === true &&
+      typeof cfg.onSnapEnd === 'function') {
+      cfg.onSnapEnd(DRAGGED_PIECE_SOURCE, square, DRAGGED_PIECE);
+    }
+  };
+
+  // snap the piece to the target square
+  var opts = {
+    duration: cfg.snapSpeed,
+    complete: complete
+  };
+  draggedPieceEl.animate(targetSquarePosition, opts);
+
+  // set state
+  DRAGGING_A_PIECE = false;
+}
+
+function beginDraggingPiece(source, piece, x, y) {
+  // run their custom onDragStart function
+  // their custom onDragStart function can cancel drag start
+  if (typeof cfg.onDragStart === 'function' &&
+      cfg.onDragStart(source, piece,
+        deepCopy(CURRENT_POSITION), CURRENT_ORIENTATION) === false) {
+    return;
+  }
+
+  // set state
+  DRAGGING_A_PIECE = true;
+  DRAGGED_PIECE = piece;
+  DRAGGED_PIECE_SOURCE = source;
+
+  // if the piece came from spare pieces, location is offboard
+  if (source === 'spare') {
+    DRAGGED_PIECE_LOCATION = 'offboard';
+  }
+  else {
+    DRAGGED_PIECE_LOCATION = source;
+  }
+
+  // capture the x, y coords of all squares in memory
+  captureSquareOffsets();
+
+  // create the dragged piece
+  draggedPieceEl.attr('src', buildPieceImgSrc(piece))
+    .css({
+      display: '',
+      position: 'absolute',
+      left: x - (SQUARE_SIZE / 2),
+      top: y - (SQUARE_SIZE / 2)
+    });
+
+  if (source !== 'spare') {
+    // highlight the source square and hide the piece
+    $('#' + SQUARE_ELS_IDS[source]).addClass(CSS.highlight1)
+      .find('.' + CSS.piece).css('display', 'none');
+  }
+}
+
+function updateDraggedPiece(x, y) {
+  // put the dragged piece over the mouse cursor
+  draggedPieceEl.css({
+    left: x - (SQUARE_SIZE / 2),
+    top: y - (SQUARE_SIZE / 2)
+  });
+
+  // get location
+  var location = isXYOnSquare(x, y);
+
+  // do nothing if the location has not changed
+  if (location === DRAGGED_PIECE_LOCATION) return;
+
+  // remove highlight from previous square
+  if (validSquare(DRAGGED_PIECE_LOCATION) === true) {
+    $('#' + SQUARE_ELS_IDS[DRAGGED_PIECE_LOCATION])
+      .removeClass(CSS.highlight2);
+  }
+
+  // add highlight to new square
+  if (validSquare(location) === true) {
+    $('#' + SQUARE_ELS_IDS[location]).addClass(CSS.highlight2);
+  }
+
+  // run onDragMove
+  if (typeof cfg.onDragMove === 'function') {
+    cfg.onDragMove(location, DRAGGED_PIECE_LOCATION,
+      DRAGGED_PIECE_SOURCE, DRAGGED_PIECE,
+      deepCopy(CURRENT_POSITION), CURRENT_ORIENTATION);
+  }
+
+  // update state
+  DRAGGED_PIECE_LOCATION = location;
+}
+
+function stopDraggedPiece(location) {
+  // determine what the action should be
+  var action = 'drop';
+  if (location === 'offboard' && cfg.dropOffBoard === 'snapback') {
+    action = 'snapback';
+  }
+  if (location === 'offboard' && cfg.dropOffBoard === 'trash') {
+    action = 'trash';
+  }
+
+  // run their onDrop function, which can potentially change the drop action
+  if (cfg.hasOwnProperty('onDrop') === true &&
+    typeof cfg.onDrop === 'function') {
+    var newPosition = deepCopy(CURRENT_POSITION);
+
+    // source piece is a spare piece and position is off the board
+    //if (DRAGGED_PIECE_SOURCE === 'spare' && location === 'offboard') {...}
+    // position has not changed; do nothing
+
+    // source piece is a spare piece and position is on the board
+    if (DRAGGED_PIECE_SOURCE === 'spare' && validSquare(location) === true) {
+      // add the piece to the board
+      newPosition[location] = DRAGGED_PIECE;
+    }
+
+    // source piece was on the board and position is off the board
+    if (validSquare(DRAGGED_PIECE_SOURCE) === true && location === 'offboard') {
+      // remove the piece from the board
+      delete newPosition[DRAGGED_PIECE_SOURCE];
+    }
+
+    // source piece was on the board and position is on the board
+    if (validSquare(DRAGGED_PIECE_SOURCE) === true &&
+      validSquare(location) === true) {
+      // move the piece
+      delete newPosition[DRAGGED_PIECE_SOURCE];
+      newPosition[location] = DRAGGED_PIECE;
+    }
+
+    var oldPosition = deepCopy(CURRENT_POSITION);
+
+    var result = cfg.onDrop(DRAGGED_PIECE_SOURCE, location, DRAGGED_PIECE,
+      newPosition, oldPosition, CURRENT_ORIENTATION);
+    if (result === 'snapback' || result === 'trash') {
+      action = result;
+    }
+  }
+
+  // do it!
+  if (action === 'snapback') {
+    snapbackDraggedPiece();
+  }
+  else if (action === 'trash') {
+    trashDraggedPiece();
+  }
+  else if (action === 'drop') {
+    dropDraggedPieceOnSquare(location);
+  }
+}
+
+//------------------------------------------------------------------------------
+// Public Methods
+//------------------------------------------------------------------------------
+
+// clear the board
+widget.clear = function(useAnimation) {
+  widget.position({}, useAnimation);
+};
+
+/*
+// get or set config properties
+// TODO: write this, GitHub Issue #1
+widget.config = function(arg1, arg2) {
+  // get the current config
+  if (arguments.length === 0) {
+    return deepCopy(cfg);
+  }
+};
 */
 
-(function () {
-	'use strict';
-	
-	/*
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	
-	CONSTANTS
-	
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	*/
-	
-	var ChessUtils = {};
+// remove the widget from the page
+widget.destroy = function() {
+  // remove markup
+  containerEl.html('');
+  draggedPieceEl.remove();
 
-	ChessUtils.PLAYER = {
-		black: {
-			code: 'b',
-			notation: 'b',
-			className: 'black'
-		},
-		white: {
-			code: 'w',
-			notation: 'w',
-			className: 'white'
-		}
-	};
-	
-	ChessUtils.ORIENTATION = {
-		white: 'w',
-		black: 'b',
-		flip: 'flip'
-	};
-	
-	ChessUtils.PIECE = {
-		none: '0',
-		pawn: 'p',
-		rook: 'r',
-		knight: 'n',
-		bishop: 'b',
-		queen: 'q',
-		king: 'k',
-		codeToPieceName: {
-			p: 'pawn',
-			r: 'rook',
-			n: 'knight',
-			b: 'bishop',
-			q: 'queen',
-			k: 'king'
-		}
-	};
-	
-	ChessUtils.POSITION = {
-		empty: '0',
-		piece: {
-			pawn: 'p',
-			rook: 'r',
-			knight: 'n',
-			bishop: 'b',
-			queen: 'q',
-			king: 'k'
-		},
-		validator: /^[kqrbnpKQRNBP0]+$/,
-	};
+  // remove event handlers
+  containerEl.unbind();
+};
 
-	
-	ChessUtils.NOTATION = {
-		id: 'notation',
-		positionValidator: /^[a-h][1-8]$/,
-		pieceValidator: /^[bw][KQRNBP]$/,
-		columns: String.prototype.split.call('abcdefgh', ''),
-		rows: String.prototype.split.call('12345678', ''),
-		columnConverter: 'abcdefgh',
-		rowConverter: '12345678'
-	};
-	
-	ChessUtils.FEN = {
-		// Commands
-		id: 'fen',
-		startId: 'start',
-		emptyId: 'empty',
-		// Syntax
-		rowValidator: /^[kqrbnpKQRNBP1-8]+$/,
-		rowSeparator: '/',
-		// Misc
-		positions: {
-			// Standard empty and start position
-			empty: '8/8/8/8/8/8/8/8',
-			start: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR',
-			// Some well known positions
-			ruyLopez: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R'
-		}
-	};
-	
-	
-	/*
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-  
-	PUBLIC STATIC METHODS
-	
-	----------------------------------------------------------------------------
-	----------------------------------------------------------------------------
-	*/
-	
-	/*
-	----------------------------------------------------------------------------
-	Piece, player etc.
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Checks wether a piece code represents a white player.
-	
-	@method isPieceWhite
-	@public
-	@static
-	@param {String} piece A piece code (B or k)
-	@return {Boolean}
-	*/
-	ChessUtils.isPieceWhite = function (piece) {
-		return (piece.toUpperCase() === piece) && (piece !== ChessUtils.PIECE.none);
-	};
-	/**
-	Checks wether a piece code represents a black player.
-	
-	@method isPieceBlack
-	@public
-	@static
-	@param {String} piece A piece code (B or k)
-	@return {Boolean}
-	*/
-	ChessUtils.isPieceBlack = function (piece) {
-		return (piece.toUpperCase() !== piece);
-	};
-	/**
-	Puts to piece into the valid format according to player information.
-	
-	@method getPieceForPlayer
-	@public
-	@static
-	@param {String} piece A piece code (B or k)
-	@param {String} piece A player code
-	@return {String} The piece code in the proper case
-	*/
-	ChessUtils.getPieceForPlayer = function (piece, playerCode) {
-		return playerCode === ChessUtils.PLAYER.white.code ? piece.toUpperCase() : piece.toLowerCase();
-	};
-	/**
-	Gets the player of the piece.
-	
-	@method convertPieceToPlayerName
-	@public
-	@static
-	@param {String} piece A piece code (B or k)
-	@return {String} The player name (white or black)
-	*/
-	ChessUtils.getPlayerNameFromPiece = function (piece) {
-		if (ChessUtils.isPieceWhite(piece)) { return ChessUtils.PLAYER.white.className; }
-		if (ChessUtils.isPieceBlack(piece)) { return ChessUtils.PLAYER.black.className; }
-	};
-	/**
-	Gets the player of the piece.
-	
-	@method getPlayerCodeFromPiece
-	@public
-	@static
-	@param {String} piece A piece code (B or k)
-	@return {String} The player code (w or b)
-	*/
-	ChessUtils.getPlayerCodeFromPiece = function (piece) {
-		if (ChessUtils.isPieceWhite(piece)) { return ChessUtils.PLAYER.white.code; }
-		if (ChessUtils.isPieceBlack(piece)) { return ChessUtils.PLAYER.black.code; }
-	};
-	
-	/*
-	----------------------------------------------------------------------------
-	Validating methods
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Checks wether a position string is valid.
-	
-	@method isValidPosition
-	@public
-	@static
-	@param {String} position A position string
-	@return {Boolean}
-	*/
-	ChessUtils.isValidPosition = function (position) {
-		if (typeof position !== 'string') { return false; }
-		if ((position.length !== 64) ||
-					position.search(ChessUtils.POSITION.validator) !== -1) {
-			return false;
-		}
-	};
-	/**
-	Checks wether a fen string is valid.
-	
-	@method isValidFen
-	@public
-	@static
-	@param {String} fen A fen string
-	@return {Boolean}
-	*/
-	ChessUtils.isValidFen = function (fen) {
-		var fenRows,
-			i;
-		
-		if (typeof fen !== 'string') { return false; }
-	
-		fen = fen.split(' ')[0];
-	
-		fenRows = fen.split('/');
-		if (fenRows.length !== 8) { return false; }
-	
-		// check the piece sections
-		for (i = 0; i < 8; i++) {
-			if (fenRows[i] === '' ||
-					fenRows[i].length > 8 ||
-					fenRows[i].search(ChessUtils.FEN.rowValidator) !== -1) {
-				return false;
-			}
-		}
-	
-		return true;
-	};
-	
-	/**
-	Checks wether a notation position string is valid.
-	Notation position string example: 'a1' which represents the first column and row
-	
-	@method isValidNotationPosition
-	@public
-	@static
-	@param {String} position A notation position string
-	@return {Boolean}
-	*/
-	ChessUtils.isValidNotationPosition = function (position) {
-		if (typeof position !== 'string') { return false; }
-		return (position.search(ChessUtils.NOTATION.positionValidator) !== -1);
-	};
-	/**
-	Checks wether a notation piece string is valid.
-	Notation piece string example: 'bK' which represents black king
-	
-	@method isValidNotationPiece
-	@public
-	@static
-	@param {String} piece A notation piece string
-	@return {Boolean}
-	*/
-	ChessUtils.isValidNotationPiece = function (piece) {
-		if (typeof piece !== 'string') { return false; }
-		return (piece.search(ChessUtils.NOTATION.pieceValidator) !== -1);
-	};
-	/**
-	Checks wether a notation object is valid.
-	Notation object example: {a4: 'bK',c4: 'wK',a7: 'wR'}
-	
-	@method isValidNotation
-	@public
-	@static
-	@param {Object} notation An object containing valid notations
-	@return {Boolean}
-	*/
-	ChessUtils.isValidNotation = function (notation) {
-		var i;
-		
-		if (typeof notation !== 'object') {
-			return false;
-		}
-		
-		for (i in notation) {
-			if (notation.hasOwnProperty(i)) {
-				if (!ChessUtils.isValidNotationPosition(i) || !ChessUtils.isValidNotationPiece(notation[i])) {
-					return false;
-				}
-			}
-		}
-		
-		return true;
-	};
-	
-	/*
-	----------------------------------------------------------------------------
-	Conversion of chessboard notation methods
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Creates a position string from a fen string. (see http://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation)
-	
-	@method convertFenToPosition
-	@public
-	@static
-	@param {String} fen The fen string. Only the first part is used.
-	@return {String} The position string representation of the fen string.
-	*/
-	ChessUtils.convertFenToPosition = function (fen) {
-		var i,
-			position;
-			
-		if (ChessUtils.isValidFen(fen)) {
-			throw new Error('Invalid fen string "' + fen + '".');
-		}
-		
-		// Keeping the first part of fen
-		position = fen.split(' ')[0];
-		
-		for (i = 1; i <= 8; i++) {
-			position = position.replace(new RegExp(i, 'g'), ChessUtils.repeatString('0', i));
-		}
-		position = position.replace(new RegExp(ChessUtils.FEN.rowSeparator, 'g'), '');
-				
-		return position;
-	};
-	/**
-	Creates a fen string from a position string. (see http://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation)
-	
-	@method convertPositionToFen
-	@public
-	@static
-	@param {String} position The position string.
-	@return {String} The fen string representation of the position string.
-	*/
-	ChessUtils.convertPositionToFen = function (position) {
-		var i,
-			fen = '';
-		
-		if (ChessUtils.isValidPosition(position)) {
-			throw new Error('Invalid position string "' + position + '".');
-		}
-				
-		fen = position.substr(0, 8);
-		for (i = 1; i < 8; i++) {
-			fen += ChessUtils.FEN.rowSeparator + position.substr(i * 8, 8);
-		}
-		for (i = 8; i > 0; i--) {
-			fen = fen.replace(new RegExp(ChessUtils.repeatString('0', i), 'g'), i);
-		}
-		
-		return fen;
-	};
-	
-	
-	/**
-	Returns the notation piece string from a piece code string that is used in fen and position strings (K -> wK or k -> bK).
-	
-	@method convertPieceToNotationPiece
-	@public
-	@static
-	@param {String} piece The piece code string.
-	@return {String} The notation piece string.
-	*/
-	ChessUtils.convertPieceToNotationPiece = function (piece) {
-		return (ChessUtils.isPieceWhite(piece) ?
-							ChessUtils.PLAYER.white.notation : ChessUtils.PLAYER.black.notation) +
-							piece.toUpperCase();
-	};
-	/**
-	Returns the piece code string that is used in fen and position strings from a notation piece string (wK -> K or bK -> k).
-	
-	@method convertNotationPieceToPiece
-	@public
-	@static
-	@param {String} piece The notation piece string.
-	@return {String} The piece code string.
-	*/
-	ChessUtils.convertNotationPieceToPiece = function (notationPiece) {
-		return ((notationPiece.split('')[0] === ChessUtils.PLAYER.white.notation) ?
-							notationPiece.split('')[1].toUpperCase() :
-							notationPiece.split('')[1].toLowerCase());
-	};
-	/**
-	Returns the notation square from an index (0-63) (0 -> a8 or 63 -> h1).
-	
-	@method convertIndexToNotationSquare
-	@public
-	@static
-	@param {Integer} index The index of the square
-	@return {String} The notation form of the square
-	*/
-	ChessUtils.convertIndexToNotationSquare = function (index) {
-		return ChessUtils.NOTATION.columns[ChessUtils.convertIndexToColumn(index)] +
-						ChessUtils.NOTATION.rows[ChessUtils.convertIndexToRow(index)];
-				
-	};
-	/**
-	Returns the index (0-63) from a notation square (a8 -> 0 or h1 -> 63).
-	
-	@method convertNotationSquareToIndex
-	@public
-	@static
-	@param {String} notationSquare The notation form of the square
-	@return {Integer} The index of the square
-	*/
-	ChessUtils.convertNotationSquareToIndex = function (notationSquare) {
-		var index,
-			i,
-			row,
-			column;
-		
-		if (notationSquare[notationSquare.length - 1] === '+') {
-			notationSquare = notationSquare.substring(0, notationSquare.length - 1);
-		}
-		column = notationSquare.split('')[notationSquare.length - 2];
-		row = notationSquare.split('')[notationSquare.length - 1];
-		
-		return ChessUtils.convertRowColumnToIndex(
-			ChessUtils.NOTATION.rowConverter.search(row),
-			ChessUtils.NOTATION.columnConverter.search(column)
-		);
-	};
-		/**
-	Creates a position string from a notation object.
-	
-	@method convertNotationToPosition
-	@public
-	@static
-	@param {Object} notation The notation object (For example {a1:bK, b1:wQ}).
-	@return {String} The position string representation of the notation object.
-	*/
-	ChessUtils.convertNotationToPosition = function (notation) {
-		var position = ChessUtils.convertFenToPosition(ChessUtils.FEN.positions.empty),
-			square;
-	
-		if (ChessUtils.isValidNotation(position)) {
-			throw new Error('Invalid notation object "' + notation.toString() + '".');
-		}
-		
-		for (square in notation) {
-			if (notation.hasOwnProperty(square)) {
-				position =
-					ChessUtils.replaceStringAt(position,
-																		 ChessUtils.convertNotationSquareToIndex(square),
-																		 ChessUtils.convertNotationPieceToPiece(notation[square]));
-			}
-		}
-		
-		return position;
-				
-	};
-	/**
-	Creates a notation object from a position string.
-	
-	@method convertPositionToNotation
-	@public
-	@static
-	@param {String} position The position string.
-	@return {Object} The notation object representation of the position string.
-	*/
-	ChessUtils.convertPositionToNotation = function (position) {
-		var notation = {},
-			i;
-		
-		if (ChessUtils.isValidPosition(position)) {
-			throw new Error('Invalid position string "' + position + '".');
-		}
-		
-		for (i = 0; i < 64; i++) {
-			if (position[i] !== ChessUtils.POSITION.empty) {
-				notation[ChessUtils.convertIndexToNotationSquare(i)] = ChessUtils.convertPieceToNotationPiece(position[i]);
-			}
-		}
-		
-		return notation;
-	};
-	
-	/*
-	----------------------------------------------------------------------------
-	Conversion of coordinates and connected methods
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Checks wether a row index (0-7) and a column index (0-7) is valid.
-	
-	@method isOutOfBoard
-	@public
-	@static
-	@param {Integer} row
-	@param {Integer} column
-	@return {Integer}
-	*/
-	ChessUtils.isOutOfBoard = function (row, column) {
-		return (row < 0 || row > 7 || column < 0 || column > 7);
-	};
-	/**
-	Converts an index (0-63) to a column index (0-7). No parameter checking.
-	
-	@method convertIndexToColumn
-	@public
-	@static
-	@param {Integer} index
-	@return {Integer}
-	*/
-	ChessUtils.convertIndexToColumn = function (index) {
-		return index % 8;
-	};
-	/**
-	Converts an index (0-63) to a row index (0-7). No parameter checking.
-	
-	@method convertIndexToRow
-	@public
-	@static
-	@param {Integer} index
-	@return {Integer}
-	*/
-	ChessUtils.convertIndexToRow = function (index) {
-		return 7 - Math.floor(index / 8);
-	};
-	/**
-	Converts a row index (0-7) and a column index (0-7) to an index (0-63). No parameter checking.
-	
-	@method convertRowColumnToIndex
-	@public
-	@static
-	@param {Integer} row
-	@param {Integer} column
-	@return {Integer}
-	*/
-	ChessUtils.convertRowColumnToIndex = function (row, column) {
-		return (7 - row) * 8 + column;
-	};
-	
-	
-	/*
-	----------------------------------------------------------------------------
-	Utility functions
-	----------------------------------------------------------------------------
-	*/
-	/**
-	Repeats a given string (or character) x times.
-	Example: repeatString('0', 3) returns '000'.
-	(No parameter checking!)
-	
-	@method repeatString
-	@public
-	@static
-	@param {String} what The string to copy
-	@param {Integer}  times The number of repeats
-	@return {String} The 'what' string repeated 'times' times.
-	*/
-	ChessUtils.repeatString = function (what, times) {
-		var helper = [];
-		
-		helper.length = times + 1;
-		return helper.join(what);
-		
-	};
-	
-	/**
-		Replaces a character/string in a given string (or character) x times.
-		Example: replaceStringAt('Hong', 0, 'K') returns 'Kong', replaceStringAt('Hong', 3, 'g Kong') returns 'Hong Kong'.
-		(No parameter checking!)
-		
-		@method replaceStringAt
-		@public
-		@static
-		@param {String} inputString The string to insert the character into
-		@param {Integer} index The index where the insertion should happen
-		@param {Integer} what What to insert
-		@return {String} The result after replacement
-		*/
-	ChessUtils.replaceStringAt = function (inputString, index, what) {
-			
-		var a;
-			
-		a = inputString.split('');
-		a[index] = what;
-		return a.join('');
-	};
-	
-	
-	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-		module.exports.ChessUtils = ChessUtils;
-	} else {
-		window.ChessUtils = ChessUtils;
-	}
-	
-}());
+// shorthand method to get the current FEN
+widget.fen = function() {
+  return widget.position('fen');
+};
+
+// flip orientation
+widget.flip = function() {
+  widget.orientation('flip');
+};
+
+/*
+// TODO: write this, GitHub Issue #5
+widget.highlight = function() {
+
+};
+*/
+
+// move pieces
+widget.move = function() {
+  // no need to throw an error here; just do nothing
+  if (arguments.length === 0) return;
+
+  var useAnimation = true;
+
+  // collect the moves into an object
+  var moves = {};
+  for (var i = 0; i < arguments.length; i++) {
+    // any "false" to this function means no animations
+    if (arguments[i] === false) {
+      useAnimation = false;
+      continue;
+    }
+
+    // skip invalid arguments
+    if (validMove(arguments[i]) !== true) {
+      error(2826, 'Invalid move passed to the move method.', arguments[i]);
+      continue;
+    }
+
+    var tmp = arguments[i].split('-');
+    moves[tmp[0]] = tmp[1];
+  }
+
+  // calculate position from moves
+  var newPos = calculatePositionFromMoves(CURRENT_POSITION, moves);
+
+  // update the board
+  widget.position(newPos, useAnimation);
+
+  // return the new position object
+  return newPos;
+};
+
+widget.orientation = function(arg) {
+  // no arguments, return the current orientation
+  if (arguments.length === 0) {
+    return CURRENT_ORIENTATION;
+  }
+
+  // set to white or black
+  if (arg === 'white' || arg === 'black') {
+    CURRENT_ORIENTATION = arg;
+    drawBoard();
+    return;
+  }
+
+  // flip orientation
+  if (arg === 'flip') {
+    CURRENT_ORIENTATION = (CURRENT_ORIENTATION === 'white') ? 'black' : 'white';
+    drawBoard();
+    return;
+  }
+
+  error(5482, 'Invalid value passed to the orientation method.', arg);
+};
+
+widget.position = function(position, useAnimation) {
+  // no arguments, return the current position
+  if (arguments.length === 0) {
+    return deepCopy(CURRENT_POSITION);
+  }
+
+  // get position as FEN
+  if (typeof position === 'string' && position.toLowerCase() === 'fen') {
+    return objToFen(CURRENT_POSITION);
+  }
+
+  // default for useAnimations is true
+  if (useAnimation !== false) {
+    useAnimation = true;
+  }
+
+  // start position
+  if (typeof position === 'string' && position.toLowerCase() === 'start') {
+    position = deepCopy(START_POSITION);
+  }
+
+  // convert FEN to position object
+  if (validFen(position) === true) {
+    position = fenToObj(position);
+  }
+
+  // validate position object
+  if (validPositionObject(position) !== true) {
+    error(6482, 'Invalid value passed to the position method.', position);
+    return;
+  }
+
+  if (useAnimation === true) {
+    // start the animations
+    doAnimations(calculateAnimations(CURRENT_POSITION, position),
+      CURRENT_POSITION, position);
+
+    // set the new position
+    setCurrentPosition(position);
+  }
+  // instant update
+  else {
+    setCurrentPosition(position);
+    drawPositionInstant();
+  }
+};
+
+widget.resize = function() {
+  // calulate the new square size
+  SQUARE_SIZE = calculateSquareSize();
+
+  // set board width
+  boardEl.css('width', (SQUARE_SIZE * 8) + 'px');
+
+  // set drag piece size
+  draggedPieceEl.css({
+    height: SQUARE_SIZE,
+    width: SQUARE_SIZE
+  });
+
+  // spare pieces
+  if (cfg.sparePieces === true) {
+    containerEl.find('.' + CSS.sparePieces)
+      .css('paddingLeft', (SQUARE_SIZE + BOARD_BORDER_SIZE) + 'px');
+  }
+
+  // redraw the board
+  drawBoard();
+};
+
+// set the starting position
+widget.start = function(useAnimation) {
+  widget.position('start', useAnimation);
+};
+
+//------------------------------------------------------------------------------
+// Browser Events
+//------------------------------------------------------------------------------
+
+function isTouchDevice() {
+  return ('ontouchstart' in document.documentElement);
+}
+
+// reference: http://www.quirksmode.org/js/detect.html
+function isMSIE() {
+  return (navigator && navigator.userAgent &&
+      navigator.userAgent.search(/MSIE/) !== -1);
+}
+
+function stopDefault(e) {
+  e.preventDefault();
+}
+
+function mousedownSquare(e) {
+  // do nothing if we're not draggable
+  if (cfg.draggable !== true) return;
+
+  var square = $(this).attr('data-square');
+
+  // no piece on this square
+  if (validSquare(square) !== true ||
+      CURRENT_POSITION.hasOwnProperty(square) !== true) {
+    return;
+  }
+
+  beginDraggingPiece(square, CURRENT_POSITION[square], e.pageX, e.pageY);
+}
+
+function touchstartSquare(e) {
+  // do nothing if we're not draggable
+  if (cfg.draggable !== true) return;
+
+  var square = $(this).attr('data-square');
+
+  // no piece on this square
+  if (validSquare(square) !== true ||
+      CURRENT_POSITION.hasOwnProperty(square) !== true) {
+    return;
+  }
+
+  e = e.originalEvent;
+  beginDraggingPiece(square, CURRENT_POSITION[square],
+    e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+}
+
+function mousedownSparePiece(e) {
+  // do nothing if sparePieces is not enabled
+  if (cfg.sparePieces !== true) return;
+
+  var piece = $(this).attr('data-piece');
+
+  beginDraggingPiece('spare', piece, e.pageX, e.pageY);
+}
+
+function touchstartSparePiece(e) {
+  // do nothing if sparePieces is not enabled
+  if (cfg.sparePieces !== true) return;
+
+  var piece = $(this).attr('data-piece');
+
+  e = e.originalEvent;
+  beginDraggingPiece('spare', piece,
+    e.changedTouches[0].pageX, e.changedTouches[0].pageY);
+}
+
+function mousemoveWindow(e) {
+  // do nothing if we are not dragging a piece
+  if (DRAGGING_A_PIECE !== true) return;
+
+  updateDraggedPiece(e.pageX, e.pageY);
+}
+
+function touchmoveWindow(e) {
+  // do nothing if we are not dragging a piece
+  if (DRAGGING_A_PIECE !== true) return;
+
+  // prevent screen from scrolling
+  e.preventDefault();
+
+  updateDraggedPiece(e.originalEvent.changedTouches[0].pageX,
+    e.originalEvent.changedTouches[0].pageY);
+}
+
+function mouseupWindow(e) {
+  // do nothing if we are not dragging a piece
+  if (DRAGGING_A_PIECE !== true) return;
+
+  // get the location
+  var location = isXYOnSquare(e.pageX, e.pageY);
+
+  stopDraggedPiece(location);
+}
+
+function touchendWindow(e) {
+  // do nothing if we are not dragging a piece
+  if (DRAGGING_A_PIECE !== true) return;
+
+  // get the location
+  var location = isXYOnSquare(e.originalEvent.changedTouches[0].pageX,
+    e.originalEvent.changedTouches[0].pageY);
+
+  stopDraggedPiece(location);
+}
+
+function mouseenterSquare(e) {
+  // do not fire this event if we are dragging a piece
+  // NOTE: this should never happen, but it's a safeguard
+  if (DRAGGING_A_PIECE !== false) return;
+
+  if (cfg.hasOwnProperty('onMouseoverSquare') !== true ||
+    typeof cfg.onMouseoverSquare !== 'function') return;
+
+  // get the square
+  var square = $(e.currentTarget).attr('data-square');
+
+  // NOTE: this should never happen; defensive
+  if (validSquare(square) !== true) return;
+
+  // get the piece on this square
+  var piece = false;
+  if (CURRENT_POSITION.hasOwnProperty(square) === true) {
+    piece = CURRENT_POSITION[square];
+  }
+
+  // execute their function
+  cfg.onMouseoverSquare(square, piece, deepCopy(CURRENT_POSITION),
+    CURRENT_ORIENTATION);
+}
+
+function mouseleaveSquare(e) {
+  // do not fire this event if we are dragging a piece
+  // NOTE: this should never happen, but it's a safeguard
+  if (DRAGGING_A_PIECE !== false) return;
+
+  if (cfg.hasOwnProperty('onMouseoutSquare') !== true ||
+    typeof cfg.onMouseoutSquare !== 'function') return;
+
+  // get the square
+  var square = $(e.currentTarget).attr('data-square');
+
+  // NOTE: this should never happen; defensive
+  if (validSquare(square) !== true) return;
+
+  // get the piece on this square
+  var piece = false;
+  if (CURRENT_POSITION.hasOwnProperty(square) === true) {
+    piece = CURRENT_POSITION[square];
+  }
+
+  // execute their function
+  cfg.onMouseoutSquare(square, piece, deepCopy(CURRENT_POSITION),
+    CURRENT_ORIENTATION);
+}
+
+//------------------------------------------------------------------------------
+// Initialization
+//------------------------------------------------------------------------------
+
+function addEvents() {
+  // prevent browser "image drag"
+  $('body').on('mousedown mousemove', '.' + CSS.piece, stopDefault);
+
+  // mouse drag pieces
+  boardEl.on('mousedown', '.' + CSS.square, mousedownSquare);
+  containerEl.on('mousedown', '.' + CSS.sparePieces + ' .' + CSS.piece,
+    mousedownSparePiece);
+
+  // mouse enter / leave square
+  boardEl.on('mouseenter', '.' + CSS.square, mouseenterSquare);
+  boardEl.on('mouseleave', '.' + CSS.square, mouseleaveSquare);
+
+  // IE doesn't like the events on the window object, but other browsers
+  // perform better that way
+  if (isMSIE() === true) {
+    // IE-specific prevent browser "image drag"
+    document.ondragstart = function() { return false; };
+
+    $('body').on('mousemove', mousemoveWindow);
+    $('body').on('mouseup', mouseupWindow);
+  }
+  else {
+    $(window).on('mousemove', mousemoveWindow);
+    $(window).on('mouseup', mouseupWindow);
+  }
+
+  // touch drag pieces
+  if (isTouchDevice() === true) {
+    boardEl.on('touchstart', '.' + CSS.square, touchstartSquare);
+    containerEl.on('touchstart', '.' + CSS.sparePieces + ' .' + CSS.piece,
+      touchstartSparePiece);
+    $(window).on('touchmove', touchmoveWindow);
+    $(window).on('touchend', touchendWindow);
+  }
+}
+
+function initDom() {
+  // build board and save it in memory
+  containerEl.html(buildBoardContainer());
+  boardEl = containerEl.find('.' + CSS.board);
+
+  if (cfg.sparePieces === true) {
+    sparePiecesTopEl = containerEl.find('.' + CSS.sparePiecesTop);
+    sparePiecesBottomEl = containerEl.find('.' + CSS.sparePiecesBottom);
+  }
+
+  // create the drag piece
+  var draggedPieceId = createId();
+  $('body').append(buildPiece('wP', true, draggedPieceId));
+  draggedPieceEl = $('#' + draggedPieceId);
+
+  // get the border size
+  BOARD_BORDER_SIZE = parseInt(boardEl.css('borderLeftWidth'), 10);
+
+  // set the size and draw the board
+  widget.resize();
+}
+
+function init() {
+  if (checkDeps() !== true ||
+      expandConfig() !== true) return;
+
+  // create unique IDs for all the elements we will create
+  createElIds();
+
+  initDom();
+  addEvents();
+}
+
+// go time
+init();
+
+// return the widget object
+return widget;
+
+}; // end window.ChessBoard
+
+// expose util functions
+window.ChessBoard.fenToObj = fenToObj;
+window.ChessBoard.objToFen = objToFen;
+
+})(); // end anonymous wrapper

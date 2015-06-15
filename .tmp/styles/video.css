@@ -81,6 +81,7 @@ button.btn.btn-social.btn-simple.btn-coach:hover {
   margin-top: 40px;
   margin-bottom: 40px;
   margin-right: 0px;
+  font-size: 25px;
 }
 
 /*
@@ -88,35 +89,55 @@ button.btn.btn-social.btn-simple.btn-coach:hover {
 * - make it responsive
 * - set under the main video
 */
-/* line 86, ../../app/styles/video.scss */
+/* line 87, ../../app/styles/video.scss */
 .comment-container {
   max-width: 768px;
 }
 
-/* line 91, ../../app/styles/video.scss */
+/* line 92, ../../app/styles/video.scss */
 .padded {
   padding: 35px 20px 30px;
   background-color: whitesmoke;
   border-radius: 10px;
 }
 
-/* line 97, ../../app/styles/video.scss */
+/* line 98, ../../app/styles/video.scss */
 .half-border {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
 
-/* line 104, ../../app/styles/video.scss */
+/* line 105, ../../app/styles/video.scss */
 .video-description {
   margin-bottom: 20px;
 }
 
-/* line 108, ../../app/styles/video.scss */
+/* line 109, ../../app/styles/video.scss */
 .social-share {
   float: right;
 }
 
-/* line 112, ../../app/styles/video.scss */
+/* line 113, ../../app/styles/video.scss */
 .dsq-comment-header {
   white-space: normal !important;
+}
+
+/* line 117, ../../app/styles/video.scss */
+div#disqus_thread {
+  margin-bottom: 30px;
+}
+
+/* line 121, ../../app/styles/video.scss */
+.no-hover:hover {
+  text-decoration: none;
+}
+
+/* line 125, ../../app/styles/video.scss */
+.no-hover {
+  text-decoration: none;
+}
+
+/* line 129, ../../app/styles/video.scss */
+.back-link {
+  margin-right: 10px;
 }

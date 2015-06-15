@@ -10,7 +10,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 html,
 body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   //background: #e4e7ec;
   background: #f7f7f7;
   padding: 0;
@@ -23,11 +23,15 @@ margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h1, h2 {
   font-weight: bold;
+}
+
+h3, h4 {
+  text-transform: uppercase;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -53,6 +57,10 @@ button:focus {
   margin: auto;
   margin-top: -50px;
   z-index: 1000;
+}
+
+.bar1, .bar2, .bar3 {
+  background: rgba(44, 62, 80, 0.8) !important;
 }
 
 .transparent {

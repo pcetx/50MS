@@ -76,6 +76,7 @@ button.btn.btn-social.btn-simple.btn-coach:hover {
     margin-top: 40px;
     margin-bottom: 40px;
     margin-right: 0px;
+    font-size: 25px;
 }
 /*
 * Comment Box on the page
@@ -111,4 +112,20 @@ button.btn.btn-social.btn-simple.btn-coach:hover {
 
 .dsq-comment-header {
     white-space:normal!important;
+}
+
+div#disqus_thread {
+    margin-bottom: 30px;
+}
+
+.no-hover:hover {
+  text-decoration: none;
+}
+
+.no-hover {
+  text-decoration: none;
+}
+
+.back-link {
+    margin-right: 10px;
 }

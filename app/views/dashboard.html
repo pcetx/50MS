@@ -18,11 +18,10 @@
                 <ul class="nav navbar-nav">
                   <li><a ng-href="#/dashboard"> My Board </a><div class="arrow-up"></li>
                   <li><a ng-href="#/library"> Courses </a></li>
-                  <li><a ng-href="#/blog"> Blog </a></li>
                   <li><a ng-href="#/profile"> Account </a></li>
                 </ul>
                   <ul class="nav navbar-nav navbar-right">                    
-                    <li><p ng-show-auth="" ng-cloak class="user-name">Welcome Peter{{John}}</p></li>
+                    <li><p ng-show-auth="" ng-cloak class="user-name">Name here{{}}</p></li>
                     <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
                   </ul>
               </div><!-- /.navbar-collapse -->
@@ -40,7 +39,7 @@
                   <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav subnav-dashboard">
                       <li><a ng-href="#/dashboard" class="active"> Timeline </a></li>
-                      <li><a ng-href="#/progress"> Stats </a></li>
+                      <li><a ng-href="#/progress"> Progress </a></li>
                       <li><a ng-href="#/invites"> Invites </a></li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
@@ -80,42 +79,5 @@
     <!-- end wrapper -->    
     </div>
 
-    <footer class="footer">
-      <div class="container">
-          <nav class="pull-left">
-              <ul>
-                  <li>
-                      <a href="#">
-                          Home
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          About
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#">
-                          Program
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="social-area pull-right">                
-              <a class="btn btn-social btn-facebook btn-simple transparent">
-                  <i class="fa fa-facebook-square"></i>
-              </a>
-              <a class="btn btn-social btn-twitter btn-simple transparent">
-                  <i class="fa fa-twitter"></i>
-              </a>
-          </div>
-          <div class="copyright">
-              
-          </div>
-      </div>
-    </footer>
-
-
-   <!-- <div ng-include src="'partials/sections/footer.html'"></div> -->
-   <!-- <div ng-include src="'partials/sections/footer.html'"></div> -->
+    <div ng-include src="'partials/sections/footer.html'"></div> 
 

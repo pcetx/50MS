@@ -45,6 +45,5 @@
   },
   "_source": "git://github.com/caustique/chessboard-js.git",
   "_target": "~0.1.0",
-  "_originalSource": "chessboard-js",
-  "_direct": true
+  "_originalSource": "chessboard-js"
 }

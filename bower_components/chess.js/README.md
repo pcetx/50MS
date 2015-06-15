@@ -1,7 +1,5 @@
 # chess.js
 
-[![Build Status](https://travis-ci.org/jhlywa/chess.js.svg?branch=master)](https://travis-ci.org/jhlywa/chess.js)
-
 chess.js is a Javascript chess library that is used for chess move
 generation/validation, piece placement/movement, and check/checkmate/stalemate
 detection - basically everything but the AI.
@@ -12,34 +10,57 @@ chess.js has been extensively tested in node.js and most modern browsers.
 The code below plays a complete game of chess ... randomly.
 
 ```js
-var Chess = require('./chess').Chess;
-var chess = new Chess();
+var util = require('util'),
+    ch =  require('./chess');
+
+var chess = new ch.Chess();
 
 while (!chess.game_over()) {
+  util.puts('position: ' + chess.fen());
   var moves = chess.moves();
   var move = moves[Math.floor(Math.random() * moves.length)];
   chess.move(move);
+  util.puts('move: ' + move);
 }
-console.log(chess.pgn());
 ```
 
-## Sites Using chess.js
-
-- [The Internet Chess Club (ICC)](http://www.chessclub.com/)
-- [lichess](http://lichess.org/tv)
-- [Redbull - Battle for the Queen](http://battleforthequeen.redbull.com/)
-- [3D Hartwig Chess](http://creativejs.com/2012/12/3d-hartwig-chess/)
-- [Scene VR](http://client.scenevr.com/?connect=chess.scenevr.hosting/chess.xml)
-- [Multiplayer Chess](http://chessapp.com/)
-- [Reti Chess](http://retichess.nodejitsu.com/)
-- [Chess Fork](http://www.chessfork.com/)
-- [Lozza](http://op12no2.me/posts/1641)
-- [angular-chess](http://theborakompanioni.github.io/angular-chess)
-
 Need a user interface?  Try Chris Oakman's excellent
-[chessboard.js](http://chessboardjs.com) library.  See
-[chessboard.js - Random vs Random](http://chessboardjs.com/examples#5002) for
-an example integration of chess.js with chessboard.js.
+[ChessBoardJS](http://chessboardjs.com) library.  The code below can be
+seen in action at
+[ChessBoardJS - Random vs Random](http://chessboardjs.com/examples#5002).
+
+```html
+...
+<link rel="stylesheet" href="css/chessboard-0.2.0.css" />
+<script src="js/chess.js"></script>
+<script src="js/chessboard-0.2.0.js"></script>
+<script>
+    var game = new Chess();
+    var board = new ChessBoard('board', 'start');
+
+    var random_move = function() {
+        if (game.game_over()) return;
+        var moves = game.moves();
+        var move = moves[Math.floor(Math.random() * moves.length)];
+        game.move(move);
+        board.position(game.fen());
+        window.setTimeout(random_move, 500);
+    };
+
+    window.setTimeout(random_move, 500);
+</script>
+...
+<div id="board" style="width: 400px"></div>
+...
+```
+
+chess.js is used in the projects below:
+
+- [3D Hartwig Chess Set](http://codepen.io/juliangarnier/fulldetails/BsIih)
+- [Chess in Javascript](http://thingsilearned.com/2012/11/22/javascript-chess-game/)
+- [Multiplayer Chess](http://multiplayerchess.com/)
+- [EasyChess.com](http://www.easychess.com/)
+- [Reti Chess](http://retichess.nodejitsu.com/)
 
 ## API
 
@@ -105,7 +126,7 @@ chess.fen();
 ```
 
 ### .game_over()
-Returns true if the game has ended via checkmate, stalemate, draw, threefold repetition, or insufficient material. Otherwise, returns false.
+Returns true or false if the game has ended via checkmate, stalemate, or draw.
 
 ```js
 var chess = new Chess();
@@ -203,12 +224,12 @@ var chess = new Chess('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
 chess.in_threefold_repetition();
 // -> false
 
-chess.move('Nf3'); chess.move('Nf6'); chess.move('Ng1'); chess.move('Ng8');
+chess.move('Nf3'); chess.move('Nf6') chess.move('Ng1'); chess.move('Ng8');
 // rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq occurs 2nd time
 chess.in_threefold_repetition();
 // -> false
 
-chess.move('Nf3'); chess.move('Nf6'); chess.move('Ng1'); chess.move('Ng8');
+chess.move('Nf3'); chess.move('Nf6') chess.move('Ng1'); chess.move('Ng8');
 // rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq occurs 3rd time
 chess.in_threefold_repetition();
 // -> true
@@ -253,9 +274,9 @@ chess.load('4r3/8/X12XPk/1p6/pP2p1R1/P1B5/2P2K2/3r4 w - - 1 45');
 ### .load_pgn(pgn, [ options ])
 Load the moves of a game stored in
 [Portable Game Notation](http://en.wikipedia.org/wiki/Portable_Game_Notation).
-Options is a optional parameter that contains a 'newline_char' which is a
-string representation of a RegExp (and should not be pre-escaped) and defaults
-to '\r?\n'). Returns true if the PGN was parsed successfully, otherwise false.
+Options is a optional parameter that contains a 'newline_char' denoting the line
+delimiter (the default delimiter is '\r?\n', optional carriage return with newline).  Returns true if the PGN was parsed
+successfully, otherwise false.
 
 ```js
 var chess = new Chess();
@@ -307,7 +328,7 @@ a string in Standard Algebraic Notation (SAN):
 var chess = new Chess();
 
 chess.move('e4')
-// -> { color: 'w', from: 'e2', to: 'e4', flags: 'b', piece: 'p', san: 'e4' }
+// -> { color: 'w', from: 'e2', to: 'e4', flags: 'b', piece: 'p', san: 'e2' }
 
 chess.move('nf6') // SAN is case sensitive!!
 // -> null
@@ -385,9 +406,7 @@ chess.pgn({ max_width: 5, newline_char: '<br />' });
 ### .put(piece, square)
 Place a piece on square where piece is an object with the form
 { type: ..., color: ... }.  Returns true if piece was successfully placed,
-otherwise the board remains unchanged and false is returned.  `put()` will fail
-when passed an invalid piece or square, or when two or more kings of the
-same color are placed.
+otherwise false.
 
 ```js
 chess.clear();
@@ -399,18 +418,6 @@ chess.put({ type: 'k', color: 'w' }, 'h1') // shorthand
 
 chess.fen();
 // -> '8/8/8/p7/8/8/8/7K w - - 0 0'
-
-chess.put({ type: 'z', color: 'w' }, 'a1') // invalid piece
-// -> false
-
-chess.clear();
-
-chess.put({ type: 'k', color: 'w' }, 'a1')
-// -> true
-
-chess.put({ type: 'k', color: 'w' }, 'h1') // fail - two kings
-// -> false
-
 ```
 
 ### .remove(square)
@@ -487,20 +494,41 @@ chess.validate_fen('4r3/8/X12XPk/1p6/pP2p1R1/P1B5/2P2K2/3r4 w - - 1 45');
 //     error: '1st field (piece positions) is invalid [invalid piece].' }
 ```
 
-## MUSIC
+
+## CONTRIBUTORS
+
+Special thanks to the following developers for their patches and contributions
+(alphabetically):
+
+- [Steve Bragg](https://github.com/2sb18)
+- [E. Azer Koçulu](https://github.com/azer)
+- [Falco Nogatz](https://github.com/fnogatz)
+- [jdponomarev](https://github.com/jdponomarev)
+- [David Moises Paz Reyes](https://github.com/davidmpaz)
+- [Raminder Singh](https://github.com/imor)
+- [Stiff](https://github.com/stiff)
+- [Seb Vincent](https://github.com/sebv)
+- [Linmiao Xu](https://github.com/linrock)
 
 Musical support provided by:
 
-- [The Grateful Dead](https://www.youtube.com/watch?feature=player_detailpage&v=ANF6qanEB7s#t=2999)
+- [The Grateful Dead](http://www.youtube.com/watch?v=YLzUme1gN8c)
 - [Umphrey's McGee](http://www.youtube.com/watch?v=jh-1fFWkSdw)
+
+
 
 ## BUGS
 
 - The en passant square and castling flags aren't adjusted when using the put/remove functions (workaround: use .load() instead)
 
+
+
 ## TODO
 
+- Add AI (basic alpha-beta search w/ primitive position evaluation).  The AI
+  should probably be internal to the underlying Chess() object to take full
+  advantage of 0x88 move generation.
+- Add jQuery chessboard widget.  (see widget branch for prototype)
 - Investigate the use of piece lists (this may shave a few cycles off
-  generate_moves() and attacked()).
-- Refactor API to use camelCase - yuck.
-- Add more robust FEN validation.
+  generate_moves() and attacked())
+

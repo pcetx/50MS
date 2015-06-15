@@ -8861,6 +8861,7 @@ button.btn.btn-social.btn-simple.btn-coach:hover {
   margin-top: 40px;
   margin-bottom: 40px;
   margin-right: 0px;
+  font-size: 25px;
 }
 
 /*
@@ -8868,37 +8869,57 @@ button.btn.btn-social.btn-simple.btn-coach:hover {
 * - make it responsive
 * - set under the main video
 */
-/* line 86, ../../app/styles/video.scss */
+/* line 87, ../../app/styles/video.scss */
 .comment-container {
   max-width: 768px;
 }
 
-/* line 91, ../../app/styles/video.scss */
+/* line 92, ../../app/styles/video.scss */
 .padded {
   padding: 35px 20px 30px;
   background-color: whitesmoke;
   border-radius: 10px;
 }
 
-/* line 97, ../../app/styles/video.scss */
+/* line 98, ../../app/styles/video.scss */
 .half-border {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
 
-/* line 104, ../../app/styles/video.scss */
+/* line 105, ../../app/styles/video.scss */
 .video-description {
   margin-bottom: 20px;
 }
 
-/* line 108, ../../app/styles/video.scss */
+/* line 109, ../../app/styles/video.scss */
 .social-share {
   float: right;
 }
 
-/* line 112, ../../app/styles/video.scss */
+/* line 113, ../../app/styles/video.scss */
 .dsq-comment-header {
   white-space: normal !important;
+}
+
+/* line 117, ../../app/styles/video.scss */
+div#disqus_thread {
+  margin-bottom: 30px;
+}
+
+/* line 121, ../../app/styles/video.scss */
+.no-hover:hover {
+  text-decoration: none;
+}
+
+/* line 125, ../../app/styles/video.scss */
+.no-hover {
+  text-decoration: none;
+}
+
+/* line 129, ../../app/styles/video.scss */
+.back-link {
+  margin-right: 10px;
 }
 
 /*
@@ -9013,7 +9034,7 @@ hr {
   border: 0px none #605f5d;
   border-radius: 5px 5px 5px 5px;
   font: normal normal 300 normal 19px/27.142858505249px 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin: 0px 62.5px;
+  margin: 20px 62.5px;
   outline: #605f5d none 0px;
 }
 
@@ -9045,14 +9066,9 @@ hr {
   box-sizing: border-box;
   color: white;
   cursor: pointer;
-  display: inline-block;
   height: 20px;
   text-align: center;
   text-transform: uppercase;
-  vertical-align: middle;
-  width: 54.40625px;
-  -webkit-align-self: flex-start;
-          align-self: flex-start;
   -webkit-perspective-origin: 27.203125px 10px;
           perspective-origin: 27.203125px 10px;
   -webkit-transform-origin: 27.203125px 10px;
@@ -9063,7 +9079,7 @@ hr {
   padding: 0px 10px;
 }
 
-/* line 127, ../../app/styles/profile.scss */
+/* line 123, ../../app/styles/profile.scss */
 .fixed-center-container .form-select-value {
   padding: 0 36px 0 18px;
   height: 60px;
@@ -9072,7 +9088,7 @@ hr {
   white-space: nowrap;
 }
 
-/* line 135, ../../app/styles/profile.scss */
+/* line 131, ../../app/styles/profile.scss */
 .fixed-center-container .form-group {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -9086,61 +9102,26 @@ hr {
   width: 325px;
 }
 
-/* line 148, ../../app/styles/profile.scss */
-.fixed-center-container .form-select-value {
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  color: #605f5d;
-  cursor: pointer;
-  display: block;
+/* line 144, ../../app/styles/profile.scss */
+[data-style="custom"] {
+  background: white;
+  width: 325px;
+  height: 55px;
   font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: block;
+  padding: 0.33em;
+  width: 100%;
+  border: 0;
   font-size: 25px;
   font-weight: 300;
-  height: 60px;
-  line-height: 60px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  padding-bottom: 0px;
-  padding-left: 18px;
-  padding-right: 36px;
-  padding-top: 0px;
-  text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 325px;
-}
-
-/* line 172, ../../app/styles/profile.scss */
-.form-select.custom {
-  -webkit-font-smoothing: antialiased;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: white;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…NEN0Q3RDciIGQ9Ik03LjU2NCA3LjU2NGw3LjU2My03LjU2NGgtMTUuMTI3eiIvPjwvc3ZnPg==);
-  background-origin: padding-box;
-  background-size: auto;
-  border-bottom-color: #d7d7d7;
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  box-sizing: border-box;
-  color: #605f5d;
-  cursor: pointer;
-  display: block;
-  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 25px;
-  font-weight: 300;
-  height: 63px;
-  line-height: 60px;
-  min-width: 140px;
-  position: relative;
-  text-align: left;
-  width: 325px;
+  color: #8f8e8b;
+  line-height: 1.5;
 }
 
 /* line 11, ../../app/styles/main.scss */
 html,
 body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #f7f7f7;
   padding: 0;
   margin: 0;
@@ -9154,7 +9135,7 @@ body {
 
 /* line 25, ../../app/styles/main.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* line 29, ../../app/styles/main.scss */
@@ -9163,11 +9144,16 @@ h1, h2 {
 }
 
 /* line 33, ../../app/styles/main.scss */
+h3, h4 {
+  text-transform: uppercase;
+}
+
+/* line 37, ../../app/styles/main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
-/* line 37, ../../app/styles/main.scss */
+/* line 41, ../../app/styles/main.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -9175,7 +9161,7 @@ button:focus {
   outline: none;
 }
 
-/* line 44, ../../app/styles/main.scss */
+/* line 48, ../../app/styles/main.scss */
 .circle {
   width: 140px;
   height: 140px;
@@ -9190,73 +9176,78 @@ button:focus {
   z-index: 1000;
 }
 
-/* line 58, ../../app/styles/main.scss */
+/* line 62, ../../app/styles/main.scss */
+.bar1, .bar2, .bar3 {
+  background: rgba(44, 62, 80, 0.8) !important;
+}
+
+/* line 66, ../../app/styles/main.scss */
 .transparent {
   background: none !important;
   border: none !important;
 }
 
-/* line 63, ../../app/styles/main.scss */
+/* line 71, ../../app/styles/main.scss */
 .footer {
   background: #434548;
 }
 
-/* line 68, ../../app/styles/main.scss */
+/* line 76, ../../app/styles/main.scss */
 .footer nav > ul a:not(.btn) {
   color: white !important;
   font-weight: bold;
 }
 
-/* line 73, ../../app/styles/main.scss */
+/* line 81, ../../app/styles/main.scss */
 .footer nav > ul a:not(.btn):hover {
   text-decoration: none;
 }
 
-/* line 77, ../../app/styles/main.scss */
+/* line 85, ../../app/styles/main.scss */
 .footer .copyright p {
   font-weight: bold;
   font-size: 15px !important;
 }
 
-/* line 82, ../../app/styles/main.scss */
+/* line 90, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 86, ../../app/styles/main.scss */
+/* line 94, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 90, ../../app/styles/main.scss */
+/* line 98, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 94, ../../app/styles/main.scss */
+/* line 102, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 98, ../../app/styles/main.scss */
+/* line 106, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 103, ../../app/styles/main.scss */
+/* line 111, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 107, ../../app/styles/main.scss */
+/* line 115, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 113, ../../app/styles/main.scss */
+/* line 121, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
@@ -9266,24 +9257,24 @@ a {
   border-color: #cfd9db;
 }
 
-/* line 122, ../../app/styles/main.scss */
+/* line 130, ../../app/styles/main.scss */
 .fixed-center-container {
   max-width: 768px;
 }
 
-/* line 126, ../../app/styles/main.scss */
+/* line 134, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
 @media (max-width: 768px) {
-  /* line 132, ../../app/styles/main.scss */
+  /* line 140, ../../app/styles/main.scss */
   .center-form {
     margin-top: 18%;
   }
 }
-/* line 137, ../../app/styles/main.scss */
+/* line 145, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -9291,14 +9282,14 @@ a {
   background: none;
 }
 
-/* line 144, ../../app/styles/main.scss */
+/* line 152, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 150, ../../app/styles/main.scss */
+/* line 158, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -9306,7 +9297,7 @@ a {
   background-color: #fff;
 }
 
-/* line 157, ../../app/styles/main.scss */
+/* line 165, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -9316,7 +9307,7 @@ a {
   color: #555;
 }
 
-/* line 166, ../../app/styles/main.scss */
+/* line 174, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -9325,7 +9316,7 @@ a {
   padding: 0 15px;
 }
 
-/* line 174, ../../app/styles/main.scss */
+/* line 182, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -9335,12 +9326,12 @@ a {
   border-radius: 5px;
 }
 
-/* line 183, ../../app/styles/main.scss */
+/* line 191, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
 }
 
-/* line 187, ../../app/styles/main.scss */
+/* line 195, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -9349,28 +9340,28 @@ a {
 /*********************
 * Social Buttons
 *********************/
-/* line 196, ../../app/styles/main.scss */
+/* line 204, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 202, ../../app/styles/main.scss */
+/* line 210, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
 }
 
-/* line 208, ../../app/styles/main.scss */
+/* line 216, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 214, ../../app/styles/main.scss */
+/* line 222, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
@@ -9378,14 +9369,14 @@ a {
   border: none;
 }
 
-/* line 221, ../../app/styles/main.scss */
+/* line 229, ../../app/styles/main.scss */
 .btn-twitter {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #009fdb;
 }
 
-/* line 227, ../../app/styles/main.scss */
+/* line 235, ../../app/styles/main.scss */
 .btn-twitter:hover,
 .btn-twitter:focus {
   color: #fff;
@@ -9396,7 +9387,7 @@ a {
 /*********************
 * Animations
 *********************/
-/* line 238, ../../app/styles/main.scss */
+/* line 246, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -9404,7 +9395,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 249, ../../app/styles/main.scss */
+/* line 257, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -9412,7 +9403,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 260, ../../app/styles/main.scss */
+/* line 268, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;

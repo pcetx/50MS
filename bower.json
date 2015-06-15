@@ -24,7 +24,8 @@
     "videogular-ima-ads": "~1.2.2",
     "videogular-angulartics": "~1.2.2",
     "chess.js": "~0.9.1",
-    "chessboard-js": "~0.1.0"
+    "chessboard-js": "~0.1.0",
+    "chessboardjs": "~0.0.2"
   },
   "devDependencies": {
     "mockfirebase": "0.11.0",

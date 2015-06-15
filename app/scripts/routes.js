@@ -57,7 +57,7 @@ angular.module('50movesApp')
   // before trying to access that route
    // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
   // before trying to access that route
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -79,14 +79,24 @@ angular.module('50movesApp')
         controller: 'LoginCtrl'
       })
 
-      .when('/blog', {
-        templateUrl: 'views/blog/blog.html',
-        controller: 'BlogCtrl'
-      })
-
       .whenAuthenticated('/lesson', {
         templateUrl: 'views/lesson/lesson.html',
         controller: 'LessonCtrl'
+      })
+
+      .whenAuthenticated('/progress', {
+        templateUrl: 'views/progress.html',
+        controller: 'ProgressCtrl'
+      })
+
+      .whenAuthenticated('/exercises', {
+        templateUrl: 'views/exercise/exercises.html',
+        controller: 'ExercisesCtrl'
+      })
+
+      .whenAuthenticated('/invites', {
+        templateUrl: 'views/invites.html',
+        controller: 'InvitesCtrl'
       })
 
       .whenAuthenticated('/dashboard', {
@@ -119,6 +129,8 @@ angular.module('50movesApp')
         controller: 'AccountCtrl'
       })
       .otherwise({redirectTo: '/'});
+
+      //$locationProvider.html5Mode(true);
   }])
 
 /*

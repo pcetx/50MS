@@ -81,7 +81,7 @@ hr {
     border: 0px none rgb(96, 95, 93);
     border-radius: 5px 5px 5px 5px;
     font: normal normal 300 normal 19px/27.142858505249px 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 0px 62.5px;
+    margin: 20px 62.5px;
     outline: rgb(96, 95, 93) none 0px;
 }
 
@@ -109,13 +109,9 @@ hr {
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    display: inline-block;
     height: 20px;
     text-align: center;
     text-transform: uppercase;
-    vertical-align: middle;
-    width: 54.40625px;
-    align-self: flex-start;
     perspective-origin: 27.203125px 10px;
     transform-origin: 27.203125px 10px;
     border: 0px none rgb(255, 255, 255);
@@ -145,52 +141,18 @@ hr {
   width: 325px;
 }
 
-.fixed-center-container .form-select-value {
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  color: rgb(96, 95, 93);
-  cursor: pointer;
-  display: block;
+[data-style="custom"] {
+  background: white;
+  width: 325px;
+  height: 55px;
   font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: block;
+  padding: 0.33em;
+  width: 100%;
+  border: 0;
   font-size: 25px;
   font-weight: 300;
-  height: 60px;
-  line-height: 60px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  padding-bottom: 0px;
-  padding-left: 18px;
-  padding-right: 36px;
-  padding-top: 0px;
-  text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 325px;
-
+  color: #8f8e8b;
+  line-height: 1.5;
 }
 
-.form-select.custom {
-  -webkit-font-smoothing: antialiased;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: rgb(255, 255, 255);
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…NEN0Q3RDciIGQ9Ik03LjU2NCA3LjU2NGw3LjU2My03LjU2NGgtMTUuMTI3eiIvPjwvc3ZnPg==);
-  background-origin: padding-box;
-  background-size: auto;
-  border-bottom-color: rgb(215, 215, 215);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  box-sizing: border-box;
-  color: rgb(96, 95, 93);
-  cursor: pointer;
-  display: block;
-  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 25px;
-  font-weight: 300;
-  height: 63px;
-  line-height: 60px;
-  min-width: 140px;
-  position: relative;
-  text-align: left;
-  width: 325px;
-}

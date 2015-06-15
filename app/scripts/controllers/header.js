@@ -2,14 +2,15 @@
 
 /**
  * @ngdoc function
- * @name 50movesApp.controller:MainCtrl
+ * @name 50movesApp.controller:HeaderCtrl
  * @description
- * # MainCtrl
+ * # HeaderCtrl
  * Controller of the 50movesApp
  */
 angular.module('50movesApp')
   .controller('HeaderCtrl', function ($scope, Auth) {
 
     $scope.logout = function() { Auth.$unauth(); };
+
 
   });

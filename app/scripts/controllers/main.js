@@ -10,6 +10,8 @@
 angular.module('50movesApp')
   .controller('MainCtrl', function ($scope) {
 
+    // COLLAPSE =====================
+    $scope.isCollapsed = false;
 
   });
 

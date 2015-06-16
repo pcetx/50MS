@@ -1,0 +1,83 @@
+/* line 1, ../../app/styles/exercise.scss */
+.no-side-pad {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* line 6, ../../app/styles/exercise.scss */
+.exercise-left .description {
+  min-height: 400px;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: white;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 15px;
+}
+/* line 14, ../../app/styles/exercise.scss */
+.exercise-left .description h4 {
+  margin-top: 0px;
+  text-align: center;
+  font-weight: bold;
+}
+/* line 20, ../../app/styles/exercise.scss */
+.exercise-left .description p {
+  margin-top: 20px;
+}
+
+/* line 25, ../../app/styles/exercise.scss */
+.exercise-left .hint {
+  min-height: 200px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: white;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 15px;
+}
+
+/* line 33, ../../app/styles/exercise.scss */
+.exercise-right .list {
+  min-height: 400px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: white;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 15px;
+}
+
+/* line 41, ../../app/styles/exercise.scss */
+.exercise-right .next {
+  min-height: 140px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: white;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 15px;
+}
+
+/* line 49, ../../app/styles/exercise.scss */
+.board {
+  margin-left: 0px;
+  margin-right: 25px;
+}
+
+/* line 54, ../../app/styles/exercise.scss */
+.panel {
+  box-shadow: none !important;
+  border: 5px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 10px !important;
+}
+
+/* line 62, ../../app/styles/exercise.scss */
+.panel-default > .panel-heading {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 15px;
+}
+
+/* line 68, ../../app/styles/exercise.scss */
+.panel-body .exercise {
+  height: 50px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: left;
+  vertical-align: center;
+  padding: 10px 0px 10px 15px;
+  font-size: 14px;
+}

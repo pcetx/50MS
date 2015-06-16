@@ -104,11 +104,6 @@ angular.module('50movesApp')
         controller: 'DashboardCtrl'
       })
 
-      .whenAuthenticated('/settings', {
-        templateUrl: 'views/profile.html',
-        controller: 'AccountCtrl'
-      })
-
       .whenAuthenticated('/subscription', {
         templateUrl: 'views/subscription.html',
         controller: 'SubscriptionCtrl'

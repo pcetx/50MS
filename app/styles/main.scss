@@ -7,6 +7,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "video.scss";
 @import "mobile.scss";
 @import "profile.scss";
+@import "exercise.scss";
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('assets/fonts/brandon_med-webfont.woff') format('brandon_grotesque');
+}
 
 html,
 body {

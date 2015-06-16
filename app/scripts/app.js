@@ -22,6 +22,7 @@ var app = angular.module('50movesApp', [
     'angular-loading-bar',
     'firebase.auth',
     "com.2fdevs.videogular",
+    "ui.bootstrap",
     "com.2fdevs.videogular.plugins.controls",
     "com.2fdevs.videogular.plugins.overlayplay",
     "com.2fdevs.videogular.plugins.poster"

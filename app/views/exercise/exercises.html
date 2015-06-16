@@ -1,69 +1,128 @@
   <div class="wrapper">
-        <!-- Add your site or application content here -->
-        <div class="header dashboard" ng-cloak ng-controller="HeaderCtrl">
-          <nav class="navbar primary-menu nav-dashboard" role="navigation">
-            <div class="container">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button id="menu-toggle" type="button" class="navbar-toggle">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar bar1"></span>
-                  <span class="icon-bar bar2"></span>
-                  <span class="icon-bar bar3"></span>
-                </button>
-              </div>
-
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                  <li><a ng-href="#/dashboard"> My Board </a><div class="arrow-up"></li>
-                  <li><a ng-href="#/library"> Courses </a></li>
-                  <li><a ng-href="#/profile"> Account </a></li>
-                </ul>
-                  <ul class="nav navbar-nav navbar-right">                    
-                    <li><p ng-show-auth="" ng-cloak class="user-name">Name here{{}}</p></li>
-                    <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
-                  </ul>
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
-
-           <a href="index.html" class="logo"> <span class="element-invisible">logo</span> 
-                </a>
-          <!--  The secondary Menu  -->
-          <div class="sub-nav-wrapper">
-            <div class="container sub-nav">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <nav class="secondary-nav">
-                <div class="navbar-header">
-                  <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav subnav-dashboard">
-                      <li><a ng-href="#/dashboard" class="active"> Timeline </a></li>
-                      <li><a ng-href="#/progress"> Stats </a></li>
-                      <li><a ng-href="#/invites"> Invites </a></li>
-                    </ul>
-                  </div><!-- /.navbar-collapse -->
-                </div>
-              </nav>
-            </div><!-- /.container-fluid -->
+    <!-- Add your site or application content here -->
+    <div class="header dashboard" ng-cloak ng-controller="HeaderCtrl">
+      <nav class="navbar primary-menu nav-dashboard" role="navigation">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button id="menu-toggle" type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar bar1"></span>
+              <span class="icon-bar bar2"></span>
+              <span class="icon-bar bar3"></span>
+            </button>
           </div>
-        </div>
 
-        <div class="main-container dashboard" ng-cloak>
-          <div class="container">
-            <div class="row padded">
-              <div id="board" style="width: 500px"></div>
-              <p>Status: <span id="status"></span></p>
-              <p>FEN: <span id="fen"></span></p>
-              <p>PGN: <span id="pgn"></span></p>
-            <div class="achievements col-md-8" style=""> 
-    
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a ng-href="#/dashboard"> My Board </a></li>
+              <li><a ng-href="#/library"> Courses </a><div class="arrow-up"></div></li>
+              <li><a ng-href="#/profile"> Account </a></li>
+            </ul>
+              <ul class="nav navbar-nav navbar-right">                    
+                <li><p ng-show-auth="" ng-cloak class="user-name">Name here{{}}</p></li>
+                <li><a ng-show-auth="" ng-cloak ng-click="logout()" class="btn btn-fill">Logout</a></li>
+              </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+       <a href="index.html" class="logo"> <span class="element-invisible">logo</span> 
+            </a>
+      <!--  The secondary Menu  -->
+      <div class="sub-nav-wrapper">
+        <div class="container sub-nav">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <nav class="secondary-nav">
+            <div class="navbar-header">
+              <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav subnav-dashboard">
+                  <li><a ng-href="" class="active"> Exercise </a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div>
+          </nav>
+        </div><!-- /.container-fluid -->
+      </div>
+    </div>
+
+    <div class="main-container dashboard" ng-cloak>
+      <div class="container">
+        <div class="row padded no-side-pad">
+          <!-- The description of the lesson -->
+          <div class="exercise-left col-md-3">
+            <div class="description padded"> 
+              <h4> The Knight </h4>
+
+              <p> This is where your hint will be shownThis is where your hint will be shown </p>
+
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a href="" ng-click="isHint = !isHint">
+                    Show a Hint
+                  </a>
+                  <i class="fa fa-lightbulb-o text-muted"></i>
+                </h4>
+              </div>
+              <div collapse="!isHint">
+                <div class="panel-body">
+                  <div class="" data-target="">
+                    This is where your hint will be shown    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- The board -->
+          <div id="board" style="width: 560px" class="board col-md-4"></div>
+
+          <div class="exercise-right col-md-3">
+            <!-- The course list of exercises -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a href="" ng-click="isExcercises = !isExcercises">
+                    Getting Started Course
+                  </a>
+                </h4>
+              </div>
+              <div collapse="isExcercises">
+                <div class="panel-body">
+                  <div class="exercise" data-target="">
+                    The Mighty Pawn    
+                  </div>
+                  <div class="exercise" data-target="">
+                    Bishop, Long Range Sniper   
+                  </div>
+                  <div class="exercise" data-target="">
+                    Knight into battle    
+                  </div>
+                  <div class="exercise" data-target="">
+                    Armoured Rook    
+                  </div>
+                  <div class="exercise" data-target="">
+                    Her Majesty, the Queen    
+                  </div>
+                  <div class="exercise" data-target="">
+                    Hail the King    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="next panel"> 
+
+            </div> <!-- end exercise list -->
+          </div>
+      </div>  
+
+
  
-                   <!--     end extras -->      
-
-              </div> <!-- end achievements -->
-          </div>  
-        </div>
+     </div>
 
     <!-- end wrapper -->    
     </div>

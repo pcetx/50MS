@@ -9,11 +9,12 @@
 angular.module('50movesApp')
   .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout) {
     $scope.user = user;
+    console.log(user);
     $scope.logout = function() { Auth.$unauth(); };
     $scope.messages = [];
     var profile = $firebaseObject(Ref.child('users/'+user.uid));
     profile.$bindTo($scope, 'profile');
-    
+    console.log(profile);
 
     $scope.changePassword = function(oldPass, newPass, confirm) {
       $scope.err = null;

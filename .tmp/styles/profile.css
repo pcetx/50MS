@@ -172,3 +172,46 @@ hr {
   color: #8f8e8b;
   line-height: 1.5;
 }
+
+/*
+*   All the colours used for the custom buttons
+*/
+/* line 164, ../../app/styles/profile.scss */
+.btn-light-grey {
+  background-color: #bdc3c7;
+}
+
+/* line 168, ../../app/styles/profile.scss */
+.btn-dark-grey {
+  background-color: grey;
+}
+
+/* line 172, ../../app/styles/profile.scss */
+.btn-light-red {
+  background-color: #e74c3c;
+}
+
+/* line 176, ../../app/styles/profile.scss */
+.btn-dark-red {
+  background-color: #c0392b;
+}
+
+/* line 180, ../../app/styles/profile.scss */
+.btn-light-blue {
+  background-color: #3498db;
+}
+
+/* line 184, ../../app/styles/profile.scss */
+.btn-dark-blue {
+  background-color: #2980b9;
+}
+
+/* line 188, ../../app/styles/profile.scss */
+.btn-dark-green {
+  background-color: #4da67a;
+}
+
+/* line 192, ../../app/styles/profile.scss */
+.btn-light-green {
+  background-color: #57bb89;
+}

@@ -13,8 +13,8 @@ angular.module('50movesApp')
     //var board = new ChessBoard('board','start');
     var board,
     game = new Chess(),
-    statusEl = $('#status'),
-    fenEl = $('#fen'),
+    //statusEl = $('#status'),
+    //fenEl = $('#fen'),
     pgnEl = $('#pgn');
 
   // do not pick up pieces if the game is over
@@ -75,19 +75,25 @@ angular.module('50movesApp')
       }
     }
 
-    statusEl.html(status);
-    fenEl.html(game.fen());
+    //statusEl.html(status);
+    //fenEl.html(game.fen());
     pgnEl.html(game.pgn());
   };
 
   var cfg = {
     draggable: true,
-    position: 'start',
+    position: {
+      d2: 'wP'
+    },
     onDragStart: onDragStart,
-    onDrop: onDrop,
-    onSnapEnd: onSnapEnd
+    onDrop: onDrop
+    //onSnapEnd: onSnapEnd
   };
   board = new ChessBoard('board', cfg);
+  //board.move('d2-d4');
+   //board.position({
+    //d2: 'wP'
+  //});
 
   updateStatus();
 

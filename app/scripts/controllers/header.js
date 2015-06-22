@@ -10,9 +10,5 @@
 
 angular.module('50movesApp')
   .controller('HeaderCtrl', function ($scope, Auth) {
-    //$scope.username = $scope.user;
-    //console.log(user);
     $scope.logout = function() { Auth.$unauth(); };
-
-
   });

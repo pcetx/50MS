@@ -109,6 +109,11 @@ angular.module('50movesApp')
         controller: 'SubscriptionCtrl'
       })
 
+      .whenAuthenticated('/achievements', {
+        templateUrl: 'views/achievements.html',
+        controller: 'AchievementsCtrl'
+      })
+
       .whenAuthenticated('/library', {
         templateUrl: 'views/library.html',
         controller: 'LibraryCtrl'

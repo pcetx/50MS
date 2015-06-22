@@ -59,12 +59,6 @@
   border-radius: 10px !important;
 }
 
-.panel-default > .panel-heading {
-  border: none !important;
-  background-color: transparent !important;
-  padding: 15px;
-}
-
 .panel-body .exercise {
   height: 50px;
   text-transform: uppercase;
@@ -73,6 +67,7 @@
   vertical-align: center;
   padding: 10px 0px 10px 15px;
   font-size: 14px;
+  background: light-grey
 }
 
 

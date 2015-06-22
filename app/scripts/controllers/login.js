@@ -79,5 +79,18 @@ angular.module('50movesApp')
       $scope.err = err;
     }
 
-
+      // send password reset email
+    /*
+    var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
+    ref.resetPassword({
+        email : "bobtony@firebase.com"
+      }, function(error) {
+      if (error === null) {
+        console.log("Password reset email sent successfully");
+      } else {
+        console.log("Error sending password reset email:", error);
+      }
+    });
+    */
+    
   });

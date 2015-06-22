@@ -9117,6 +9117,49 @@ hr {
   line-height: 1.5;
 }
 
+/*
+*   All the colours used for the custom buttons
+*/
+/* line 164, ../../app/styles/profile.scss */
+.btn-light-grey {
+  background-color: #bdc3c7;
+}
+
+/* line 168, ../../app/styles/profile.scss */
+.btn-dark-grey {
+  background-color: grey;
+}
+
+/* line 172, ../../app/styles/profile.scss */
+.btn-light-red {
+  background-color: #e74c3c;
+}
+
+/* line 176, ../../app/styles/profile.scss */
+.btn-dark-red {
+  background-color: #c0392b;
+}
+
+/* line 180, ../../app/styles/profile.scss */
+.btn-light-blue {
+  background-color: #3498db;
+}
+
+/* line 184, ../../app/styles/profile.scss */
+.btn-dark-blue {
+  background-color: #2980b9;
+}
+
+/* line 188, ../../app/styles/profile.scss */
+.btn-dark-green {
+  background-color: #4da67a;
+}
+
+/* line 192, ../../app/styles/profile.scss */
+.btn-light-green {
+  background-color: #57bb89;
+}
+
 /* line 1, ../../app/styles/exercise.scss */
 .no-side-pad {
   padding-left: 0px;
@@ -9184,13 +9227,6 @@ hr {
 }
 
 /* line 62, ../../app/styles/exercise.scss */
-.panel-default > .panel-heading {
-  border: none !important;
-  background-color: transparent !important;
-  padding: 15px;
-}
-
-/* line 68, ../../app/styles/exercise.scss */
 .panel-body .exercise {
   height: 50px;
   text-transform: uppercase;
@@ -9199,48 +9235,55 @@ hr {
   vertical-align: center;
   padding: 10px 0px 10px 15px;
   font-size: 14px;
+  background: light-grey;
 }
 
 @font-face {
   font-family: 'Brandon Grotesque';
-  src: url("assets/fonts/brandon_med-webfont.woff") format("brandon_grotesque");
+  src: url("../assets/fonts/Brandon Grotesque/Brandon_reg.otf");
+  src: url("../assets/fonts/Brandon Grotesque/Brandon_reg_it.otf");
+  src: url("../assets/fonts/Brandon Grotesque/Brandon_bold.otf");
+  src: url("../assets/fonts/Brandon Grotesque/Brandon_blk.otf");
+  src: url("../assets/fonts/Brandon Grotesque/Brandon_thin.otf");
+  src: url("../assets/fonts/Brandon Grotesque/Brandon_light.otf");
+  src: url("../assets/fonts/Brandon Grotesque/Brandon_med.otf");
 }
-/* line 17, ../../app/styles/main.scss */
+/* line 28, ../../app/styles/main.scss */
 html,
 body {
-  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Brandon Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #f7f7f7;
   padding: 0;
   margin: 0;
   height: 100%;
 }
 
-/* line 27, ../../app/styles/main.scss */
+/* line 38, ../../app/styles/main.scss */
 * {
   margin: 0;
 }
 
-/* line 31, ../../app/styles/main.scss */
+/* line 42, ../../app/styles/main.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Brandon Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* line 35, ../../app/styles/main.scss */
+/* line 46, ../../app/styles/main.scss */
 h1, h2 {
   font-weight: bold;
 }
 
-/* line 39, ../../app/styles/main.scss */
+/* line 50, ../../app/styles/main.scss */
 h3, h4 {
   text-transform: uppercase;
 }
 
-/* line 43, ../../app/styles/main.scss */
+/* line 54, ../../app/styles/main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
-/* line 47, ../../app/styles/main.scss */
+/* line 58, ../../app/styles/main.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -9248,7 +9291,23 @@ button:focus {
   outline: none;
 }
 
-/* line 54, ../../app/styles/main.scss */
+/* line 65, ../../app/styles/main.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 69, ../../app/styles/main.scss */
+.jumbotron h1 {
+  margin-top: 0 !important;
+  margin-bottom: 30px;
+}
+
+/* line 74, ../../app/styles/main.scss */
+.center {
+  text-align: center;
+}
+
+/* line 78, ../../app/styles/main.scss */
 .circle {
   width: 140px;
   height: 140px;
@@ -9263,105 +9322,118 @@ button:focus {
   z-index: 1000;
 }
 
-/* line 68, ../../app/styles/main.scss */
+/* line 92, ../../app/styles/main.scss */
 .bar1, .bar2, .bar3 {
   background: rgba(44, 62, 80, 0.8) !important;
 }
 
-/* line 72, ../../app/styles/main.scss */
+/* line 96, ../../app/styles/main.scss */
 .transparent {
   background: none !important;
   border: none !important;
 }
 
-/* line 77, ../../app/styles/main.scss */
+/* line 101, ../../app/styles/main.scss */
 .footer {
   background: #434548;
 }
 
-/* line 82, ../../app/styles/main.scss */
+/* line 106, ../../app/styles/main.scss */
 .footer nav > ul a:not(.btn) {
   color: white !important;
   font-weight: bold;
 }
 
-/* line 87, ../../app/styles/main.scss */
+/* line 111, ../../app/styles/main.scss */
 .footer nav > ul a:not(.btn):hover {
   text-decoration: none;
 }
 
-/* line 91, ../../app/styles/main.scss */
+/* line 115, ../../app/styles/main.scss */
 .footer .copyright p {
   font-weight: bold;
   font-size: 15px !important;
 }
 
-/* line 96, ../../app/styles/main.scss */
+/* line 120, ../../app/styles/main.scss */
 a {
   color: #000;
 }
 
-/* line 100, ../../app/styles/main.scss */
+/* line 124, ../../app/styles/main.scss */
 .navbar {
   margin-bottom: 0px !important;
 }
 
-/* line 104, ../../app/styles/main.scss */
+/* line 128, ../../app/styles/main.scss */
 .login-container {
   width: 100%;
 }
 
-/* line 108, ../../app/styles/main.scss */
+/* line 132, ../../app/styles/main.scss */
 .btn-fill.btn-login, .btn-fill.btn-register {
   background: rgba(250, 250, 250, 0.3) !important;
 }
 
-/* line 112, ../../app/styles/main.scss */
+/* line 136, ../../app/styles/main.scss */
 .btn-fill.btn-login:hover, .btn-fill.btn-register:hover {
   background: #c0392b !important;
   border-color: #c0392b !important;
 }
 
-/* line 117, ../../app/styles/main.scss */
+/* line 141, ../../app/styles/main.scss */
 .text-muted {
   color: #90939a;
 }
 
-/* line 121, ../../app/styles/main.scss */
+/* line 145, ../../app/styles/main.scss */
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
   box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
 }
 
-/* line 127, ../../app/styles/main.scss */
+/* line 151, ../../app/styles/main.scss */
+.light-border {
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* line 156, ../../app/styles/main.scss */
+.jumbotron {
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* line 161, ../../app/styles/main.scss */
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
   color: #444;
   text-transform: uppercase;
-  background-color: #f6f6f6;
-  border-color: #cfd9db;
+  border: none !important;
+  background-color: transparent !important;
+  padding: 15px;
 }
 
-/* line 136, ../../app/styles/main.scss */
+/* line 173, ../../app/styles/main.scss */
 .fixed-center-container {
   max-width: 768px;
 }
 
-/* line 140, ../../app/styles/main.scss */
+/* line 177, ../../app/styles/main.scss */
 .center-form {
   width: 330px;
   margin: 12% auto;
 }
 
 @media (max-width: 768px) {
-  /* line 146, ../../app/styles/main.scss */
+  /* line 183, ../../app/styles/main.scss */
   .center-form {
     margin-top: 18%;
   }
 }
-/* line 151, ../../app/styles/main.scss */
+/* line 188, ../../app/styles/main.scss */
 .signup-or-separator {
   position: relative;
   height: 34px;
@@ -9369,14 +9441,14 @@ a {
   background: none;
 }
 
-/* line 158, ../../app/styles/main.scss */
+/* line 195, ../../app/styles/main.scss */
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
   border-top: 1px solid #dce0e0;
 }
 
-/* line 164, ../../app/styles/main.scss */
+/* line 201, ../../app/styles/main.scss */
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
@@ -9384,7 +9456,7 @@ a {
   background-color: #fff;
 }
 
-/* line 171, ../../app/styles/main.scss */
+/* line 208, ../../app/styles/main.scss */
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
@@ -9394,7 +9466,7 @@ a {
   color: #555;
 }
 
-/* line 180, ../../app/styles/main.scss */
+/* line 217, ../../app/styles/main.scss */
 .password-strength-indicator {
   position: absolute;
   top: 10px;
@@ -9403,7 +9475,7 @@ a {
   padding: 0 15px;
 }
 
-/* line 188, ../../app/styles/main.scss */
+/* line 225, ../../app/styles/main.scss */
 .password-strength-indicator span {
   display: block;
   width: 5px;
@@ -9413,12 +9485,13 @@ a {
   border-radius: 5px;
 }
 
-/* line 197, ../../app/styles/main.scss */
+/* line 234, ../../app/styles/main.scss */
 .has-feedback .form-control {
   padding-left: 42.5px;
+  padding-right: 10px !important;
 }
 
-/* line 201, ../../app/styles/main.scss */
+/* line 239, ../../app/styles/main.scss */
 .profile-picture {
   height: 100px;
   display: block;
@@ -9427,43 +9500,44 @@ a {
 /*********************
 * Social Buttons
 *********************/
-/* line 210, ../../app/styles/main.scss */
+/* line 248, ../../app/styles/main.scss */
 .btn-google-plus {
   color: #fff;
   background-color: #dd4b39;
   border: 1px solid #d54331;
 }
 
-/* line 216, ../../app/styles/main.scss */
+/* line 254, ../../app/styles/main.scss */
 .btn-google-plus:hover,
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
+  border-color: transparent;
 }
 
-/* line 222, ../../app/styles/main.scss */
+/* line 261, ../../app/styles/main.scss */
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
   border: 1px solid #335190;
 }
 
-/* line 228, ../../app/styles/main.scss */
+/* line 267, ../../app/styles/main.scss */
 .btn-facebook:hover,
 .btn-facebook:focus {
   color: #fff;
   background-color: #294786;
-  border: none;
+  border-color: transparent;
 }
 
-/* line 235, ../../app/styles/main.scss */
+/* line 274, ../../app/styles/main.scss */
 .btn-twitter {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #009fdb;
 }
 
-/* line 241, ../../app/styles/main.scss */
+/* line 280, ../../app/styles/main.scss */
 .btn-twitter:hover,
 .btn-twitter:focus {
   color: #fff;
@@ -9474,7 +9548,7 @@ a {
 /*********************
 * Animations
 *********************/
-/* line 252, ../../app/styles/main.scss */
+/* line 291, ../../app/styles/main.scss */
 .fadeZoom.ng-enter {
   -webkit-animation-duration: 0.6s, 0.2s;
   animation-duration: 0.2, 0.2s;
@@ -9482,7 +9556,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 263, ../../app/styles/main.scss */
+/* line 302, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-enter {
   -webkit-animation-duration: 0.2s, 0.2s;
   animation-duration: 0.2s, 0.2s;
@@ -9490,7 +9564,7 @@ a {
   animation-name: fadeIn, zoomIn;
 }
 
-/* line 274, ../../app/styles/main.scss */
+/* line 313, ../../app/styles/main.scss */
 .fadeZoomFadeDown.ng-leave {
   -webkit-animation: fadeOutDown 0.2s;
   animation: fadeOutDown 0.2s;

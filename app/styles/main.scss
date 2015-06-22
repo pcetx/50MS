@@ -11,12 +11,23 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 @font-face {
   font-family: 'Brandon Grotesque';
-  src: url('assets/fonts/brandon_med-webfont.woff') format('brandon_grotesque');
+  src: url('../assets/fonts/Brandon Grotesque/Brandon_reg.otf');
+  src: url('../assets/fonts/Brandon Grotesque/Brandon_reg_it.otf');
+  src: url('../assets/fonts/Brandon Grotesque/Brandon_bold.otf');
+  //src: url('../assets/fonts/Brandon Grotesque/Brandon_bold_it.otf');
+  src: url('../assets/fonts/Brandon Grotesque/Brandon_blk.otf');
+  //src: url('../assets/fonts/Brandon Grotesque/Brandon_blk_it.otf');
+  src: url('../assets/fonts/Brandon Grotesque/Brandon_thin.otf');
+  //src: url('../assets/fonts/Brandon Grotesque/Brandon_thin_it.otf');
+  src: url('../assets/fonts/Brandon Grotesque/Brandon_light.otf');
+  //src: url('../assets/fonts/Brandon Grotesque/Brandon_light_it.otf');
+  src: url('../assets/fonts/Brandon Grotesque/Brandon_med.otf');
+  //src: url('../assets/fonts/Brandon Grotesque/Brandon_med_it.otf');
 }
 
 html,
 body {
-  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Brandon Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   //background: #e4e7ec;
   background: #f7f7f7;
   padding: 0;
@@ -29,7 +40,7 @@ margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Brandon Grotesque', brandon-grotesque, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Brandon Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h1, h2 {
@@ -49,6 +60,19 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.jumbotron h1 {
+  margin-top: 0 !important;
+  margin-bottom: 30px;
+}
+
+.center {
+  text-align: center;
 }
 
 .circle {
@@ -124,13 +148,26 @@ a {
   box-shadow: 0 8px 17px rgba(0, 0, 0, .2);
 }
 
+.light-border {
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.jumbotron {
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
 .panel-default > .panel-heading {
   font-size: 85%;
   font-weight: bold;
   color: #444;
   text-transform: uppercase;
-  background-color: #f6f6f6;
-  border-color: #cfd9db;
+  //background-color: #f6f6f6;
+  //border-color: #cfd9db;
+  border: none !important;
+  background-color: transparent !important;
+  padding: 15px;
 }
 
 .fixed-center-container {
@@ -196,6 +233,7 @@ a {
 
 .has-feedback .form-control {
   padding-left: 42.5px;
+  padding-right: 10px !important;
 }
 
 .profile-picture {
@@ -217,6 +255,7 @@ a {
 .btn-google-plus:focus {
   color: #fff;
   background-color: #cb3927;
+  border-color: transparent;
 }
 
 .btn-facebook {
@@ -229,7 +268,7 @@ a {
 .btn-facebook:focus {
   color: #fff;
   background-color: #294786;
-  border: none;
+  border-color: transparent;
 }
 
 .btn-twitter {
